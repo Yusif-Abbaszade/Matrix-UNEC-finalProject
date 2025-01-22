@@ -1,0 +1,6 @@
+@use 'variables' as *;
+
+.headersc {
+    background: $header-bg-color;
+    font-size: $header-fontsize;
+}

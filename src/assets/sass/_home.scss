@@ -1,0 +1,16 @@
+@use 'variables' as *;
+
+.bg-abs-home {
+    background-image: url($home-bgimg);
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    top: 0;
+    z-index: -999;
+    width: 100%;
+}
+
+.home-con {
+    min-height: 100vh;
+}
