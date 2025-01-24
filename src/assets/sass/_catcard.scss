@@ -1,0 +1,35 @@
+.catcard {
+    .RxCornerTopLeft, .RxCornerBottomRight, .catcard-text {
+        transition: 0.3s;
+    }
+
+    .RxCornerTopLeft {
+        margin-bottom: 35px;
+    }
+
+    .RxCornerBottomRight {
+        margin-top: 35px;
+    }
+
+    .catcard-text {
+        font-size: 22px;
+        text-decoration: none;
+        color: white;
+    }
+
+    &:hover {
+        .catcard-text {
+            font-size: 25px;
+        }
+
+        .RxCornerTopLeft {
+            margin-bottom: 50px;
+            margin-right: 10px;
+        }
+
+        .RxCornerBottomRight {
+            margin-top: 50px;
+            margin-left: 10px;
+        }
+    }
+}

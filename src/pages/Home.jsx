@@ -1,7 +1,10 @@
 import { IconContext } from "react-icons"
 import { FaShieldVirus } from "react-icons/fa"
 import { LiaFlagUsaSolid } from "react-icons/lia"
+import CatCard from "../components/CatCard"
+import 'react-multi-carousel/lib/styles.css'
 
+const collections_1_bgimg = 'https://princetontec.com/wp-content/uploads/2024/06/JJB_9303-ps-edit-size-scaled.jpg';
 
 const Home = () => {
   return (
@@ -27,12 +30,17 @@ const Home = () => {
               <b className="fs-6">USA-made</b>
             </li>
             <li className="text-light d-flex align-items-center gap-2 flex-column">
-              <IconContext.Provider value={{size:"32px"}}>
+              <IconContext.Provider value={{ size: "32px" }}>
                 <FaShieldVirus />
               </IconContext.Provider>
               <b className="fs-6">Trusted by the Armed Forces</b>
             </li>
           </ul>
+        </div>
+      </div>
+      <div className="explore-collections-sec">
+        <div className="row">
+          <CatCard width={"18rem"} height={"27rem"} text={'salam'} bgimg={collections_1_bgimg} />
         </div>
       </div>
     </div>
