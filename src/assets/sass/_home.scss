@@ -13,4 +13,22 @@
 
 .home-con {
     min-height: 100vh;
+    .maincon-home{
+        min-height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        flex-direction: column;
+        gap: 15px;
+        button {
+            background: $home-btn-bg-color;
+            border-radius: 0;
+            float: right;
+            &:hover {
+                color: $home-btn-bg-color !important;
+                border: 1px solid $home-btn-bg-color !important;
+                background: none;
+            }
+        }
+    }
 }

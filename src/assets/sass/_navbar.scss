@@ -124,3 +124,25 @@ nav {
         }
     }
 }
+
+.left-dd-shop-dd {
+    ul{
+        list-style: none;
+        margin-bottom: 10px;
+        li {
+            margin: 0;
+            transition: 0.3s;
+            a{
+                color: black;
+                font-size: 16px;
+                transition: .3s;
+            }
+        }
+        li:hover {
+            transform: translateX(10px);
+            a {
+                font-weight: bold;
+            }
+        }
+    }
+}

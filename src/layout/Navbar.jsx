@@ -63,7 +63,76 @@ const Navbar = () => {
             <div className={`left-dd-navbar container-fluid ${leftMenuOpen ? 'navbar-dd-fade-anm-open' : 'd-none'}`} style={{ background: "white", position: "absolute", top: "10%", zIndex: "1" }} >
                 <ul className="list-unstyled">
                     <li>
-                        <Link to={'/'}><b>Shop</b></Link>
+                        <div className="d-flex">
+                            <Link to={'/'}><b>Shop</b></Link>
+                            <button className="accordion-button" style={{ fontSize: "18px" }} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <IconContext.Provider value={{}}><IoIosArrowDown /></IconContext.Provider>
+                            </button>
+                        </div>
+                        <div className="accordion left-dd-shop-dd" id="accordionExample">
+                            <div className="accordion-item border-0">
+                                <div id="collapseOne" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div className="accordion-body">
+                                        <h6>COLLECTIONS</h6>
+                                        <ul>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                        </ul>
+                                        <h6>ACTIVITIES</h6>
+                                        <ul>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                        </ul>
+                                        <h6>CATEGORIES</h6>
+                                        <ul>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                            <li>
+                                                <Link>example</Link>
+                                            </li>
+                                            <Link to={'/'} className="fw-bold fs-6">VIEW ALL PRODUCTS</Link>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
                     </li>
                     <hr />
                     <li>
