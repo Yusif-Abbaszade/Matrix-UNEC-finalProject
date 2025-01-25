@@ -8,7 +8,7 @@ const logo = 'https://princetontec.com/wp-content/uploads/2023/12/Princeton-Tec-
 const Footer = () => {
     return (
         <div className="footer">
-            <div className="breakdance-px"></div>
+            <div className="breakdance-px breakdance-px-footer"></div>
             <div className="container-fluid footer-sec">
                 <div className="container">
                     <footer className="py-5">

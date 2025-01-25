@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 const CatCard = ({ width, height, bgimg, text }) => {
     return (
-        <div className="catcard d-flex justify-content-center align-items-center" style={{ width: width, height: height, backgroundImage: `url(${bgimg})`, objectFit: "contain", backgroundRepeat: "no-repeat", backgroundSize: "contain" }}>
+        <div className="catcard d-flex justify-content-center align-items-center" style={{ width: width, height: height, backgroundImage: `url(${bgimg})`, objectFit: "cover", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
             <div className="text text-light">
                 <IconContext.Provider value={{ size: "2em", color: "white", className:"RxCornerTopLeft"}}>
                     <RxCornerTopLeft />

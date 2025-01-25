@@ -1,12 +1,94 @@
 import { IconContext } from "react-icons"
-import { FaShieldVirus } from "react-icons/fa"
+import { FaAngleLeft, FaHandPointLeft, FaShieldVirus } from "react-icons/fa"
 import { LiaFlagUsaSolid } from "react-icons/lia"
 import CatCard from "../components/CatCard"
 import 'react-multi-carousel/lib/styles.css'
+import Slider from "react-slick"
+import { useEffect, useState } from "react"
 
 const collections_1_bgimg = 'https://princetontec.com/wp-content/uploads/2024/06/JJB_9303-ps-edit-size-scaled.jpg';
+const collections_2_bgimg = 'https://princetontec.com/wp-content/uploads/2024/06/PTecMay2022-11-ps-edit-size-scaled.jpg'
+const collections_3_bgimg = 'https://princetontec.com/wp-content/uploads/2024/06/JJB_3767-Edit-scaled.jpg'
+
+
+
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  // setPrevnextProps([className, onClick]);
+  return (
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/32/32213.png"
+      className={className}
+      style={{ display: "block", top: "105%", right: "5%", filter:"grayscale(1) invert(1)"}}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/271/271220.png"
+      className={className}
+      style={{ display: "block", top: "105%", left: "85%", filter:"grayscale(1) invert(1)" }}
+      onClick={onClick}
+    />
+  );
+}
+
+
+
 
 const Home = () => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [updateCount, setUpdateCount] = useState(0);
+  const [slideCount, setSlideCount] = useState(3);
+  const [prevnextProps, setPrevnextProps] = useState([]);
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 3,
+    afterChange: () => setUpdateCount(updateCount + 1),
+    beforeChange: (current, next) => setSlideIndex(next),
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 5000,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: false,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 1220,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 840,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  }
+  useEffect(() => {
+    if (window.innerWidth <= 840) { setSlideCount(3) }
+    else if (window.innerWidth <= 1220) { setSlideCount(2) }
+    else { setSlideCount(1) }
+  }, [window.innerWidth])
   return (
     <div>
       <div className="bg-abs-home"></div>
@@ -38,9 +120,25 @@ const Home = () => {
           </ul>
         </div>
       </div>
-      <div className="explore-collections-sec">
-        <div className="row">
-          <CatCard width={"18rem"} height={"27rem"} text={'salam'} bgimg={collections_1_bgimg} />
+      <div className="explore-collections-sec container d-flex justify-content-center align-items-center, flex-column">
+        <p className="fw-bold h1 text-light mb-5">Explore Collections</p>
+        <div className="slider-container container-fluid" style={{width:"90%", margin:"0 auto"}}>
+          <Slider {...settings}>
+            <CatCard width={"18rem"} height={"27rem"} text={'TACTICAL'} bgimg={collections_1_bgimg} />
+            <CatCard width={"18rem"} height={"27rem"} text={'ADVENTURE'} bgimg={collections_2_bgimg} />
+            <CatCard width={"18rem"} height={"27rem"} text={'INDUSTRIAL'} bgimg={collections_3_bgimg} />
+          </Slider>
+          <div className="progress-sc d-flex flex-row">
+            <div className="progress w-75" style={{ height: "5px", marginTop:"19px" }} role="progressbar" aria-label="Basic example" aria-valuenow={75} aria-valuemin={0} aria-valuemax={100}>
+              <div className="progress-bar" style={{ background: "#b49360", width: `${(slideIndex + 1) * (100 / slideCount)}%` }} />
+            </div>
+            <div className="buttons w-25">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="best-sellers-sec mt-5">
+        <div className="breakdance-px breakdance-px-bestsellers">
         </div>
       </div>
     </div>
