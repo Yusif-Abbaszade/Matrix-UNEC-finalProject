@@ -4,8 +4,9 @@
 .footer {
 
     .breakdance-px-footer {
-        @include breakdance-px();
         background-image: url($footer-breakdance-px-img);
+        height:10vh;
+        @include breakdance-px();
     }
 
     .footer-sec {

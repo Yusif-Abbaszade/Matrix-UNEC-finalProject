@@ -1,0 +1,1 @@
+export const getActivity = ()=>({type:"GET_ACTIVITIES"})

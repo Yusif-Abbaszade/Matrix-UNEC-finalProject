@@ -1,5 +1,6 @@
 .catcard {
     transition: 0.3s;
+    background-size: cover;
     &:hover {
         transform: scale(1.1);
     }

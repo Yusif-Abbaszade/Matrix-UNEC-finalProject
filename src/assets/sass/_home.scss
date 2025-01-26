@@ -14,17 +14,20 @@
 
 .home-con {
     min-height: 100vh;
-    .maincon-home{
+
+    .maincon-home {
         min-height: 80vh;
         display: flex;
         justify-content: center;
         align-items: end;
         flex-direction: column;
         gap: 15px;
+
         button {
             background: $home-btn-bg-color;
             border-radius: 0;
             float: right;
+
             &:hover {
                 color: $home-btn-bg-color !important;
                 border: 1px solid $home-btn-bg-color !important;
@@ -36,7 +39,7 @@
 
 
 @media (min-width:1220px) {
-    .progress-sc {
+    .explore-progress-sc {
         display: none !important;
     }
 }
@@ -46,8 +49,50 @@
 }
 
 .best-sellers-sec {
+    width: 100%;
+
     .breakdance-px-bestsellers {
-        @include breakdance-px();
         background: url($home-breakdance-px-img);
+        @include breakdance-px();
+        height: 15vh;
+    }
+
+    .best-sellers-products {
+        background-color: $home-bestsellers-bg-color;
+        min-height: 100vh;
+    }
+}
+
+.social-media-sec {
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    .social-RxCornerTopLeft,
+    .social-RxCornerBottomRight {
+        transition: .3s;
+    }
+
+    .main-link:hover {
+
+        .social-RxCornerTopLeft {
+            transform: translate(-15px, -15px);
+        }
+
+        .social-RxCornerBottomRight {
+            transform: translate(15px, 15px);
+        }
+    }
+
+    .slick-dots {
+        width: 100%;
+        display: flex !important;
+        justify-content: center;
+        gap: 50px;
+
+        .slick-active {
+            div {
+                opacity: 100% !important;
+            }
+        }
     }
 }

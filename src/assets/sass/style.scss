@@ -3,6 +3,7 @@
 @use 'footer' as *;
 @use 'home' as *;
 @use 'catcard' as *;
+@use 'productcard' as *;
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
@@ -20,4 +21,15 @@ html {
 
 body {
     background: black;
+}
+
+.activitycard {
+    transition: .3s;
+    margin: 0;
+    padding: 0;
+    color: #d7c6af !important;
+    font-weight: bold;
+    &:hover {
+        filter: grayscale(0.3) invert(.2);
+    }
 }
