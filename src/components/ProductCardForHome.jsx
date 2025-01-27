@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 const ProductCardForHome = ({title, price, img, imghover, itemHovered}) => {
 
     return (
-        <div className="productcardforhome" style={{ width: '20rem' }}>
+        <div className="productcardforhome" style={{ width: '20rem', marginLeft:"50px" }}>
             <p className="productname fw-bold mb-5 mt-3 pt-3 ms-3" style={{ fontSize: "25px" }}>{title}</p>
             <p className="productprice float-end h6 me-2">${price}</p>
             <div className="container d-flex justify-content-center imgsc">

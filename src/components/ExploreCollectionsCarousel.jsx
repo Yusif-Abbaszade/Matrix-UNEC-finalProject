@@ -77,6 +77,14 @@ const ExploreCollectionsCarousel = () => {
                     slidesToShow: 1,
                     slidesToScroll: 1
                 }
+            },
+            {
+                breakpoint:500,
+                settings:{
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows:false
+                }
             }
         ]
     }
