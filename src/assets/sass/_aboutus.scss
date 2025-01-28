@@ -1,0 +1,158 @@
+@use 'variables' as *;
+
+.aboutus-page {
+    width: 100%;
+    color: white;
+
+    .header-bg-overlay {
+        background-image: url($aboutus-bgimg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 100vh;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        z-index: -999;
+        opacity: .65;
+    }
+
+    .header-sc {
+        min-height: 100vh;
+
+        .txt1 {
+            font-size: 80px;
+            font-weight: bold;
+            color: #d7c6af;
+        }
+
+        .txt2 {
+            font-size: 40px;
+            font-weight: bold;
+            color: #d7c6af;
+        }
+
+        .GrTopCorner {
+            margin-bottom: 13%;
+        }
+
+        .GrBottomCorner {
+            margin-top: 13%;
+        }
+    }
+
+    .features-sec {
+        margin-top: 100px;
+        height: 100%;
+        color: black;
+        .txt1 {
+            margin-top: 55px;
+        }
+    }
+
+    .know-us-sec {
+        background-color: #e8dfd0;
+        padding-bottom: 100px;
+        margin-bottom: 100px !important;
+    }
+}
+
+@media (min-width:1160px) {
+    .aboutus-page .header-sc {
+        .GrTopCorner {
+            margin-bottom: 11% !important;
+        }
+
+        .GrBottomCorner {
+            margin-top: 11% !important;
+        }
+    }
+}
+
+@media (max-width:1160px) {
+    .aboutus-page .header-sc {
+        .txt1 {
+            font-size: 60px !important;
+        }
+
+        .txt2 {
+            font-size: 30px !important;
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .aboutus-page .header-sc {
+        .txt1 {
+            font-size: 40px !important;
+        }
+
+        .txt2 {
+            font-size: 20px !important;
+        }
+    }
+}
+
+@media (max-width:568px) {
+    .aboutus-page .header-sc {
+        .txt1 {
+            font-size: 20px !important;
+        }
+
+        .txt2 {
+            font-size: 10px !important;
+        }
+    }
+}
+
+
+@media (min-width:1550px) {
+    .aboutus-page .header-sc {
+        .GrTopCorner {
+            margin-bottom: 8% !important;
+        }
+
+        .GrBottomCorner {
+            margin-top: 8% !important;
+        }
+    }
+}
+
+
+@media (min-width:992px) {
+    .aboutus-page .features-sec {
+        .img1-cont {
+            position: relative;
+
+            img {
+                position: absolute;
+                top: -50px;
+                left: 0;
+            }
+        }
+
+        .img2-cont {
+            position: relative;
+            margin-right: 0;
+            padding-right: 0;
+
+            img {
+                position: absolute;
+                bottom: -50px;
+                right: 0;
+            }
+        }
+    }
+}
+
+@media (max-width:992px) {
+    .aboutus-page .features-sec {
+        .clrvrs {
+            flex-direction: column-reverse;
+        }
+
+        .txt5 {
+            margin: 70px 0 70px 0 !important;
+        }
+    }
+}

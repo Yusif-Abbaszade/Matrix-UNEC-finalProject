@@ -38,7 +38,7 @@ const Navbar = () => {
                                 </button>
                             </li>
                             <li>
-                                <Link to={'/'}>About<div className="underline"></div></Link>
+                                <Link to={'/about-us'}>About<div className="underline"></div></Link>
                             </li>
                             <li>
                                 <Link to={'/'}>News<div className="underline"></div></Link>
@@ -65,7 +65,7 @@ const Navbar = () => {
                     <li>
                         <div className="d-flex">
                             <Link to={'/'}><b>Shop</b></Link>
-                            <button className="accordion-button" style={{ fontSize: "18px" }} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button className="accordion-button navmenuddbtn" style={{ fontSize: "18px" }} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 <IconContext.Provider value={{}}><IoIosArrowDown /></IconContext.Provider>
                             </button>
                         </div>
@@ -136,7 +136,7 @@ const Navbar = () => {
                     </li>
                     <hr />
                     <li>
-                        <Link to={'/'}><b>About</b></Link>
+                        <Link to={'/about-us'}><b>About</b></Link>
                     </li>
                     <hr />
                     <li>

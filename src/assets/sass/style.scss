@@ -4,11 +4,20 @@
 @use 'home' as *;
 @use 'catcard' as *;
 @use 'productcard' as *;
+@use 'aboutus' as *;
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/Fontspring-DEMO-proximanova-medium.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
-    font-family: "Open Sans", serif;
+    font-family: 'Proxima Nova', Arial, sans-serif;
     font-optical-sizing: auto;
     font-weight: 350;
     font-style: normal;
@@ -32,4 +41,15 @@ body {
     &:hover {
         filter: grayscale(0.3) invert(.2);
     }
+}
+
+.accordion-button:not(.navmenuddbtn) {
+    color: white;
+    background-color: black;
+    box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed, .navmenuddbtn) {
+    color: white !important;
+    background-color: black !important;
 }

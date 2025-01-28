@@ -45,8 +45,8 @@ const Footer = () => {
                             </div>
                             <div className="col-xl-4 mb-3">
                                 <h5>Join Out Mailing List:</h5>
-                                <div className="d-flex joinusemailform flex-column flex-sm-row w-100">
-                                    <input id="newsletter1" type="text" className="form-control rounded-0" placeholder="Email address" />
+                                <div className="d-flex joinusemailform flex-row w-100">
+                                    <input id="newsletter1" type="text" className="form-control rounded-0" style={{minWidth:"150px"}} placeholder="Email address" />
                                     <button className="btn btn-dark rounded-0" type="button">Subscribe</button>
                                 </div>
                             </div>

@@ -12,6 +12,7 @@ import 'react-multi-carousel/lib/styles.css'
 import './assets/sass/style.scss'
 import Navbar from "./layout/Navbar";
 import Footer from "./layout/Footer";
+import AboutUs from "./pages/AboutUs";
 const App = () => {
   useEffect(() => {
     AOS.init({
@@ -27,6 +28,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about-us" element={<AboutUs />} />
         </Routes>
         <Footer />
       </BrowserRouter>
