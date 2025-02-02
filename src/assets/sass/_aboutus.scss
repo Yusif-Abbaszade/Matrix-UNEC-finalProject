@@ -67,6 +67,9 @@
             margin-top: 11% !important;
         }
     }
+    .clrvrs {
+        margin-top: 150px;
+    }
 }
 
 @media (max-width:1160px) {
@@ -79,6 +82,7 @@
             font-size: 30px !important;
         }
     }
+
 }
 
 @media (max-width:768px) {
@@ -149,6 +153,7 @@
     .aboutus-page .features-sec {
         .clrvrs {
             flex-direction: column-reverse;
+            margin-top: 150px;
         }
 
         .txt5 {
@@ -156,3 +161,4 @@
         }
     }
 }
+

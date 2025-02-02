@@ -105,8 +105,8 @@ const BestsellersCarousel = () => {
     return (
         <div className="slider-container container-fluid" style={{ width: "100%", margin: "0", padding:"0" }}>
             <Slider {...settings} className="sldsc">
-                {data.map((item, index)=>(
-                    <ProductCardForHome key={index} title={item.title} price={item.price} img={item.img} imghover={item.imghover} itemHovered={itemHovered} />
+                {data.filter(item=>item.bestsellers).map((item, index)=>(
+                    <ProductCardForHome key={index} title={item.title} price={item.price} img={item.img} imghover={item.imghover} itemHovered={itemHovered} props={item.props} />
                 ))}
             </Slider>
             <div className="progress-sc d-flex flex-row justify-content-center">

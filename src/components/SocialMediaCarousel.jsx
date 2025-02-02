@@ -68,7 +68,7 @@ const SocialMediaCarousel = () => {
     return (
         <div className="social-media-carousel text-light my-5 " style={{width:"90%"}}>
             <Slider {...settings}>
-                {socialmedia.map((item, index) => (
+                {socialmedia.filter(item=>item.show).map((item, index) => (
                     <SocialMediaCard key={index} bgimg={item.img} link={item.link} />
                 ))}
             </Slider>

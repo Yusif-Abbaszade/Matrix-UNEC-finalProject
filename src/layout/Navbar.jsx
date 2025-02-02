@@ -9,6 +9,8 @@ const logo = 'https://princetontec.com/wp-content/uploads/2023/12/Princeton-Tec-
 
 const Navbar = () => {
 
+
+
     const [leftMenuOpen, setLeftMenuOpen] = useState(false)
     const [shopddMenuOpen, setshopddMenuOpen] = useState(false)
 
@@ -21,16 +23,28 @@ const Navbar = () => {
         shopddMenuOpen ? setshopddMenuOpen(false) : setshopddMenuOpen(true)
     }
 
+    const resetAll = ()=>{
+        setLeftMenuOpen(false);
+        setshopddMenuOpen(false);
+    }
+
+    useEffect(() => {
+        [...document.querySelectorAll('.resetAllClass')].map((item) => {
+            item.onClick = () => {
+                resetAll()
+            }
+        })
+    }, [])
 
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-none">
                 <div className="container">
-                    <Link to={'/'} style={{ width: "75px" }}><img src={logo} alt="" width={"100%"} /></Link>
+                    <Link  to={'/'} style={{ width: "75px" }}><img src={logo} alt="" width={"100%"} /></Link>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-5">
                             <li className="d-flex">
-                                <Link to={'/'}>Shop <div className="underline"></div></Link>
+                                <Link className="resetAllClass" to={'/'}>Shop <div className="underline"></div></Link>
                                 <button className="" onClick={shopddToggle} style={{ background: "none", border: "none", marginBottom: "10px" }}>
                                     <IconContext.Provider value={{ size: "1.4em", color: "white", className: "" }}>
                                         <IoIosArrowDown />
@@ -38,10 +52,10 @@ const Navbar = () => {
                                 </button>
                             </li>
                             <li>
-                                <Link to={'/about-us'}>About<div className="underline"></div></Link>
+                                <Link className="resetAllClass" to={'/about-us'}>About<div className="underline"></div></Link>
                             </li>
                             <li>
-                                <Link to={'/'}>News<div className="underline"></div></Link>
+                                <Link className="resetAllClass" to={'/'}>News<div className="underline"></div></Link>
                             </li>
                         </ul>
                     </div>
@@ -49,10 +63,10 @@ const Navbar = () => {
                         <div className="left-side d-flex">
                             {/* {Bura Search modal gelecek} */}
                             <button className="btn"><IconContext.Provider value={{ size: "1.4em", color: "white" }}><div><IoIosSearch /></div></IconContext.Provider></button>
-                            <Link className="btn" to={'/'}><IconContext.Provider value={{ size: "1em", color: "white" }}><div><FaUser /></div></IconContext.Provider></Link>
-                            <Link className="btn" to={'/'}><IconContext.Provider value={{ size: "1.4em", color: "white" }}><div><IoCartOutline /></div></IconContext.Provider></Link>
+                            <Link className="btn resetAllClass" to={'/'}><IconContext.Provider value={{ size: "1em", color: "white" }}><div><FaUser /></div></IconContext.Provider></Link>
+                            <Link className="btn resetAllClass" to={'/'}><IconContext.Provider value={{ size: "1.4em", color: "white" }}><div><IoCartOutline /></div></IconContext.Provider></Link>
                         </div>
-                        <button className="btn navbar-toggler" onClick={navbarToggle}>
+                        <button className="btn navbar-toggler resetAllClass" onClick={navbarToggle}>
                             <IconContext.Provider value={{ size: '1.5em', color: "white" }}>
                                 <div>{leftMenuOpen ? <IoCloseSharp /> : <IoIosMenu />}</div>
                             </IconContext.Provider>
@@ -64,7 +78,7 @@ const Navbar = () => {
                 <ul className="list-unstyled">
                     <li>
                         <div className="d-flex">
-                            <Link to={'/'}><b>Shop</b></Link>
+                            <Link onClick={resetAll} to={'/'} className="resetAllClass"><b>Shop</b></Link>
                             <button className="accordion-button navmenuddbtn" style={{ fontSize: "18px" }} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 <IconContext.Provider value={{}}><IoIosArrowDown /></IconContext.Provider>
                             </button>
@@ -135,12 +149,12 @@ const Navbar = () => {
 
                     </li>
                     <hr />
-                    <li>
-                        <Link to={'/about-us'}><b>About</b></Link>
+                    <li className="resetAllClass">
+                        <Link onClick={resetAll} to={'/about-us'}><b>About</b></Link>
                     </li>
                     <hr />
-                    <li>
-                        <Link to={'/'}><b>News</b></Link>
+                    <li className="resetAllClass">
+                        <Link onClick={resetAll} to={'/'}><b>News</b></Link>
                     </li>
                 </ul>
             </div>

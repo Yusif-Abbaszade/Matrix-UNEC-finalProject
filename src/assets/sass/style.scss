@@ -21,10 +21,12 @@
     font-optical-sizing: auto;
     font-weight: 350;
     font-style: normal;
-    font-variation-settings:"wdth" 100;
+    font-variation-settings: "wdth" 100;
 }
 
-html, body, #root {
+html,
+body,
+#root {
     overflow-x: hidden;
 }
 
@@ -38,6 +40,7 @@ body {
     padding: 0;
     color: #d7c6af !important;
     font-weight: bold;
+
     &:hover {
         filter: grayscale(0.3) invert(.2);
     }

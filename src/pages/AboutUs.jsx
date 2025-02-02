@@ -43,7 +43,7 @@ const AboutUs = () => {
           </div>
           <div className="col-lg-1"></div>
         </div>
-        <div className="row clrvrs" style={{ marginTop: "150px" }}>
+        <div className="row clrvrs">
           <div className="col-lg-1"></div>
           <div className="col-12 col-lg-4">
             <p className='txt5' style={{ marginTop: "40px" }}>What sets us apart is our dedication to being an entirely USA-made brand. From concept to completion, Princeton Tec prioritizes superior craftsmanship and attention to detail, ensuring that our personal lighting products reflect our commitment to excellence and uphold the highest standards of performance and reliability. Join us on our mission, as we continue to push limits that empower us to go further.</p>
