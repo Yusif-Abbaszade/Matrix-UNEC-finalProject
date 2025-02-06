@@ -13,6 +13,9 @@ import './assets/sass/style.scss'
 import Navbar from "./layout/Navbar";
 import Footer from "./layout/Footer";
 import AboutUs from "./pages/AboutUs";
+import BSCarTry from "./components/BSCarTry";
+import FAQ from "./pages/FAQ";
+import Warranty from "./pages/Warranty";
 const App = () => {
   useEffect(() => {
     AOS.init({
@@ -29,6 +32,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/support/faq" element={<FAQ />} />
+          <Route path="/support/warranty" element={<Warranty />} />
+          <Route path="/for-try" element={<BSCarTry />} />
         </Routes>
         <Footer />
       </BrowserRouter>

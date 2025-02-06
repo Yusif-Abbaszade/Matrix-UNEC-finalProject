@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IconContext } from 'react-icons'
 import { GrBottomCorner, GrTopCorner } from 'react-icons/gr'
 import { RxCornerBottomRight, RxCornerTopLeft } from 'react-icons/rx'
 import SocialMediaCarousel from '../components/SocialMediaCarousel'
 
 const AboutUs = () => {
+  useEffect(() => {
+    document.getElementsByTagName('body')[0].style.backgroundColor = 'black'
+  }, [])
   return (
     <div className='aboutus-page'>
       <div className="header-bg-overlay"></div>

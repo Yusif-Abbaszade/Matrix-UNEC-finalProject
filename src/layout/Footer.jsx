@@ -36,8 +36,8 @@ const Footer = () => {
                                 <h5>Orders</h5>
                                 <ul className="nav flex-column">
                                     <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Order Status</a></li>
-                                    <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Warranty</a></li>
-                                    <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">FAQ</a></li>
+                                    <li className="nav-item mb-2"><Link to={'/support/warranty'} className="nav-link p-0 text-body-secondary">Warranty</Link></li>
+                                    <li className="nav-item mb-2"><Link to={'/support/faq'} className="nav-link p-0 text-body-secondary">FAQ</Link></li>
                                     <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Manuals</a></li>
                                     <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Returns</a></li>
                                     <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Shipping</a></li>

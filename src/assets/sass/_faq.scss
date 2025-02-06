@@ -1,0 +1,23 @@
+@use 'variables' as *;
+
+.faq-sec {
+    min-height: 100vh;
+    .background-for-faq-overlay {
+        position: absolute;
+        // position: absolute;
+        background-image: url($faq-bgimg-overlay);
+        min-height: 50vh;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        top: 0;
+        z-index: -999;
+    }
+
+    .main-faq {
+        z-index: -999;
+        margin-top: 50vh;
+    }
+
+}

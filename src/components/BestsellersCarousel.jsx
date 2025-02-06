@@ -52,10 +52,11 @@ const BestsellersCarousel = () => {
             {
                 breakpoint: 5000,
                 settings: {
-                    slidesToShow: 4,
+                    slidesToShow: 5,
                     slidesToScroll: 1,
-                    infinite: false,
-                    dots: false
+                    infinite: true,
+                    dots: false,
+                    // draggable:true
                 }
             },
             {
@@ -104,7 +105,7 @@ const BestsellersCarousel = () => {
 
     return (
         <div className="slider-container container-fluid" style={{ width: "100%", margin: "0", padding:"0" }}>
-            <Slider {...settings} className="sldsc">
+            <Slider {...settings} className="sldsc" draggable={true}>
                 {data.filter(item=>item.bestsellers).map((item, index)=>(
                     <ProductCardForHome key={index} title={item.title} price={item.price} img={item.img} imghover={item.imghover} itemHovered={itemHovered} props={item.props} />
                 ))}
