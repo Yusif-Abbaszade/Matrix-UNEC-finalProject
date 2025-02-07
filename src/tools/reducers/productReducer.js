@@ -1,13 +1,8 @@
-import supabase from '../../utils/supabase';
-
-const { data, error } = await supabase.from('Products').select('*')
-if(error){console.log(error);}
-
-
-export const productReducer = (state = data, action) => {
+export const productReducer = (state = [], action) => {
     switch (action.type) {
         case "GET_PRODUCT":
-            return state;
+            return action.products;
+
         default:
             return state;
     }

@@ -1,16 +1,8 @@
-import supabase from "../../utils/supabase";
 
-
-const {data, error} = await supabase
-.from('SocialMediaPosts')
-.select('*')
-
-if(error)console.log(error);
-
-export const socialmediaReducer = (state=data, action) => {
+export const socialmediaReducer = (state=[], action) => {
     switch(action.type){
         case("GET_SOCIALMEDIA"):
-            return state;
+            return action.socialmedia;
         default:
             return state;
     }

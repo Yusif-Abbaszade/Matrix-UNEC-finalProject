@@ -1,1 +1,1 @@
-export const getProducts = ()=>({type:"GET_PRODUCT"})
+export const getProducts = (products)=>({type:"GET_PRODUCT", products})

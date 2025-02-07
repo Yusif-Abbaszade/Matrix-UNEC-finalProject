@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IconContext } from "react-icons";
 import { FaUser } from "react-icons/fa";
 import { IoIosArrowDown, IoIosMenu, IoIosSearch } from "react-icons/io";
 import { IoCartOutline, IoCloseSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const logo = 'https://princetontec.com/wp-content/uploads/2023/12/Princeton-Tec-Logo-Mark-White-RGB.svg';
 
@@ -13,6 +14,7 @@ const Navbar = () => {
 
     const [leftMenuOpen, setLeftMenuOpen] = useState(false)
     const [shopddMenuOpen, setshopddMenuOpen] = useState(false)
+    const [authData] = useContext(AuthContext);
 
 
     const navbarToggle = () => {
@@ -63,7 +65,7 @@ const Navbar = () => {
                         <div className="left-side d-flex">
                             {/* {Bura Search modal gelecek} */}
                             <button className="btn"><IconContext.Provider value={{ size: "1.4em", color: "white" }}><div><IoIosSearch /></div></IconContext.Provider></button>
-                            <Link className="btn resetAllClass" to={'/'}><IconContext.Provider value={{ size: "1em", color: "white" }}><div><FaUser /></div></IconContext.Provider></Link>
+                            <Link className="btn resetAllClass" to={authData && authData.isAuth?'/accountdetails':'/login'}><IconContext.Provider value={{ size: "1em", color: "white" }}><div><FaUser /></div></IconContext.Provider></Link>
                             <Link className="btn resetAllClass" to={'/'}><IconContext.Provider value={{ size: "1.4em", color: "white" }}><div><IoCartOutline /></div></IconContext.Provider></Link>
                         </div>
                         <button className="btn navbar-toggler resetAllClass" onClick={navbarToggle}>

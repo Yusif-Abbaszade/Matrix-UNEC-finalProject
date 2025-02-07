@@ -1,1 +1,1 @@
-export const getSocialmedia = ()=>({type:"GET_SOCIALMEDIA"})
+export const getSocialmedia = (socialmedia)=>({type:"GET_SOCIALMEDIA", socialmedia})
