@@ -46,7 +46,7 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-5">
                             <li className="d-flex">
-                                <Link className="resetAllClass" to={'/'}>Shop <div className="underline"></div></Link>
+                                <Link className="resetAllClass" to={'/shop'}>Shop <div className="underline"></div></Link>
                                 <button className="" onClick={shopddToggle} style={{ background: "none", border: "none", marginBottom: "10px" }}>
                                     <IconContext.Provider value={{ size: "1.4em", color: "white", className: "" }}>
                                         <IoIosArrowDown />
@@ -80,7 +80,7 @@ const Navbar = () => {
                 <ul className="list-unstyled">
                     <li>
                         <div className="d-flex">
-                            <Link onClick={resetAll} to={'/'} className="resetAllClass"><b>Shop</b></Link>
+                            <Link onClick={resetAll} to={'/shop'} className="resetAllClass"><b>Shop</b></Link>
                             <button className="accordion-button navmenuddbtn" style={{ fontSize: "18px" }} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 <IconContext.Provider value={{}}><IoIosArrowDown /></IconContext.Provider>
                             </button>

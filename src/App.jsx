@@ -20,6 +20,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AccountDetails from "./pages/AccountDetails";
 import { AuthContext } from "./context/AuthContext";
+import Shop from "./pages/Shop";
+import { useSelector } from "react-redux";
 const App = () => {
   useEffect(() => {
     AOS.init({
@@ -28,6 +30,8 @@ const App = () => {
       easing: "ease-out-cubic",
     });
   }, []);
+
+  const data = useSelector(p=>p.products);
 
   const [authData] = useContext(AuthContext);
   return (
@@ -40,10 +44,11 @@ const App = () => {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/support/faq" element={<FAQ />} />
           <Route path="/support/warranty" element={<Warranty />} />
-          {authData && authData.isAuth?"":<Route path="/login" element={<Login />} />}
-          {authData && authData.isAuth?"":<Route path="/signup" element={<Signup />} />}
-          {authData && authData.isAuth?<Route path="/accountdetails" element={<AccountDetails />} />:""}
-          <Route path="/for-try" element={<BSCarTry />} />
+          {authData && authData.isAuth ? "" : <Route path="/login" element={<Login />} />}
+          {authData && authData.isAuth ? "" : <Route path="/signup" element={<Signup />} />}
+          {authData && authData.isAuth ? <Route path="/accountdetails" element={<AccountDetails />} /> : ""}
+          <Route path="/shop" element={<Shop />} />
+          {/* <Route path="/for-try" element={<ShopProductCardHead img={data[0].img} imghover={data[0].imghover} title={data[0].title} color={data[0].color} price={data[0].price} props={data[0].props} />} /> */}
         </Routes>
         <Footer />
       </BrowserRouter>

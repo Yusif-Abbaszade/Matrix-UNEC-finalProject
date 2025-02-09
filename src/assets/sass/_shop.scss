@@ -1,0 +1,71 @@
+@use 'variables' as *;
+
+.shop-sec {
+    min-height: 50vh;
+
+    .shop-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background: $shop-header-bg-color;
+
+        p {
+            font-weight: bolder;
+        }
+
+        .shoptxtmain {
+            margin-top: 50px;
+
+            .shop-RxCornerBottomLeft {
+                margin-top: 16px;
+            }
+        }
+
+        .breakdance-px {
+            background-image: url($shop-breakdance-px);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 10vh;
+            width: 100%
+        }
+    }
+
+    .filter-sec {
+        select {
+            width: 100%;
+            height: 40px;
+            background: none;
+
+            option {
+                background: #f0ebe3;
+            }
+        }
+    }
+
+
+    .filter-sec-for-sml {
+        &:hover {
+            background-color: #d7c6af;
+        }
+    }
+
+}
+
+
+#FilterModal {
+    .selectionss {
+        height: 1%;
+    }
+
+    select {
+        width: 100%;
+        height: 40px;
+        background: none;
+
+        option {
+            background: #f0ebe3;
+        }
+    }
+}
