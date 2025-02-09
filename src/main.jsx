@@ -12,16 +12,15 @@ const store = configureStore();
 
 async function getProductsData() {
   const { data, error } = await supabase.from('Products').select('*')
-  return data
+  store.dispatch(getProducts(data));
 }
 
 async function getSocialMediaData() {
   const { data, error } = await supabase.from('SocialMediaPosts').select('*')
-  return data
+  store.dispatch(getSocialmedia(data));
 }
-
-store.dispatch(getProducts(await getProductsData()));
-store.dispatch(getSocialmedia(await getSocialMediaData()));
+getProductsData();
+getSocialMediaData();
 
 
 

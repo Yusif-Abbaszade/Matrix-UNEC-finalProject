@@ -9,20 +9,22 @@ const SocialMediaCarousel = () => {
     const settings = {
         customPaging: () => {
             return (
-                <div className="mt-5" style={{opacity:".5" ,width: "250%", height: "5px", background: "#d7c6b0" }}></div>
+                <div className="mt-5" style={{ opacity: ".5", width: "250%", height: "5px", background: "#d7c6b0" }}></div>
             )
         },
         dots: true,
         dotsClass: "slick-dots slick thumb",
-        infinite: false,
+        // infinite: false,
         speed: 500,
-        slidesToShow: 0,
+        initialSlide: 0,
         slidesToScroll: 1,
-        arrows:false,
+        arrows: false,
+        // centerMode:true,
         responsive: [
             {
                 breakpoint: 5000,
                 settings: {
+                    initialSlide: 1,
                     slidesToShow: 5,
                     slidesToScroll: 5,
                     infinite: false,
@@ -48,27 +50,29 @@ const SocialMediaCarousel = () => {
             {
                 breakpoint: 840,
                 settings: {
+                    initialSlide: 1,
                     slidesToShow: 2,
                     slidesToScroll: 1,
-                    dots:false,
-                    arrows:true
+                    dots: false,
+                    arrows: true
                 }
             },
             {
                 breakpoint: 600,
                 settings: {
+                    initialSlide: 1,
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    dots:false,
-                    arrows:true
+                    dots: false,
+                    arrows: true
                 }
             }
         ]
     }
     return (
-        <div className="social-media-carousel text-light my-5 " style={{width:"90%"}}>
+        <div className="social-media-carousel text-light my-5 " style={{ width: "90%" }}>
             <Slider {...settings}>
-                {socialmedia.filter(item=>item.show).map((item, index) => (
+                {socialmedia.filter(item => item.show).map((item, index) => (
                     <SocialMediaCard key={index} bgimg={item.img} link={item.link} />
                 ))}
             </Slider>
