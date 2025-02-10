@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { IconContext } from 'react-icons'
 import { GrBottomCorner, GrTopCorner } from 'react-icons/gr'
 import { RxCornerBottomRight, RxCornerTopLeft } from 'react-icons/rx'
 import SocialMediaCarousel from '../components/SocialMediaCarousel'
+import { NavbarContext } from '../context/NavbarContext'
 
 const AboutUs = () => {
+  const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
   useEffect(() => {
     document.getElementsByTagName('body')[0].style.backgroundColor = 'black'
+    setNavbarTheme('light');
   }, [])
   return (
     <div className='aboutus-page'>

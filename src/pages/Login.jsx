@@ -4,10 +4,13 @@ import supabase from "../utils/supabase"
 import { AuthContext } from "../context/AuthContext"
 import { toast, ToastContainer } from "react-toastify"
 import Swal from "sweetalert2"
+import { NavbarContext } from "../context/NavbarContext"
 
 const Login = () => {
+  const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
   useEffect(() => {
     document.getElementsByTagName('body')[0].style.backgroundColor = 'white'
+    setNavbarTheme('light')
   }, [])
 
   const emailRef = useRef();

@@ -1,11 +1,14 @@
-import { useEffect, useRef } from "react"
+import { useContext, useEffect, useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import supabase from "../utils/supabase"
 import Swal from "sweetalert2"
+import { NavbarContext } from "../context/NavbarContext"
 
 const Signup = () => {
+    const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
     useEffect(() => {
         document.getElementsByTagName('body')[0].style.backgroundColor = 'white'
+        setNavbarTheme('light')
     }, [])
 
     const userRef = useRef();

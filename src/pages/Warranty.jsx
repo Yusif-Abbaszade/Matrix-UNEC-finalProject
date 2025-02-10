@@ -1,8 +1,11 @@
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
+import { NavbarContext } from "../context/NavbarContext";
 
 const Warranty = () => {
+    const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
     useEffect(() => {
         document.getElementsByTagName('body')[0].style.backgroundColor = '#f0ebe3'
+        setNavbarTheme('light')
     }, [])
     return (
         <div className="warranty-sec">

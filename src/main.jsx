@@ -7,6 +7,7 @@ import { getSocialmedia } from './tools/actions/socialmediaAction.js';
 import { Provider } from 'react-redux';
 import supabase from './utils/supabase.js';
 import { AuthProvider } from './context/AuthContext.jsx';
+import { NavbarProvider } from './context/NavbarContext.jsx';
 const store = configureStore();
 
 
@@ -26,9 +27,11 @@ store.dispatch(getSocialmedia(await getSocialMediaData()));
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <NavbarProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </NavbarProvider>
     </AuthProvider>
   </StrictMode>
 )

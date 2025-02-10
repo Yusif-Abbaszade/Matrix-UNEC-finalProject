@@ -1,14 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { IconContext } from 'react-icons'
 import { RxCornerBottomLeft, RxCornerTopRight } from 'react-icons/rx'
 import { useSelector } from 'react-redux'
 import ProductCardForHome from '../components/ProductCardForHome'
 import ShopProductCard from '../components/ShopProductCard'
 import { FaFilter } from 'react-icons/fa'
+import { NavbarContext } from '../context/NavbarContext'
 
 const Shop = () => {
     const [itemHovered, setItemHovered] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [cardsPerPage, setCardsPerPage] = useState(12);
+    const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
     const data = useSelector(p => p.products);
+    const lastcardindex = currentPage * cardsPerPage;
+    const firscardindex = lastcardindex - cardsPerPage;
+    let pages = [];
+    for(let i = 1; i<=Math.ceil(data.length/cardsPerPage); ++i){
+        pages.push(i)
+    }
+
     useEffect(() => {
         [...document.querySelectorAll('.shopproductcard .imgsc img')].map((item, index) => {
             item.onmouseover = () => {
@@ -20,7 +31,8 @@ const Shop = () => {
         })
     }, [])
     useEffect(() => {
-        document.getElementsByTagName('body')[0].style.backgroundColor = 'black'
+        document.getElementsByTagName('body')[0].style.backgroundColor = '#f0ebe3';
+        setNavbarTheme('black')
     }, [])
     return (
         <>
@@ -39,7 +51,7 @@ const Shop = () => {
                 </div>
                 <div className="d-flex justify-content-center" style={{ background: "#f0ebe3" }}>
                     <div className='d-flex flex-column align-items-center' style={{ width: "80%" }}>
-                        <div className="filter-sec d-none d-lg-flex row g-4 w-100">
+                        <div className="filter-sec my-4 d-none d-lg-flex row g-4 w-100">
                             <div className="col-4 col-xl-2 d-flex flex-column">
                                 <span className='fw-bold fs-5'>COLLECTION</span>
                                 <select id="for-collection">
@@ -112,11 +124,16 @@ const Shop = () => {
                             </div>
 
                         </div>
-                        <div className="products-con row">
-                            {data.map((item, index) => (
+                        <div className="products-con row w-100">
+                            {data.slice(firscardindex, lastcardindex).map((item, index) => (
                                 <div key={index} className="col-12 col-md-6 col-lg-4 col-xxl-3 d-flex justify-content-center my-2">
                                     <ShopProductCard itemHovered={itemHovered} title={item.title} img={item.img} imghover={item.imghover} price={item.price} color={item.color} props={item.props} />
                                 </div>
+                            ))}
+                        </div>
+                        <div className="pagination my-4 container justify-content-end">
+                            {pages.map(item=>(
+                                <button key={item} onClick={()=>{setCurrentPage(item)}} className='btn fs-5' style={{color:currentPage===item?'#b49360':'black'}}>{item}</button>
                             ))}
                         </div>
                     </div>

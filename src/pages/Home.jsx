@@ -8,14 +8,16 @@ import { useSelector } from "react-redux"
 import CatCard from "../components/CatCard"
 import ExploreActivityCarousel from "../components/ExploreActivityCarousel"
 import SocialMediaCarousel from "../components/SocialMediaCarousel"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
+import { NavbarContext } from "../context/NavbarContext"
 
 
 const Home = () => {
   const categories = useSelector(p => p.categories)
-
+const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
   useEffect(() => {
     document.getElementsByTagName('body')[0].style.background = 'black'
+    setNavbarTheme('light')
   }, [])
   return (
     <div>

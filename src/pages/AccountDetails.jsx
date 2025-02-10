@@ -1,12 +1,14 @@
 import { useContext, useEffect } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { useNavigate } from "react-router-dom"
+import { NavbarContext } from "../context/NavbarContext";
 
 const AccountDetails = () => {
+    const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
     useEffect(() => {
         document.getElementsByTagName('body')[0].style.backgroundColor = 'black'
+        setNavbarTheme('light');
     }, [])
-    // const authDataLocal = JSON.parse(localStorage.getItem('authData'));
     const [authData, setAuthData] = useContext(AuthContext)
     const navigate = useNavigate();
     return (
