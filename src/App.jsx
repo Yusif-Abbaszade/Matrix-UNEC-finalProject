@@ -8,12 +8,11 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import 'react-multi-carousel/lib/styles.css'
+// import 'react-multi-carousel/lib/styles.css'
 import './assets/sass/style.scss'
 import Navbar from "./layout/Navbar";
 import Footer from "./layout/Footer";
 import AboutUs from "./pages/AboutUs";
-import BSCarTry from "./components/BSCarTry";
 import FAQ from "./pages/FAQ";
 import Warranty from "./pages/Warranty";
 import Login from "./pages/Login";
@@ -30,8 +29,6 @@ const App = () => {
       easing: "ease-out-cubic",
     });
   }, []);
-
-  const data = useSelector(p=>p.products);
 
   const [authData] = useContext(AuthContext);
   return (
