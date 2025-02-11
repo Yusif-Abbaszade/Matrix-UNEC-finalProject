@@ -35,7 +35,7 @@ const Shop = () => {
         setNavbarTheme('black')
     }, [])
     return (
-        <>
+        <div>
             <div className="shop-sec">
                 <div className="shop-header">
                     <div className='shoptxtmain d-flex'>
@@ -141,8 +141,8 @@ const Shop = () => {
             </div>
 
             {/* modals */}
-            <div className="modal fade" id="FilterModal" tabIndex={-1} aria-labelledby="exampleModalLabel">
-                <div className="modal-dialog modal-fullscreen">
+            <div className="modal fade p-0 m-0" id="FilterModal" tabIndex={-1} aria-labelledby="exampleModalLabel" style={{width:"100%"}}>
+                <div className="modal-dialog modal-fullscreen" style={{width:"100%"}}>
                     <div className="modal-content" style={{ background: '#f0ebe3' }}>
                         <div className="modal-header" style={{ borderBottom: "none" }}>
                             <button type="button" className="btn-close fs-2" data-bs-dismiss="modal" aria-label="Close" />
@@ -214,7 +214,7 @@ const Shop = () => {
                 </div>
             </div>
 
-        </>
+        </div>
     )
 }
 
