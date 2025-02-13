@@ -3,14 +3,16 @@ import { CiSun, CiTimer } from "react-icons/ci";
 import { FaWater } from "react-icons/fa";
 import { LiaFeatherAltSolid } from "react-icons/lia";
 import { useSelector } from "react-redux";
+import slugify from "slugify";
 
-const ShopProductCard = ({title, price, img, imghover, itemHovered, props}) => {
+
+const ShopProductCard = ({ title, price, img, imghover, itemHovered, props, uuid }) => {
     return (
-        <div className="shopproductcard" style={{ width: '100%', maxWidth:"22rem" }}>
+        <div className="shopproductcard" style={{ width: '100%', maxWidth: "22rem" }}>
             <p className="productname fw-bold mb-5 mt-3 pt-3 ms-3" style={{ fontSize: "25px" }}>{title}</p>
             <p className="productprice float-end h6 me-2">${price}</p>
             <div className="container d-flex justify-content-center imgsc">
-                <img src={img===itemHovered?imghover:img} width={"100%"} alt="" />
+                <img src={img === itemHovered ? imghover : img} width={"100%"} alt="" />
             </div>
             <div className="bottomsec container-fluid">
                 <ul className="list-unstyled d-flex justify-content-between">
@@ -43,7 +45,7 @@ const ShopProductCard = ({title, price, img, imghover, itemHovered, props}) => {
                         <p>Weight</p>
                     </li>
                 </ul>
-                <div className="quick-view-sec">
+                <div className="quick-view-sec" data-bs-toggle="modal" data-bs-target={`#shopcardmodal-${slugify(uuid, { lower: true })}`} style={{cursor:"pointer"}} >
                     Quick View
                 </div>
             </div>

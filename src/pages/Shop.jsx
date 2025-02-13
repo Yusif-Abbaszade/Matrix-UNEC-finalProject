@@ -2,10 +2,40 @@ import React, { useContext, useEffect, useState } from 'react'
 import { IconContext } from 'react-icons'
 import { RxCornerBottomLeft, RxCornerTopRight } from 'react-icons/rx'
 import { useSelector } from 'react-redux'
-import ProductCardForHome from '../components/ProductCardForHome'
 import ShopProductCard from '../components/ShopProductCard'
-import { FaFilter } from 'react-icons/fa'
+import { FaFilter, FaWater } from 'react-icons/fa'
 import { NavbarContext } from '../context/NavbarContext'
+import slugify from 'slugify'
+import Slider from "react-slick";
+import { CiSun, CiTimer } from 'react-icons/ci'
+import { LiaFeatherAltSolid } from 'react-icons/lia'
+
+
+function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <img
+            src="https://cdn-icons-png.flaticon.com/512/32/32213.png"
+            className={className}
+            // style={{ display: "block", top: "105%", right: "5%" }}
+            onClick={onClick}
+        />
+    );
+}
+
+function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <img
+            src="https://cdn-icons-png.flaticon.com/512/271/271220.png"
+            className={className}
+            // style={{ display: "block", top: "105%", left: "85%" }}
+            onClick={onClick}
+        />
+    );
+}
+
+
 
 const Shop = () => {
     const [itemHovered, setItemHovered] = useState(false);
@@ -16,7 +46,16 @@ const Shop = () => {
     const lastcardindex = currentPage * cardsPerPage;
     const firscardindex = lastcardindex - cardsPerPage;
     let pages = [];
-    for(let i = 1; i<=Math.ceil(data.length/cardsPerPage); ++i){
+    const shopcard_settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />
+    };
+    for (let i = 1; i <= Math.ceil(data.length / cardsPerPage); ++i) {
         pages.push(i)
     }
 
@@ -127,13 +166,81 @@ const Shop = () => {
                         <div className="products-con row w-100">
                             {data.slice(firscardindex, lastcardindex).map((item, index) => (
                                 <div key={index} className="col-12 col-md-6 col-lg-4 col-xxl-3 d-flex justify-content-center my-2">
-                                    <ShopProductCard itemHovered={itemHovered} title={item.title} img={item.img} imghover={item.imghover} price={item.price} color={item.color} props={item.props} />
+                                    <ShopProductCard itemHovered={itemHovered} title={item.title} img={item.img} imghover={item.imghover} price={item.price} color={item.color} props={item.props} uuid={item.uuid} />
+
+
+                                    <div className="modal fade" id={`shopcardmodal-${slugify(item.uuid, { lower: true })}`} tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                        <div className="modal-dialog modal-lg modal-dialog-centered">
+                                            <div className="modal-content" style={{ background: "#ebe3d6" }}>
+                                                <div className="modal-header" style={{ borderBottom: "none" }}> 
+                                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+                                                </div>
+                                                <div className="modal-body d-flex flex-row">
+                                                    <div className="left-sec p-5 w-50">
+                                                        <Slider {...shopcard_settings}>
+                                                            <div style={{ width: "100%" }}>
+                                                                <img src={item.img} width="100%" alt="" />
+                                                            </div>
+                                                            <div style={{ width: "100%" }}>
+                                                                <img src={item.imghover} width="100%" alt="" />
+                                                            </div>
+                                                        </Slider>
+                                                    </div>
+                                                    <div className="right-sec w-50 ps-4 pe-3">
+                                                        <p className='fs-2 fw-bold'>{item.title}</p>
+                                                        <p className='fs-5'>${item.price}</p>
+                                                        <p className='fs-6'>{item.desc}</p>
+                                                        <div className='d-flex flex-row gap-3 align-items-center'>
+                                                            <span className='fs-6 fw-bold'>Color : </span>
+                                                            <div className='rounded-5' style={{ width: "25px", height: "25px", background: item.color, border:"1px solid black" }}></div>
+                                                        </div>
+                                                        <ul className="list-unstyled d-flex justify-content-between text-center mt-4">
+                                                            <li>
+                                                                <IconContext.Provider value={{ color: "#88782D", size: "2em" }}>
+                                                                    <CiSun />
+                                                                </IconContext.Provider>
+                                                                <p className="counts m-0 fw-bold">{item.props.lumen}</p>
+                                                                <p className=''>Lumens</p>
+                                                            </li>
+                                                            <li>
+                                                                <IconContext.Provider value={{ color: "#88782D", size: "2em" }}>
+                                                                    <CiTimer />
+                                                                </IconContext.Provider>
+                                                                <p className="counts m-0 fw-bold">{item.props.timestamp}</p>
+                                                                <p>Run Time</p>
+                                                            </li>
+                                                            <li>
+                                                                <IconContext.Provider value={{ color: "#88782D", size: "2em" }}>
+                                                                    <FaWater />
+                                                                </IconContext.Provider>
+                                                                <p className="counts m-0 fw-bold">{item.props.waterproof}</p>
+                                                                <p>Water Resistant</p>
+                                                            </li>
+                                                            <li>
+                                                                <IconContext.Provider value={{ color: "#88782D", size: "2em" }}>
+                                                                    <LiaFeatherAltSolid />
+                                                                </IconContext.Provider>
+                                                                <p className="counts m-0 fw-bold">{item.props.weight}</p>
+                                                                <p>Weight</p>
+                                                            </li>
+                                                        </ul>
+                                                        <button className='btn shopcard-modal-addtocart-btn fs-5 fw-bold'>Add to cart</button>
+                                                    </div>
+                                                </div>
+                                                <div className="modal-footer d-flex justify-content-center mb-4" style={{ borderTop: "none" }}>
+                                                    <button className='btn shopcard-modal-moredet-btn fs-5 fw-bold'>View Full Details</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             ))}
                         </div>
                         <div className="pagination my-4 container justify-content-end">
-                            {pages.map(item=>(
-                                <button key={item} onClick={()=>{setCurrentPage(item)}} className='btn fs-5' style={{color:currentPage===item?'#b49360':'black'}}>{item}</button>
+                            {pages.map(item => (
+                                <button key={item} onClick={() => { setCurrentPage(item) }} className='btn fs-5' style={{ color: currentPage === item ? '#b49360' : 'black' }}>{item}</button>
                             ))}
                         </div>
                     </div>
@@ -141,8 +248,8 @@ const Shop = () => {
             </div>
 
             {/* modals */}
-            <div className="modal fade p-0 m-0" id="FilterModal" tabIndex={-1} aria-labelledby="exampleModalLabel" style={{width:"100%"}}>
-                <div className="modal-dialog modal-fullscreen" style={{width:"100%"}}>
+            <div className="modal fade p-0 m-0" id="FilterModal" tabIndex={-1} aria-labelledby="exampleModalLabel" style={{ width: "100%" }}>
+                <div className="modal-dialog modal-fullscreen" style={{ width: "100%" }}>
                     <div className="modal-content" style={{ background: '#f0ebe3' }}>
                         <div className="modal-header" style={{ borderBottom: "none" }}>
                             <button type="button" className="btn-close fs-2" data-bs-dismiss="modal" aria-label="Close" />

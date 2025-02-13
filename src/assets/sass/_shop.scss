@@ -50,9 +50,25 @@
             background-color: #d7c6af;
         }
     }
-
+    
 }
 
+.shopcard-modal-moredet-btn {
+    background: #d7c6af;
+    width: 75%;
+    height: 50px;
+    &:hover {
+    background: #b49360;
+    }
+}
+.shopcard-modal-addtocart-btn{
+    background: #d7c6af;
+    width: 100%;
+    height: 50px;
+}
+.shopcard-modal-addtocart-btn:hover {
+    background: #b49360;
+}
 
 #FilterModal {
     .selectionss {
@@ -68,4 +84,5 @@
             background: #f0ebe3;
         }
     }
+    
 }
