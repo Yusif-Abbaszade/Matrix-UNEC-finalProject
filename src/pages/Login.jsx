@@ -50,7 +50,7 @@ const Login = () => {
     <div className="login-sec d-flex align-items-center">
       <div className="login-bgimg"></div>
       <div className="container">
-        <form action="" className="text-center py-4 rounded-3" style={{ background: "#f0ebe3", width: "30rem", height: "100%" }}>
+        <form action="" className="text-center py-4 rounded-3" style={{ background: "#f0ebe3", height: "100%" }}>
           <p className="fs-1 fw-bolder">WELCOME BACK</p>
           <p className="" style={{ margin: "0", fontSize: "18px" }}>Login to your account below.</p>
           <p className="" style={{ margin: "0", fontSize: "18px" }}>New around here? <Link to={'/signup'} className="text-decoration-none fw-bold" style={{ color: "black" }}>Create an account</Link></p>

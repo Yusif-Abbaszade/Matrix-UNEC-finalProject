@@ -16,4 +16,16 @@
     input {
         outline: none !important;
     }
+    form {
+        width: 30rem;
+    }
+}
+
+@media (max-width:500px) {
+    .login-sec{
+        width: 100%;
+        form {
+            width: 100% !important;
+        }
+    }
 }
