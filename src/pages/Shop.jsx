@@ -175,8 +175,8 @@ const Shop = () => {
                                                 <div className="modal-header" style={{ borderBottom: "none" }}> 
                                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                                                 </div>
-                                                <div className="modal-body d-flex flex-row">
-                                                    <div className="left-sec p-5 w-50">
+                                                <div className="modal-body shopcard-about-modal-body d-flex">
+                                                    <div className="left-sec p-5">
                                                         <Slider {...shopcard_settings}>
                                                             <div style={{ width: "100%" }}>
                                                                 <img src={item.img} width="100%" alt="" />
@@ -186,7 +186,7 @@ const Shop = () => {
                                                             </div>
                                                         </Slider>
                                                     </div>
-                                                    <div className="right-sec w-50 ps-4 pe-3">
+                                                    <div className="right-sec ps-4 pe-3">
                                                         <p className='fs-2 fw-bold'>{item.title}</p>
                                                         <p className='fs-5'>${item.price}</p>
                                                         <p className='fs-6'>{item.desc}</p>

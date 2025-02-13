@@ -86,3 +86,26 @@
     }
     
 }
+
+
+.shopcard-about-modal-body {
+    flex-direction: row;
+    .left-sec{
+        width: 50%;
+    }
+    .right-sec{
+        width: 50%;
+    }
+}
+
+@media (max-width:991px) {
+    .shopcard-about-modal-body {
+        flex-direction: column;
+        .left-sec{
+            width: 100%;
+        }
+        .right-sec{
+            width: 100%;
+        }
+    }
+}
