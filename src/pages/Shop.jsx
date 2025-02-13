@@ -70,7 +70,7 @@ const Shop = () => {
         })
     }, [])
     useEffect(() => {
-        document.getElementsByTagName('body')[0].style.backgroundColor = '#f0ebe3';
+        document.getElementsByTagName('body')[0].style.backgroundColor = '#ebe3d6';
         setNavbarTheme('black')
     }, [])
     return (
@@ -245,6 +245,7 @@ const Shop = () => {
                         </div>
                     </div>
                 </div>
+                <div className="shop-foot"></div>
             </div>
 
             {/* modals */}
