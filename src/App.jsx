@@ -32,7 +32,7 @@ const App = () => {
 
   const [authData] = useContext(AuthContext);
   return (
-    <>
+    <div style={{ overflowX: "hidden",width:"100%" }}>
       <BrowserRouter>
         <Header />
         <Navbar />
@@ -49,7 +49,7 @@ const App = () => {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </>
+    </div>
   );
 };
 

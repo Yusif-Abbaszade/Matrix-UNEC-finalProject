@@ -5,29 +5,6 @@ import { FaWater } from "react-icons/fa";
 import { LiaFeatherAltSolid } from "react-icons/lia";
 import slugify from "slugify";
 
-function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-        <img
-            src="https://cdn-icons-png.flaticon.com/512/32/32213.png"
-            className={className}
-            // style={{ display: "block", top: "105%", right: "5%" }}
-            onClick={onClick}
-        />
-    );
-}
-
-function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-        <img
-            src="https://cdn-icons-png.flaticon.com/512/271/271220.png"
-            className={className}
-            // style={{ display: "block", top: "105%", left: "85%" }}
-            onClick={onClick}
-        />
-    );
-}
 
 const ProductCardForHome = ({ title, price, img, imghover, itemHovered, color, desc, props, uuid }) => {
     

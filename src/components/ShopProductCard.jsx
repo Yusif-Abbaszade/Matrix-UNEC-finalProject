@@ -45,7 +45,7 @@ const ShopProductCard = ({ title, price, img, imghover, itemHovered, props, uuid
                         <p>Weight</p>
                     </li>
                 </ul>
-                <div className="quick-view-sec" data-bs-toggle="modal" data-bs-target={`#shopcardmodal-${slugify(uuid, { lower: true })}`} style={{cursor:"pointer"}} >
+                <div className="quick-view-sec"  data-bs-toggle="modal" data-bs-target={`#shopcardmodal-${slugify(uuid, { lower: true })}`} style={{cursor:"pointer",overflowX:"hidden"}} >
                     Quick View
                 </div>
             </div>

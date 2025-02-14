@@ -74,8 +74,8 @@ const Shop = () => {
         setNavbarTheme('black')
     }, [])
     return (
-        <div>
-            <div className="shop-sec">
+        <div style={{overflow:"hidden"}}>
+            <div className="shop-sec" style={{overflow:"hidden"}}>
                 <div className="shop-header">
                     <div className='shoptxtmain d-flex'>
                         <IconContext.Provider value={{ size: "2.5em", className: "shop-RxCornerBottomLeft" }}>

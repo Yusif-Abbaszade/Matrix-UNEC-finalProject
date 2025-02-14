@@ -7,7 +7,7 @@ const logo = 'https://princetontec.com/wp-content/uploads/2023/12/Princeton-Tec-
 
 const Footer = () => {
     return (
-        <div className="footer">
+        <div className="footer"style={{overflow:"hidden"}} >
             <div className="breakdance-px breakdance-px-footer"></div>
             <div className="container-fluid footer-sec">
                 <div className="container">
