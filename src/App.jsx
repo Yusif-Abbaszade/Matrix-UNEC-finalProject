@@ -8,7 +8,6 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-// import 'react-multi-carousel/lib/styles.css'
 import './assets/sass/style.scss'
 import Navbar from "./layout/Navbar";
 import Footer from "./layout/Footer";
@@ -21,6 +20,7 @@ import AccountDetails from "./pages/AccountDetails";
 import { AuthContext } from "./context/AuthContext";
 import Shop from "./pages/Shop";
 import { useSelector } from "react-redux";
+import NotFoundPage from "./pages/NotFoundPage";
 const App = () => {
   useEffect(() => {
     AOS.init({
@@ -45,7 +45,7 @@ const App = () => {
           {authData && authData.isAuth ? "" : <Route path="/signup" element={<Signup />} />}
           {authData && authData.isAuth ? <Route path="/accountdetails" element={<AccountDetails />} /> : ""}
           <Route path="/shop" element={<Shop />} />
-          {/* <Route path="/for-try" element={<ShopProductCardHead img={data[0].img} imghover={data[0].imghover} title={data[0].title} color={data[0].color} price={data[0].price} props={data[0].props} />} /> */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

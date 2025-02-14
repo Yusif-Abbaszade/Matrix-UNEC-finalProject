@@ -1,0 +1,32 @@
+$wavetext1-length: 18;
+
+
+
+.wavetext-container {
+    span {
+        animation: wave 2s ease-in-out infinite;
+    }
+    @for $i from 1 through $wavetext1-length {
+        span:nth-child(#{$i}) {
+            display: inline-block;
+            animation-delay: 0.1s * $i;
+        }
+    }
+}
+.backtohomebtn {
+    width: 200px;
+    background-color: #d7c6af;
+    color: #000;
+    &:hover {
+        background-color: #B49360;
+    }
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
