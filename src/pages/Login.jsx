@@ -5,6 +5,7 @@ import { AuthContext } from "../context/AuthContext"
 import { toast, ToastContainer } from "react-toastify"
 import Swal from "sweetalert2"
 import { NavbarContext } from "../context/NavbarContext"
+import { GoogleLogin } from "@react-oauth/google"
 
 const Login = () => {
   const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
@@ -56,6 +57,7 @@ const Login = () => {
           <p className="" style={{ margin: "0", fontSize: "18px" }}>New around here? <Link to={'/signup'} className="text-decoration-none fw-bold" style={{ color: "black" }}>Create an account</Link></p>
           <input ref={emailRef} className="w-75 mt-4 px-2" style={{ height: "40px", border: "none", fontSize: "14px", backgroundColor: "#ebe3d6" }} placeholder="EMAIL" type="email" />
           <input ref={passwordRef} className="w-75 mt-4 px-2" style={{ height: "40px", border: "none", fontSize: "14px", backgroundColor: "#ebe3d6" }} placeholder="PASSWORD" type="password" />
+          <GoogleLogin onSuccess={(e)=>{console.log(e)}} onError={()=>{console.log('err')}} />
           <button type="submit" onClick={handleLoginForm} className="w-75 mt-5 mb-3 btn" style={{ background: "#d7c6af", height: "50px" }}>LOG IN</button>
         </form>
       </div>

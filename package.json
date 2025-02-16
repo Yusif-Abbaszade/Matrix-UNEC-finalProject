@@ -10,8 +10,10 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@react-oauth/google": "^0.12.1",
         "@supabase/supabase-js": "^2.48.1",
         "aos": "^2.3.4",
+        "appwrite": "^17.0.0",
         "bootstrap": "^5.3.3",
         "fontawesome": "^5.6.3",
         "framer-motion": "^12.4.3",
