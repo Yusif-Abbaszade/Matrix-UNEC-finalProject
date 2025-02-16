@@ -1,0 +1,26 @@
+@use 'variables' as *;
+
+.account-details-page{
+    background-color: $account-details-page-bg-color;
+    min-height: 50vh;
+}
+
+.accountdetails-form {
+    input {
+        border: none !important;
+        outline: none !important;
+        height: 50px;
+        padding-left: 1rem;
+    }
+    label {
+        padding-left: .5rem;
+    }
+    button {
+        background-color: #d7c6af;
+        height: 50px;
+        font-weight: bolder;
+        &:hover {
+            background-color: #c9b8a0;
+        }
+    }
+}

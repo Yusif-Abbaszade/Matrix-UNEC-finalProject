@@ -43,6 +43,7 @@ const Shop = () => {
     const [cardsPerPage, setCardsPerPage] = useState(12);
     const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
     const data = useSelector(p => p.products);
+    const [filteredData, setFilteredData] = useState(data);
     const lastcardindex = currentPage * cardsPerPage;
     const firscardindex = lastcardindex - cardsPerPage;
     let pages = [];
@@ -55,10 +56,10 @@ const Shop = () => {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
-    for (let i = 1; i <= Math.ceil(data.length / cardsPerPage); ++i) {
+
+    for (let i = 1; i <= Math.ceil(filteredData.length / cardsPerPage); ++i) {
         pages.push(i)
     }
-
     useEffect(() => {
         [...document.querySelectorAll('.shopproductcard .imgsc img')].map((item, index) => {
             item.onmouseover = () => {
@@ -73,9 +74,59 @@ const Shop = () => {
         document.getElementsByTagName('body')[0].style.backgroundColor = '#ebe3d6';
         setNavbarTheme('black')
     }, [])
+
+    const handleFilterSecForSml = () => {
+        console.log('It Works for sml');
+        setCurrentPage(1);
+        const collection = document.querySelector('.fsfsmodal .for-collection').value;
+        const activity = document.querySelector('.fsfsmodal .for-activity').value;
+        const categories = document.querySelector('.fsfsmodal .for-categories').value;
+        const waterproof = document.querySelector('.fsfsmodal .for-waterproof').value;
+        const color = document.querySelector('.fsfsmodal .for-color').value;
+        const sortby = document.querySelector('.fsfsmodal .for-sortby').value;
+        console.log(collection, activity, categories, waterproof, color, sortby);
+        setFilteredData(data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.category === categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.color === color || color === 'all'))))
+    };
+    const handleFilterSecForBig = () => {
+        console.log('It Works for big');
+        setCurrentPage(1);
+        const collection = document.querySelector('.filter-sec .for-collection').value;
+        const activity = document.querySelector('.filter-sec .for-activity').value;
+        const categories = document.querySelector('.filter-sec .for-categories').value;
+        const waterproof = document.querySelector('.filter-sec .for-waterproof').value;
+        const color = document.querySelector('.filter-sec .for-color').value;
+        const sortby = document.querySelector('.filter-sec .for-sortby').value;
+        console.log(collection, activity, categories, waterproof, color, sortby);
+        setFilteredData(data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.category == categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.color === color || color === 'all'))))
+    };
+    // useEffect(() => {
+    //     if (window.innerWidth <= 992) {
+    //         const collection = document.querySelector('.fsfsmodal .for-collection').value;
+    //         const activity = document.querySelector('.fsfsmodal .for-activity').value;
+    //         const categories = document.querySelector('.fsfsmodal .for-categories').value;
+    //         const waterproof = document.querySelector('.fsfsmodal .for-waterproof').value;
+    //         const color = document.querySelector('.fsfsmodal .for-color').value;
+    //         const sortby = document.querySelector('.fsfsmodal .for-sortby').value;
+    //         setFilteredData(data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.categories === categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.props.color === color || color === 'all'))))
+    //         console.log(filteredData);
+    //     } else {
+            // const collection = document.querySelector('.filter-sec .for-collection').value;
+            // const activity = document.querySelector('.filter-sec .for-activity').value;
+            // const categories = document.querySelector('.filter-sec .for-categories').value;
+            // const waterproof = document.querySelector('.filter-sec .for-waterproof').value;
+            // const color = document.querySelector('.filter-sec .for-color').value;
+            // const sortby = document.querySelector('.filter-sec .for-sortby').value;
+    //         setFilteredData(data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.categories === categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.props.color === color || color === 'all'))))
+    //         console.log(filteredData);
+    //     }
+    // }, [])
+
+
+
+
     return (
-        <div style={{overflow:"hidden"}}>
-            <div className="shop-sec" style={{overflow:"hidden"}}>
+        <div style={{ overflow: "hidden" }}>
+            <div className="shop-sec" style={{ overflow: "hidden" }}>
                 <div className="shop-header">
                     <div className='shoptxtmain d-flex'>
                         <IconContext.Provider value={{ size: "2.5em", className: "shop-RxCornerBottomLeft" }}>
@@ -93,27 +144,27 @@ const Shop = () => {
                         <div className="filter-sec my-4 d-none d-lg-flex row g-4 w-100">
                             <div className="col-4 col-xl-2 d-flex flex-column">
                                 <span className='fw-bold fs-5'>COLLECTION</span>
-                                <select id="for-collection">
-                                    <option value="ALL" defaultChecked>ALL</option>
-                                    <option value="TACTICAL">TACTICAL</option>
-                                    <option value="ADVENTURE">ADVENTURE</option>
-                                    <option value="INDUSTRIAL">INDUSTRIAL</option>
+                                <select className="for-collection" onChange={handleFilterSecForBig}>
+                                    <option value="all" defaultChecked>ALL</option>
+                                    <option value="tactical">TACTICAL</option>
+                                    <option value="adventure">ADVENTURE</option>
+                                    <option value="industrial">INDUSTRIAL</option>
                                 </select>
                             </div>
                             <div className="col-4 col-xl-2 d-flex flex-column">
                                 <span className='fw-bold fs-5'>ACTIVITY</span>
-                                <select id="for-activity">
-                                    <option value="ALL" defaultChecked>ALL</option>
-                                    <option value="RUNNING">RUNNING</option>
-                                    <option value="HIKING">HIKING</option>
-                                    <option value="FISHING">FISHING</option>
-                                    <option value="DIVING">DIVING</option>
-                                    <option value="CAMPING">CAMPING</option>
+                                <select className="for-activity" onChange={handleFilterSecForBig}>
+                                    <option value="all" defaultChecked>ALL</option>
+                                    <option value="running">RUNNING</option>
+                                    <option value="hiking">HIKING</option>
+                                    <option value="fishing">FISHING</option>
+                                    <option value="diving">DIVING</option>
+                                    <option value="camping">CAMPING</option>
                                 </select>
                             </div>
                             <div className="col-4 col-xl-2 d-flex flex-column">
                                 <span className='fw-bold fs-5'>CATEGORIES</span>
-                                <select id="for-categories">
+                                <select className="for-categories" onChange={handleFilterSecForBig}>
                                     <option value="all" defaultChecked>ALL</option>
                                     <option value="headlamps">HEADLAMPS</option>
                                     <option value="handhelds">HANDHELDS</option>
@@ -125,19 +176,19 @@ const Shop = () => {
                             </div>
                             <div className="col-4 col-xl-2 d-flex flex-column">
                                 <span className='fw-bold fs-5'>WATERPROOF</span>
-                                <select id="for-waterproof">
+                                <select className="for-waterproof" onChange={handleFilterSecForBig}>
                                     <option value="all" defaultChecked>ALL</option>
                                     <option value="IPX8">IPX8</option>
                                     <option value="IPX7">IPX7</option>
                                     <option value="IPX6">IPX6</option>
                                     <option value="IPX4">IPX4</option>
-                                    <option value="IPX68">IPX68</option>
+                                    <option value="IP68">IP68</option>
                                 </select>
                             </div>
                             <div className="col-4 col-xl-2 d-flex flex-column">
                                 <span className='fw-bold fs-5'>COLOR</span>
-                                <select id="for-color">
-                                    <option value="all">ALL</option>
+                                <select className="for-color" onChange={handleFilterSecForBig}>
+                                    <option value="all" defaultChecked>ALL</option>
                                     <option value="black">BLACK</option>
                                     <option value="white">WHITE</option>
                                     <option value="green">GREEN</option>
@@ -146,7 +197,7 @@ const Shop = () => {
                             </div>
                             <div className="col-4 col-xl-2 d-flex flex-column">
                                 <span className='fw-bold fs-5'>SORT BY</span>
-                                <select id="for-sortby">
+                                <select className="for-sortby" onChange={handleFilterSecForBig}>
                                     <option value="default">DEFAULT</option>
                                 </select>
                             </div>
@@ -164,7 +215,7 @@ const Shop = () => {
 
                         </div>
                         <div className="products-con row w-100">
-                            {data.slice(firscardindex, lastcardindex).map((item, index) => (
+                            {filteredData.slice(firscardindex, lastcardindex).map((item, index) => (
                                 <div key={index} className="col-12 col-md-6 col-lg-4 col-xxl-3 d-flex justify-content-center my-2">
                                     <ShopProductCard itemHovered={itemHovered} title={item.title} img={item.img} imghover={item.imghover} price={item.price} color={item.color} props={item.props} uuid={item.uuid} />
 
@@ -172,7 +223,7 @@ const Shop = () => {
                                     <div className="modal fade" id={`shopcardmodal-${slugify(item.uuid, { lower: true })}`} tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true" >
                                         <div className="modal-dialog modal-lg modal-dialog-centered">
                                             <div className="modal-content" style={{ background: "#ebe3d6" }}>
-                                                <div className="modal-header" style={{ borderBottom: "none" }}> 
+                                                <div className="modal-header" style={{ borderBottom: "none" }}>
                                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                                                 </div>
                                                 <div className="modal-body shopcard-about-modal-body d-flex">
@@ -192,7 +243,7 @@ const Shop = () => {
                                                         <p className='fs-6'>{item.desc}</p>
                                                         <div className='d-flex flex-row gap-3 align-items-center'>
                                                             <span className='fs-6 fw-bold'>Color : </span>
-                                                            <div className='rounded-5' style={{ width: "25px", height: "25px", background: item.color, border:"1px solid black" }}></div>
+                                                            <div className='rounded-5' style={{ width: "25px", height: "25px", background: item.color, border: "1px solid black" }}></div>
                                                         </div>
                                                         <ul className="list-unstyled d-flex justify-content-between text-center mt-4">
                                                             <li>
@@ -255,31 +306,31 @@ const Shop = () => {
                         <div className="modal-header" style={{ borderBottom: "none" }}>
                             <button type="button" className="btn-close fs-2" data-bs-dismiss="modal" aria-label="Close" />
                         </div>
-                        <div className="modal-body d-flex justify-content-center align-items-center">
+                        <div className="modal-body fsfsmodal d-flex justify-content-center align-items-center">
                             <div className='row justify-content-center align-items-center w-75 g-2'>
                                 <div className="col-12 col-md-6 d-flex flex-column selectionss">
                                     <span className='fw-bold fs-5'>COLLECTION</span>
-                                    <select id="for-collection">
-                                        <option value="ALL" defaultChecked>ALL</option>
-                                        <option value="TACTICAL">TACTICAL</option>
-                                        <option value="ADVENTURE">ADVENTURE</option>
-                                        <option value="INDUSTRIAL">INDUSTRIAL</option>
+                                    <select className="for-collection" onChange={handleFilterSecForSml}>
+                                        <option value="all" defaultChecked>ALL</option>
+                                        <option value="tactical">TACTICAL</option>
+                                        <option value="adventure">ADVENTURE</option>
+                                        <option value="industrial">INDUSTRIAL</option>
                                     </select>
                                 </div>
                                 <div className="col-12 col-md-6 d-flex flex-column selectionss ">
                                     <span className='fw-bold fs-5'>ACTIVITY</span>
-                                    <select id="for-activity">
-                                        <option value="ALL" defaultChecked>ALL</option>
-                                        <option value="RUNNING">RUNNING</option>
-                                        <option value="HIKING">HIKING</option>
-                                        <option value="FISHING">FISHING</option>
-                                        <option value="DIVING">DIVING</option>
-                                        <option value="CAMPING">CAMPING</option>
+                                    <select className="for-activity" onChange={handleFilterSecForSml}>
+                                        <option value="all" defaultChecked>ALL</option>
+                                        <option value="running">RUNNING</option>
+                                        <option value="hiking">HIKING</option>
+                                        <option value="fishing">FISHING</option>
+                                        <option value="diving">DIVING</option>
+                                        <option value="camping">CAMPING</option>
                                     </select>
                                 </div>
                                 <div className="col-12 col-md-6 d-flex flex-column selectionss">
                                     <span className='fw-bold fs-5'>CATEGORIES</span>
-                                    <select id="for-categories">
+                                    <select className="for-categories" onChange={handleFilterSecForSml}>
                                         <option value="all" defaultChecked>ALL</option>
                                         <option value="headlamps">HEADLAMPS</option>
                                         <option value="handhelds">HANDHELDS</option>
@@ -291,7 +342,7 @@ const Shop = () => {
                                 </div>
                                 <div className="col-12 col-md-6 d-flex flex-column selectionss">
                                     <span className='fw-bold fs-5'>WATERPROOF</span>
-                                    <select id="for-waterproof">
+                                    <select className="for-waterproof" onChange={handleFilterSecForSml}>
                                         <option value="all" defaultChecked>ALL</option>
                                         <option value="IPX8">IPX8</option>
                                         <option value="IPX7">IPX7</option>
@@ -302,7 +353,7 @@ const Shop = () => {
                                 </div>
                                 <div className="col-12 col-md-6 d-flex flex-column selectionss">
                                     <span className='fw-bold fs-5'>COLOR</span>
-                                    <select id="for-color">
+                                    <select className="for-color" onChange={handleFilterSecForSml}>
                                         <option value="all">ALL</option>
                                         <option value="black">BLACK</option>
                                         <option value="white">WHITE</option>
@@ -312,7 +363,7 @@ const Shop = () => {
                                 </div>
                                 <div className="col-12 col-md-6 d-flex flex-column selectionss">
                                     <span className='fw-bold fs-5'>SORT BY</span>
-                                    <select id="for-sortby">
+                                    <select className="for-sortby" onChange={handleFilterSecForSml}>
                                         <option value="default">DEFAULT</option>
                                     </select>
                                 </div>
@@ -321,7 +372,6 @@ const Shop = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }

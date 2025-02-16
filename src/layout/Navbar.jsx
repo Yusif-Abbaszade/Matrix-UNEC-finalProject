@@ -43,7 +43,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-none">
+            <nav className="navbar navbar-expand-lg bg-none py-3">
                 <div className="container">
                     <Link  to={'/'} style={{ width: "75px" }}><img src={navbarTheme==='light'?logo_white:logo_black} alt="" width={"100%"} /></Link>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">

@@ -1,0 +1,17 @@
+.authnavbar-sec {
+    border-bottom: 1px solid gray;
+    width: 100%;
+    .nav-link {
+        font-size: 20px;
+        font-weight: bolder;
+        padding: 10px;
+        color: black;
+        text-decoration: none;
+        transition: .2s;
+    }
+    .active {
+        font-weight: bolder;
+        padding-bottom: 10px;
+        border-bottom: 2px solid black;
+    }
+}

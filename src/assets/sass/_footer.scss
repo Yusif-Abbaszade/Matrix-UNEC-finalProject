@@ -35,3 +35,72 @@
         max-width: 50% !important;
     }
 }
+
+#ContactUsModal {
+    .modal-content {
+        position: relative;
+        min-height: 80vh;
+        background-color: black;
+        .modal-body {
+            display: flex;
+            .left-sec {
+                width: 60%;
+                .headertext {
+                    color: #d7c6af;
+                    font-weight: bolder;
+                    font-size: 45px;
+                }
+                .emailinput {
+                    height: 7vh;
+                    width: 90%;
+                    font-size: large;
+                    padding-left: 20px;
+                }
+                .categoryheader {
+                    color: #d7c6af;
+                    font-weight: bolder;
+                }
+                .category-checkbox {
+                    font-size: 20px;
+                    margin-left: 20px;
+                    div {
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+                button {
+                    background-color: #d7c6af;
+                    color: black;
+                    font-weight: bolder;
+                    width: 50%;
+                    height: 7vh;
+                    margin-top: 20px;
+                    border: none;
+                    transition: .2s;
+                    margin-left:20%;
+                    &:hover {
+                        background-color: black;
+                        color: #d7c6af;
+                        border:1px solid #d7c6af;
+                    }
+                }
+            }
+            .right-sec {
+                background: url($contactus-bgimg);
+                width: 40%;
+                height: 100%;
+                position: absolute;
+                right: 0;
+                top: 0;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                button {
+                    position: absolute;
+                    right: 2%;
+                    top: 2%;
+                }
+            }
+        }
+    }
+}
