@@ -60,7 +60,7 @@ const Navbar = () => {
                                 <Link className={`resetAllClass ${navbarTheme === 'light'?'':'text-dark'}`} to={'/about-us'}>About<div className="underline"></div></Link>
                             </li>
                             <li>
-                                <Link className={`resetAllClass ${navbarTheme === 'light'?'':'text-dark'}`} to={'/'}>News<div className="underline"></div></Link>
+                                <Link className={`resetAllClass ${navbarTheme === 'light'?'':'text-dark'}`} to={'/news'}>News<div className="underline"></div></Link>
                             </li>
                         </ul>
                     </div>
@@ -159,7 +159,7 @@ const Navbar = () => {
                     </li>
                     <hr />
                     <li className="resetAllClass">
-                        <Link onClick={resetAll} to={'/'}><b>News</b></Link>
+                        <Link onClick={resetAll} to={'/news'}><b>News</b></Link>
                     </li>
                 </ul>
             </div>

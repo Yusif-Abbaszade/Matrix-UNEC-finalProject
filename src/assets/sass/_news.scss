@@ -1,0 +1,62 @@
+@use 'variables' as *;
+
+//$news-bgimg-overlay
+
+.news-page {
+    .header {
+        height: 100vh;
+
+        .news-bgimg-overlay {
+            width: 100%;
+            height: 100vh;
+            background-image: url($news-bgimg-overlay);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            top: 0;
+            z-index: -5;
+        }
+
+        .texts {
+            .searchsec {
+                input {
+                    outline: none;
+                }
+
+                button {
+                    background: white;
+                    border: none;
+
+                    &:hover {
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+
+    .blog-sec {
+        .news-card {
+            .right-sec {
+                max-width: 700px;
+            }
+        }
+        .newscard-fright {
+            .left-sec {
+                order: 2;
+            }
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .news-page {
+        .blog-sec {
+            .news-card {
+                .left-sec {
+                    order: 2 !important;
+                }
+            }
+        }
+    }
+}

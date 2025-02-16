@@ -21,6 +21,7 @@ import { AuthContext } from "./context/AuthContext";
 import Shop from "./pages/Shop";
 import { useSelector } from "react-redux";
 import NotFoundPage from "./pages/NotFoundPage";
+import News from "./pages/News";
 const App = () => {
   useEffect(() => {
     AOS.init({
@@ -45,6 +46,7 @@ const App = () => {
           {authData && authData.isAuth ? "" : <Route path="/signup" element={<Signup />} />}
           {authData && authData.isAuth ? <Route path="/accountdetails" element={<AccountDetails />} /> : ""}
           <Route path="/shop" element={<Shop />} />
+          <Route path="/news" element={<News />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
