@@ -60,6 +60,7 @@ const Login = () => {
         .from('userData')
         .insert({ username: userInfo.name, email: userInfo.email, password: uuidv4() })
         .select('*')
+      if(error){console.log(error)}
       data[0].isAuth = true;
       auth = true;
       setAuthData(data[0]);
@@ -73,23 +74,10 @@ const Login = () => {
   }
 
   const handleGoogleLogin = (credentialData) => {
-    console.log(credentialData);
     const data = jwtDecode(credentialData.credential);
-    console.log(data);
     SearcDataFromDatabaseForGoogleLogin(data);
   }
 
-  const login = useGoogleLogin({
-    onSuccess: (credentialData) => { console.log(credentialData); handleGoogleLogin(credentialData) },
-    onError: () => {
-      Swal.fire({
-        title: "ERROR",
-        text: "Something went wrong!",
-        icon: "error",
-        confirmButtonColor: "black"
-      });
-    }
-  });
 
   return (
     <div className="login-sec d-flex align-items-center">
@@ -101,9 +89,10 @@ const Login = () => {
           <p className="" style={{ margin: "0", fontSize: "18px" }}>New around here? <Link to={'/signup'} className="text-decoration-none fw-bold" style={{ color: "black" }}>Create an account</Link></p>
           <input ref={emailRef} className="w-75 mt-4 px-2" style={{ height: "40px", border: "none", fontSize: "14px", backgroundColor: "#ebe3d6" }} placeholder="EMAIL" type="email" />
           <input ref={passwordRef} className="w-75 mt-4 px-2" style={{ height: "40px", border: "none", fontSize: "14px", backgroundColor: "#ebe3d6" }} placeholder="PASSWORD" type="password" />
-          <GoogleLogin onSuccess={(credentialData) => { handleGoogleLogin(credentialData) }} onError={() => { console.log('err') }} />
-          <button type="button" className="btn btn-success" onClick={login}>Login with Google</button>
-          <button type="submit" onClick={handleLoginForm} className="w-75 mt-5 mb-3 btn" style={{ background: "#d7c6af", height: "50px" }}>LOG IN</button>
+          <div className="d-flex justify-content-around align-items-center mt-2">
+            <GoogleLogin width={3} text="signin" size="large" logo_alignment="center" type="icon" onSuccess={(credentialData) => { handleGoogleLogin(credentialData) }} onError={() => { alert('err') }} />
+          </div>
+          <button type="submit" onClick={handleLoginForm} className="w-75 mt-3 mb-3 btn" style={{ background: "#d7c6af", height: "50px" }}>LOG IN</button>
         </form>
       </div>
     </div>
