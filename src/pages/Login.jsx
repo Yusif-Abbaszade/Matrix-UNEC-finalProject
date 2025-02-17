@@ -5,8 +5,9 @@ import { AuthContext } from "../context/AuthContext"
 import { toast, ToastContainer } from "react-toastify"
 import Swal from "sweetalert2"
 import { NavbarContext } from "../context/NavbarContext"
-import { GoogleLogin } from "@react-oauth/google"
-
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google"
+import { jwtDecode } from "jwt-decode";
+import { v4 as uuidv4 } from 'uuid';
 const Login = () => {
   const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
   useEffect(() => {
@@ -20,7 +21,7 @@ const Login = () => {
   const [authData, setAuthData] = useContext(AuthContext);
 
 
-  const SearcDataFromDatabase = async (userInfo) => {
+  const SearcDataFromDatabaseForLogin = async (userInfo) => {
     const { data, error } = await supabase.from('userData').select('*');
     if (error) console.log(error);
     let auth = false;
@@ -42,10 +43,53 @@ const Login = () => {
     }
   }
 
+  const SearcDataFromDatabaseForGoogleLogin = async (userInfo) => {
+    const { data, error } = await supabase.from('userData').select('*');
+    if (error) console.log(error);
+    let auth = false;
+    data.map((item) => {
+      if (item.email === userInfo.email) {
+        item.isAuth = true;
+        auth = true;
+        setAuthData(item);
+        navigate('/accountdetails');
+      }
+    })
+    if (!auth) {
+      const { data, error } = await supabase
+        .from('userData')
+        .insert({ username: userInfo.name, email: userInfo.email, password: uuidv4() })
+        .select('*')
+      data[0].isAuth = true;
+      auth = true;
+      setAuthData(data[0]);
+      navigate('/accountdetails');
+    }
+  }
+
   const handleLoginForm = (e) => {
     e.preventDefault();
-    SearcDataFromDatabase({ "email": emailRef.current.value, "password": passwordRef.current.value })
+    SearcDataFromDatabaseForLogin({ "email": emailRef.current.value, "password": passwordRef.current.value })
   }
+
+  const handleGoogleLogin = (credentialData) => {
+    console.log(credentialData);
+    const data = jwtDecode(credentialData.credential);
+    console.log(data);
+    SearcDataFromDatabaseForGoogleLogin(data);
+  }
+
+  const login = useGoogleLogin({
+    onSuccess: (credentialData) => { console.log(credentialData); handleGoogleLogin(credentialData) },
+    onError: () => {
+      Swal.fire({
+        title: "ERROR",
+        text: "Something went wrong!",
+        icon: "error",
+        confirmButtonColor: "black"
+      });
+    }
+  });
 
   return (
     <div className="login-sec d-flex align-items-center">
@@ -57,7 +101,8 @@ const Login = () => {
           <p className="" style={{ margin: "0", fontSize: "18px" }}>New around here? <Link to={'/signup'} className="text-decoration-none fw-bold" style={{ color: "black" }}>Create an account</Link></p>
           <input ref={emailRef} className="w-75 mt-4 px-2" style={{ height: "40px", border: "none", fontSize: "14px", backgroundColor: "#ebe3d6" }} placeholder="EMAIL" type="email" />
           <input ref={passwordRef} className="w-75 mt-4 px-2" style={{ height: "40px", border: "none", fontSize: "14px", backgroundColor: "#ebe3d6" }} placeholder="PASSWORD" type="password" />
-          <GoogleLogin onSuccess={(e)=>{console.log(e)}} onError={()=>{console.log('err')}} />
+          <GoogleLogin onSuccess={(credentialData) => { handleGoogleLogin(credentialData) }} onError={() => { console.log('err') }} />
+          <button type="button" className="btn btn-success" onClick={login}>Login with Google</button>
           <button type="submit" onClick={handleLoginForm} className="w-75 mt-5 mb-3 btn" style={{ background: "#d7c6af", height: "50px" }}>LOG IN</button>
         </form>
       </div>

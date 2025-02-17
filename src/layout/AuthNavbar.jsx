@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext"
+import { googleLogout } from "@react-oauth/google";
 
 const AuthNavbar = () => {
     const [authData, setAuthData] = useContext(AuthContext);
@@ -15,7 +16,7 @@ const AuthNavbar = () => {
                     <NavLink to="/my-account/exclusive-offers" className="nav-link">EXCLUSIVE OFFERS</NavLink>
                 </div>
                 <div className="right-sec">
-                    <button className="btn nav-link" onClick={()=>{setAuthData({"isAuth":false}); navigete('/login')}}>LOG OUT</button>
+                    <button className="btn nav-link" onClick={()=>{setAuthData({"isAuth":false}); googleLogout(); navigete('/login')}}>LOG OUT</button>
                 </div>
             </div>
         </div>
