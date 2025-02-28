@@ -9,6 +9,7 @@ import slugify from 'slugify'
 import Slider from "react-slick";
 import { CiSun, CiTimer } from 'react-icons/ci'
 import { LiaFeatherAltSolid } from 'react-icons/lia'
+import { useCart } from 'react-use-cart'
 
 
 function SampleNextArrow(props) {
@@ -56,6 +57,14 @@ const Shop = () => {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
+    const {
+        isEmpty,
+        totalUniqueItems,
+        items,
+        updateItemQuantity,
+        removeItem,
+        addItem
+      } = useCart();
 
     for (let i = 1; i <= Math.ceil(filteredData.length / cardsPerPage); ++i) {
         pages.push(i)
@@ -275,7 +284,7 @@ const Shop = () => {
                                                                 <p>Weight</p>
                                                             </li>
                                                         </ul>
-                                                        <button className='btn shopcard-modal-addtocart-btn fs-5 fw-bold'>Add to cart</button>
+                                                        <button onClick={()=>{addItem({...item, id:item.uuid}, 1)}} className='btn shopcard-modal-addtocart-btn fs-5 fw-bold'>Add to cart</button>
                                                     </div>
                                                 </div>
                                                 <div className="modal-footer d-flex justify-content-center mb-4" style={{ borderTop: "none" }}>

@@ -9,6 +9,7 @@ import supabase from './utils/supabase.js';
 import { AuthProvider } from './context/AuthContext.jsx';
 import { NavbarProvider } from './context/NavbarContext.jsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { CartProvider } from 'react-use-cart';
 const store = configureStore();
 
 
@@ -30,9 +31,11 @@ createRoot(document.getElementById('root')).render(
     <GoogleOAuthProvider clientId='999145324035-gflk9mdcl8k2gcbevhl9kqor4nvuei30.apps.googleusercontent.com' >
       <AuthProvider>
         <NavbarProvider>
-          <Provider store={store}>
-            <App />
-          </Provider>
+          <CartProvider>
+            <Provider store={store}>
+              <App />
+            </Provider>
+          </CartProvider>
         </NavbarProvider>
       </AuthProvider>
     </GoogleOAuthProvider>

@@ -1,5 +1,4 @@
 import Slider from "react-slick";
-import CatCard from "./CatCard";
 import { useEffect, useState } from "react";
 import ProductCardForHome from "./ProductCardForHome";
 import { useSelector } from "react-redux";
@@ -8,6 +7,7 @@ import { IconContext } from "react-icons";
 import { LiaFeatherAltSolid } from "react-icons/lia";
 import { FaWater } from "react-icons/fa";
 import { CiSun, CiTimer } from "react-icons/ci";
+import { useCart } from "react-use-cart";
 
 
 function SampleNextArrow(props) {
@@ -41,7 +41,6 @@ function SampleNextArrowForModal(props) {
         <img
             src="https://cdn-icons-png.flaticon.com/512/32/32213.png"
             className={className}
-            // style={{ display: "block", top: "105%", right: "5%" }}
             onClick={onClick}
         />
     );
@@ -53,7 +52,6 @@ function SamplePrevArrowForModal(props) {
         <img
             src="https://cdn-icons-png.flaticon.com/512/271/271220.png"
             className={className}
-            // style={{ display: "block", top: "105%", left: "85%" }}
             onClick={onClick}
         />
     );
@@ -66,11 +64,11 @@ const BestsellersCarousel = () => {
     const [slideCount, setSlideCount] = useState(3);
     const [itemHovered, setItemHovered] = useState('');
     const data = useSelector(p => p.products);
+    const { addItem } = useCart();
     const settings = {
         dots: false,
         infinite: false,
         speed: 500,
-        // slidesToShow: 3,
         slidesToScroll: 1,
         initialSlide: 1,
         afterChange: () => setUpdateCount(updateCount + 1),
@@ -85,7 +83,6 @@ const BestsellersCarousel = () => {
                     slidesToScroll: 1,
                     infinite: true,
                     dots: false,
-                    // draggable:true
                 }
             },
             {
@@ -216,7 +213,7 @@ const BestsellersCarousel = () => {
                                             <p>Weight</p>
                                         </li>
                                     </ul>
-                                    <button className='btn shopcard-modal-addtocart-btn fs-5 fw-bold'>Add to cart</button>
+                                    <button onClick={()=>{addItem({...item, id:item.uuid}, 1)}} className='btn shopcard-modal-addtocart-btn fs-5 fw-bold'>Add to cart</button>
                                 </div>
                             </div>
                             <div className="modal-footer d-flex justify-content-center mb-4" style={{ borderTop: "none" }}>
