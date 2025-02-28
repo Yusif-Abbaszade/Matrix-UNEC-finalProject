@@ -1,0 +1,10 @@
+@use 'variables' as *;
+
+.cart-page {
+    background-color: $cart-bg-color;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+}
