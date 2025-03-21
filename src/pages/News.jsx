@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavbarContext } from "../context/NavbarContext";
 import NewsCarousel from "../components/NewsCarousel";
 import { IoIosSearch } from "react-icons/io";
@@ -6,9 +6,14 @@ import { motion } from "motion/react"
 import { IconContext } from "react-icons";
 import { RxCornerBottomRight, RxCornerTopLeft } from "react-icons/rx";
 import SocialMediaCarousel from "../components/SocialMediaCarousel";
-
+import { useSelector } from "react-redux";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import slugify from "slugify";
 const News = () => {
     const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
+    const [searchText, setSearchText] = useState('');
+    const navigate = useNavigate();
+    const newsData = useSelector(p => p.news);
     useEffect(() => {
         document.getElementsByTagName('body')[0].style.backgroundColor = '#000';
         setNavbarTheme('light');
@@ -25,46 +30,24 @@ const News = () => {
                         </p>
                     </motion.div>
                     <motion.div initial={{ opacity: 0, translateX: "300px", translateY: "200px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }} className="col-12 col-xl-6 searchsec">
-                        <div className="d-flex flex-row" style={{ height: "50px" }}>
+                        <button className="d-flex flex-row w-100" style={{ height: "50px" }} data-bs-toggle="modal" data-bs-target="#newsSearchModal">
                             <input type="text" style={{ width: "90%" }} className="border-0 ps-3" />
                             <button style={{ width: "10%" }} className="btn rounded-0 border-0"><IoIosSearch /></button>
-                        </div>
+                        </button>
                     </motion.div>
                 </div>
             </div>
             <div className="blog-sec">
-                <div className="news-card row d-flex justify-content-center newscard-fleft mb-5">
-                    <motion.div initial={{ opacity: 0, translateX: "50%" }} whileInView={{ opacity: 1, translateX: 0 }} transition={{ duration: 1, delay: .5 }} className="left-sec col-12 col-md-6 text-light d-flex flex-column justify-content-center px-5 mt-4">
-                        <p className="fs-5">July 25, 2024</p>
-                        <p className="fs-3 fw-bolder">RGB in the Wild: How Red, Green, and Blue Light Help Hunters</p>
-                        <p className="fw-bold mt-4">Read more</p>
-                    </motion.div>
-                    <motion.div initial={{ opacity: 1, translateX: "-50%" }} whileInView={{ opacity: 1, translateX: 0 }} transition={{ duration: 1, delay: .5 }} className="right-sec col-12 col-md-6" style={{ height: "40vh", background: "url(https://princetontec.com/wp-content/uploads/2024/06/Dialed-In-Hunter-1453-1024x683.jpg)", backgroundSize: "cover", backgroundPosition: "center", zIndex: 999 }}></motion.div>
-                </div>
-                <div className="news-card row d-flex justify-content-center newscard-fright mb-5">
-                    <motion.div initial={{ opacity: 0, translateX: "-50%" }} whileInView={{ opacity: 1, translateX: 0 }} transition={{ duration: 1, delay: .5 }} className="left-sec col-12 col-md-6 text-light d-flex flex-column justify-content-center px-5 mt-4">
-                        <p className="fs-5">July 25, 2024</p>
-                        <p className="fs-3 fw-bolder">RGB in the Wild: How Red, Green, and Blue Light Help Hunters</p>
-                        <p className="fw-bold mt-4">Read more</p>
-                    </motion.div>
-                    <motion.div initial={{ opacity: 1, translateX: "50%" }} whileInView={{ opacity: 1, translateX: 0 }} transition={{ duration: 1, delay: .5 }} className="right-sec col-12 col-md-6" style={{ height: "40vh", background: "url(https://princetontec.com/wp-content/uploads/2024/06/Dialed-In-Hunter-1453-1024x683.jpg)", backgroundSize: "cover", backgroundPosition: "center", zIndex: 999 }}></motion.div>
-                </div>
-                <div className="news-card row d-flex justify-content-center newscard-fleft mb-5">
-                    <motion.div initial={{ opacity: 0, translateX: "50%" }} whileInView={{ opacity: 1, translateX: 0 }} transition={{ duration: 1, delay: .5 }} className="left-sec col-12 col-md-6 text-light d-flex flex-column justify-content-center px-5 mt-4">
-                        <p className="fs-5">July 25, 2024</p>
-                        <p className="fs-3 fw-bolder">RGB in the Wild: How Red, Green, and Blue Light Help Hunters</p>
-                        <p className="fw-bold mt-4">Read more</p>
-                    </motion.div>
-                    <motion.div initial={{ opacity: 1, translateX: "-50%" }} whileInView={{ opacity: 1, translateX: 0 }} transition={{ duration: 1, delay: .5 }} className="right-sec col-12 col-md-6" style={{ height: "40vh", background: "url(https://princetontec.com/wp-content/uploads/2024/06/Dialed-In-Hunter-1453-1024x683.jpg)", backgroundSize: "cover", backgroundPosition: "center", zIndex: 999 }}></motion.div>
-                </div>
-                <div className="news-card row d-flex justify-content-center newscard-fright mb-5">
-                    <motion.div initial={{ opacity: 0, translateX: "-50%" }} whileInView={{ opacity: 1, translateX: 0 }} transition={{ duration: 1, delay: .5 }} className="left-sec col-12 col-md-6 text-light d-flex flex-column justify-content-center px-5 mt-4">
-                        <p className="fs-5">July 25, 2024</p>
-                        <p className="fs-3 fw-bolder">RGB in the Wild: How Red, Green, and Blue Light Help Hunters</p>
-                        <p className="fw-bold mt-4">Read more</p>
-                    </motion.div>
-                    <motion.div initial={{ opacity: 1, translateX: "50%" }} whileInView={{ opacity: 1, translateX: 0 }} transition={{ duration: 1, delay: .5 }} className="right-sec col-12 col-md-6" style={{ height: "40vh", background: "url(https://princetontec.com/wp-content/uploads/2024/06/Dialed-In-Hunter-1453-1024x683.jpg)", backgroundSize: "cover", backgroundPosition: "center", zIndex: 999 }}></motion.div>
-                </div>
+                {newsData.map((item, index) => (
+                    <div className={`news-card row d-flex justify-content-center ${index % 2 === 1 ? "newscard-fright" : "newscard-fleft"} mb-5`} key={index}>
+                        <motion.div initial={{ opacity: 0, translateX: index % 2 === 1 ? "-50%" : "50%" }} whileInView={{ opacity: 1, translateX: 0 }} transition={{ duration: 1, delay: .3 }} className="left-sec col-12 col-md-6 text-light d-flex flex-column justify-content-center px-5 mt-4">
+                            <p className="fs-5">{item.creationDate}</p>
+                            <p className="fs-3 fw-bolder">{item.title}</p>
+                            <Link to={`/news/${slugify(item.title, { lower: true })}`} className="fw-bold mt-4">Read more</Link>
+                        </motion.div>
+                        <motion.div initial={{ opacity: 1, translateX: index % 2 === 1 ? "50%" : "-50%" }} whileInView={{ opacity: 1, translateX: 0 }} transition={{ duration: 1, delay: .3 }} className="right-sec col-12 col-md-6" style={{ height: "40vh", background: `url(${item.bgimg})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat", zIndex: 999 }}></motion.div>
+                    </div>
+                ))}
             </div>
             <div className="social-media-sec d-flex flex-column justify-content-center align-items-center">
                 <div className="main-link">
@@ -77,6 +60,35 @@ const News = () => {
                     </IconContext.Provider>
                 </div>
                 <SocialMediaCarousel />
+            </div>
+
+
+            <div class="modal fade" id="newsSearchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Search Blog</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div className="d-flex flex-row w-100" style={{ height: "50px" }}>
+                                <input type="text" style={{ width: "100%" }} className="border-1 ps-3" onChange={(e) => { setSearchText(e.target.value) }} />
+                            </div>
+                            <div className="row">
+                                {newsData.filter(p => p.title.toLowerCase().includes(searchText.toLowerCase())).map((item, index) => (
+                                    <div onClick={()=>{navigate(`/news/${slugify(item.title, {lower:true})}`)}} data-bs-toggle='modal' data-bs-target='#newsSearchModal' className="col-12 my-2 d-flex justify-content-around align-items-center">
+                                        <div className="col-4">
+                                            <img src={item.bgimg} alt="" width={"100%"} style={{height:"10vh", objectFit:"cover"}} />
+                                        </div>
+                                        <div className="col-7">
+                                            <p>{item.title}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

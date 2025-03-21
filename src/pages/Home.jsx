@@ -14,7 +14,7 @@ import { NavbarContext } from "../context/NavbarContext"
 
 const Home = () => {
   const categories = useSelector(p => p.categories)
-const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
+  const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
   useEffect(() => {
     document.getElementsByTagName('body')[0].style.background = 'black'
     setNavbarTheme('light')

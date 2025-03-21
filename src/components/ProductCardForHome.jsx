@@ -1,15 +1,14 @@
-import Slider from "react-slick";
 import { IconContext } from "react-icons";
 import { CiSun, CiTimer } from "react-icons/ci";
 import { FaWater } from "react-icons/fa";
 import { LiaFeatherAltSolid } from "react-icons/lia";
+import { useSelector } from "react-redux";
 import slugify from "slugify";
 
 
-const ProductCardForHome = ({ title, price, img, imghover, itemHovered, color, desc, props, uuid }) => {
-    
+const ProductCardForHome = ({ title, price, img, imghover, itemHovered, props, uuid }) => {
     return (
-        <div className="productcardforhome" style={{ width: '20rem', marginLeft: "50px" }}>
+        <div className="shopproductcard productcardforhome"  style={{ width: '100%', maxWidth: "22rem" }}>
             <p className="productname fw-bold mb-5 mt-3 pt-3 ms-3" style={{ fontSize: "25px" }}>{title}</p>
             <p className="productprice float-end h6 me-2">${price}</p>
             <div className="container d-flex justify-content-center imgsc">
@@ -46,15 +45,10 @@ const ProductCardForHome = ({ title, price, img, imghover, itemHovered, color, d
                         <p>Weight</p>
                     </li>
                 </ul>
-                <div className="quick-view-sec" data-bs-toggle="modal" data-bs-target={`#bestsellercard-${slugify(uuid, { lower: true })}`} style={{ cursor: "pointer" }} >
+                <div className="quick-view-sec"  data-bs-toggle="modal" data-bs-target={`#shopcardmodal-${slugify(uuid, { lower: true })}`} style={{cursor:"pointer",overflowX:"hidden"}} >
                     Quick View
                 </div>
             </div>
-
-
-            
-
-
         </div>
     )
 }

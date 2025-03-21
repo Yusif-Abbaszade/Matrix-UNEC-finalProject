@@ -10,6 +10,7 @@ import Slider from "react-slick";
 import { CiSun, CiTimer } from 'react-icons/ci'
 import { LiaFeatherAltSolid } from 'react-icons/lia'
 import { useCart } from 'react-use-cart'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 function SampleNextArrow(props) {
@@ -42,8 +43,10 @@ const Shop = () => {
     const [itemHovered, setItemHovered] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage, setCardsPerPage] = useState(12);
+    const navigate = useNavigate();
     const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
     const data = useSelector(p => p.products);
+    let filtData = data;
     const [filteredData, setFilteredData] = useState(data);
     const lastcardindex = currentPage * cardsPerPage;
     const firscardindex = lastcardindex - cardsPerPage;
@@ -64,7 +67,7 @@ const Shop = () => {
         updateItemQuantity,
         removeItem,
         addItem
-      } = useCart();
+    } = useCart();
 
     for (let i = 1; i <= Math.ceil(filteredData.length / cardsPerPage); ++i) {
         pages.push(i)
@@ -93,8 +96,23 @@ const Shop = () => {
         const waterproof = document.querySelector('.fsfsmodal .for-waterproof').value;
         const color = document.querySelector('.fsfsmodal .for-color').value;
         const sortby = document.querySelector('.fsfsmodal .for-sortby').value;
-        console.log(collection, activity, categories, waterproof, color, sortby);
-        setFilteredData(data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.category === categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.color === color || color === 'all'))))
+        // console.log(collection, activity, categories, waterproof, color, sortby);
+
+        // filtData = (data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.category === categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.color === color || color === 'all'))))
+        // filtData.sort((a, b) => a.title.localeCompare(b.title));
+        // setFilteredData(filtData);
+        filtData = (data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.category === categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.color === color || color === 'all'))))
+        if (sortby === 'AtoZ') {
+            filtData.sort((a, b) => a.title.localeCompare(b.title));
+        } else if (sortby === 'ZtoA') {
+            filtData.sort((a, b) => b.title.localeCompare(a.title));
+        } else if (sortby === 'bylowprice') {
+            filtData.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        } else if (sortby === 'byhighprice') {
+            filtData.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        }
+
+        setFilteredData(filtData);
     };
     const handleFilterSecForBig = () => {
         console.log('It Works for big');
@@ -105,9 +123,22 @@ const Shop = () => {
         const waterproof = document.querySelector('.filter-sec .for-waterproof').value;
         const color = document.querySelector('.filter-sec .for-color').value;
         const sortby = document.querySelector('.filter-sec .for-sortby').value;
-        console.log(collection, activity, categories, waterproof, color, sortby);
-        setFilteredData(data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.category == categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.color === color || color === 'all'))))
+        // console.log(collection, activity, categories, waterproof, color, sortby);
+        // setFilteredData(data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.category == categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.color === color || color === 'all'))))
+        filtData = (data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.category === categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.color === color || color === 'all'))))
+        if (sortby === 'AtoZ') {
+            filtData.sort((a, b) => a.title.localeCompare(b.title));
+        } else if (sortby === 'ZtoA') {
+            filtData.sort((a, b) => b.title.localeCompare(a.title));
+        } else if (sortby === 'bylowprice') {
+            filtData.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        } else if (sortby === 'byhighprice') {
+            filtData.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        }
+
+        setFilteredData(filtData);
     };
+
     // useEffect(() => {
     //     if (window.innerWidth <= 992) {
     //         const collection = document.querySelector('.fsfsmodal .for-collection').value;
@@ -119,12 +150,12 @@ const Shop = () => {
     //         setFilteredData(data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.categories === categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.props.color === color || color === 'all'))))
     //         console.log(filteredData);
     //     } else {
-            // const collection = document.querySelector('.filter-sec .for-collection').value;
-            // const activity = document.querySelector('.filter-sec .for-activity').value;
-            // const categories = document.querySelector('.filter-sec .for-categories').value;
-            // const waterproof = document.querySelector('.filter-sec .for-waterproof').value;
-            // const color = document.querySelector('.filter-sec .for-color').value;
-            // const sortby = document.querySelector('.filter-sec .for-sortby').value;
+    // const collection = document.querySelector('.filter-sec .for-collection').value;
+    // const activity = document.querySelector('.filter-sec .for-activity').value;
+    // const categories = document.querySelector('.filter-sec .for-categories').value;
+    // const waterproof = document.querySelector('.filter-sec .for-waterproof').value;
+    // const color = document.querySelector('.filter-sec .for-color').value;
+    // const sortby = document.querySelector('.filter-sec .for-sortby').value;
     //         setFilteredData(data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.categories === categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.props.color === color || color === 'all'))))
     //         console.log(filteredData);
     //     }
@@ -208,6 +239,10 @@ const Shop = () => {
                                 <span className='fw-bold fs-5'>SORT BY</span>
                                 <select className="for-sortby" onChange={handleFilterSecForBig}>
                                     <option value="default">DEFAULT</option>
+                                    <option value="AtoZ">A-Z</option>
+                                    <option value="ZtoA">Z-A</option>
+                                    <option value="byhighprice">HIGH PRICE</option>
+                                    <option value="bylowprice">LOW PRICE</option>
                                 </select>
                             </div>
                         </div>
@@ -284,11 +319,11 @@ const Shop = () => {
                                                                 <p>Weight</p>
                                                             </li>
                                                         </ul>
-                                                        <button onClick={()=>{addItem({...item, id:item.uuid}, 1)}} className='btn shopcard-modal-addtocart-btn fs-5 fw-bold'>Add to cart</button>
+                                                        <button onClick={() => { addItem({ ...item, id: item.uuid }, 1) }} className='btn shopcard-modal-addtocart-btn fs-5 fw-bold'>Add to cart</button>
                                                     </div>
                                                 </div>
                                                 <div className="modal-footer d-flex justify-content-center mb-4" style={{ borderTop: "none" }}>
-                                                    <button className='btn shopcard-modal-moredet-btn fs-5 fw-bold'>View Full Details</button>
+                                                    <button className='btn shopcard-modal-moredet-btn fs-5 fw-bold' onClick={()=>{navigate(`/shop/${slugify(item.title, {lower:true})}`)}} data-bs-toggle='modal' data-bs-target={`#shopcardmodal-${slugify(item.uuid, { lower: true })}`}>View Full Details</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -374,6 +409,10 @@ const Shop = () => {
                                     <span className='fw-bold fs-5'>SORT BY</span>
                                     <select className="for-sortby" onChange={handleFilterSecForSml}>
                                         <option value="default">DEFAULT</option>
+                                        <option value="AtoZ">A-Z</option>
+                                        <option value="ZtoA">Z-A</option>
+                                        <option value="byhighprice">HIGH PRICE</option>
+                                        <option value="bylowprice">LOW PRICE</option>
                                     </select>
                                 </div>
                             </div>

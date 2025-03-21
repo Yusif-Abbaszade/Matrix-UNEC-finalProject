@@ -24,6 +24,8 @@ import NotFoundPage from "./pages/NotFoundPage";
 import News from "./pages/News";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import NewsDetailds from "./pages/NewsDetailds";
+import ProductDetails from "./pages/ProductDetails";
 const App = () => {
   useEffect(() => {
     AOS.init({
@@ -35,7 +37,7 @@ const App = () => {
 
   const [authData] = useContext(AuthContext);
   return (
-    <div style={{ overflowX: "hidden",width:"100%" }}>
+    <div style={{ overflowX: "hidden", width: "100%" }}>
       <BrowserRouter>
         <Header />
         <Navbar />
@@ -48,7 +50,9 @@ const App = () => {
           {authData && authData.isAuth ? "" : <Route path="/signup" element={<Signup />} />}
           {authData && authData.isAuth ? <Route path="/accountdetails" element={<AccountDetails />} /> : ""}
           <Route path="/shop" element={<Shop />} />
+          <Route path="/shop/:productslug" element={<ProductDetails />} />
           <Route path="/news" element={<News />} />
+          <Route path={`/news/:newslug`} element={<NewsDetailds />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<NotFoundPage />} />

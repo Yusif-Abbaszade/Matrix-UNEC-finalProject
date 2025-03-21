@@ -8,6 +8,8 @@ import { LiaFeatherAltSolid } from "react-icons/lia";
 import { FaWater } from "react-icons/fa";
 import { CiSun, CiTimer } from "react-icons/ci";
 import { useCart } from "react-use-cart";
+import ShopProductCard from "./ShopProductCard";
+import { useNavigate } from "react-router-dom";
 
 
 function SampleNextArrow(props) {
@@ -64,6 +66,7 @@ const BestsellersCarousel = () => {
     const [slideCount, setSlideCount] = useState(3);
     const [itemHovered, setItemHovered] = useState('');
     const data = useSelector(p => p.products);
+    const navigate = useNavigate();
     const { addItem } = useCart();
     const settings = {
         dots: false,
@@ -144,7 +147,6 @@ const BestsellersCarousel = () => {
                 <Slider {...settings} className="sldsc" draggable={true}>
                     {data.filter(item => item.bestsellers).map((item, index) => (
                         <ProductCardForHome key={index} title={item.title} price={item.price} img={item.img} imghover={item.imghover} itemHovered={itemHovered} color={item.color} desc={item.desc} props={item.props} uuid={item.uuid} />
-
                     ))}
                 </Slider>
                 <div className="progress-sc d-flex flex-row justify-content-center">
@@ -158,7 +160,7 @@ const BestsellersCarousel = () => {
 
             {/* Modals  */}
             {data.filter(item => item.bestsellers).map((item, index) => (
-                <div key={index} className="modal fade" id={`bestsellercard-${slugify(item.uuid, { lower: true })}`} tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                <div key={index} className="modal fade" id={`shopcardmodal-${slugify(item.uuid, { lower: true })}`} tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true" >
                     <div className="modal-dialog modal-lg modal-dialog-centered">
                         <div className="modal-content" style={{ background: "#ebe3d6" }}>
                             <div className="modal-header" style={{ borderBottom: "none" }}>
@@ -213,11 +215,11 @@ const BestsellersCarousel = () => {
                                             <p>Weight</p>
                                         </li>
                                     </ul>
-                                    <button onClick={()=>{addItem({...item, id:item.uuid}, 1)}} className='btn shopcard-modal-addtocart-btn fs-5 fw-bold'>Add to cart</button>
+                                    <button onClick={() => { addItem({ ...item, id: item.uuid }, 1) }} className='btn shopcard-modal-addtocart-btn fs-5 fw-bold'>Add to cart</button>
                                 </div>
                             </div>
                             <div className="modal-footer d-flex justify-content-center mb-4" style={{ borderTop: "none" }}>
-                                <button className='btn shopcard-modal-moredet-btn fs-5 fw-bold'>View Full Details</button>
+                                <button className='btn shopcard-modal-moredet-btn fs-5 fw-bold' onClick={() => { navigate(`/shop/${slugify(item.title, { lower: true })}`) }} data-bs-toggle='modal' data-bs-target={`#shopcardmodal-${slugify(item.uuid, { lower: true })}`}>View Full Details</button>
                             </div>
                         </div>
                     </div>

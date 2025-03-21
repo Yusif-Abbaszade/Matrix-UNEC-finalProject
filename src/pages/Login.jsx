@@ -92,7 +92,6 @@ const Login = () => {
           <input ref={passwordRef} className="w-75 mt-4 px-2" style={{ height: "40px", border: "none", fontSize: "14px", backgroundColor: "#ebe3d6" }} placeholder="PASSWORD" type="password" />
           <div className="d-flex justify-content-center align-items-center mt-2">
             <GoogleLogin width={3} text="signin" size="large" logo_alignment="center" type="icon" onSuccess={(credentialData) => { handleGoogleLogin(credentialData) }} onError={() => { alert('err') }} />
-            <button type="button" className="btn btn-light rounded-0"><FaGithub /></button>
           </div>
           <button type="submit" onClick={handleLoginForm} className="w-75 mt-3 mb-3 btn" style={{ background: "#d7c6af", height: "50px" }}>LOG IN</button>
         </form>

@@ -36,6 +36,10 @@
     }
 
     .blog-sec {
+        a{
+            text-decoration: none;
+            color: white;
+        }
         .news-card {
             .right-sec {
                 max-width: 700px;
