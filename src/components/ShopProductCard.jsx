@@ -13,7 +13,7 @@ const ShopProductCard = ({ title, price, img, imghover, itemHovered, props, uuid
         <div className="shopproductcard" style={{ width: '100%', maxWidth: "22rem" }}>
             <p className="productname fw-bold mb-5 mt-3 pt-3 ms-3" style={{ fontSize: "25px" }}>{title}</p>
             <p className="productprice float-end h6 me-2">${price}</p>
-            <div className="container d-flex justify-content-center imgsc" onClick={()=>{navigate('/')}} style={{cursor:"pointer"}}>
+            <div className="container d-flex justify-content-center imgsc" onClick={()=>{navigate(`/shop/${slugify(title, {lower:true})}`)}} style={{cursor:"pointer"}}>
                 <img src={img === itemHovered ? imghover : img} width={"100%"} alt="" />
             </div>
             <div className="bottomsec container-fluid">
