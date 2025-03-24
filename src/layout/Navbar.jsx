@@ -105,7 +105,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
-            <div className={`left-dd-navbar container-fluid ${leftMenuOpen ? 'navbar-dd-fade-anm-open' : 'd-none'}`} style={{ background: "white", position: "absolute", top: "10%", zIndex: "1" }} >
+            <div className={`left-dd-navbar container-fluid ${leftMenuOpen ? 'navbar-dd-fade-anm-open' : 'd-none'}`} style={{ background: "white", position: "absolute", top: "10%", zIndex: "999" }} >
                 <ul className="list-unstyled">
                     <li className="resetAllClass">
                         <Link onClick={resetAll} to={'/shop'} className="resetAllClass"><b>Shop</b></Link>
