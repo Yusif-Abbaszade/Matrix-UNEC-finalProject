@@ -21,7 +21,7 @@ const AccountDetails = () => {
             <AuthNavbar />
             <p className="fw-bold text-center mt-5" style={{ fontSize: "55px" }}>YOUR DETAILS</p>
             {authData && authData.role === 'admin' ? <Link className="btn btn-warning w-100 p-3 fs-2 fw-bolder" to={'/dashboard'}>Go To Dashboard</Link> : ""}
-            <div className="container d-flex flex-column gap-5 my-5">
+            <div className="container d-flex flex-column gap-5 my-5" data-aos="fade-right">
                 <AccountPageDetailsEditCard headertext={'Billing'} ddbuttontext={'EDIT DETAILS'} alert={'No billing address provided.'} />
                 <AccountPageDetailsEditCard headertext={'Shipping'} ddbuttontext={'EDIT DETAILS'} alert={'No shipping address provided.'} />
                 <AccountPagePaymentDetails/>

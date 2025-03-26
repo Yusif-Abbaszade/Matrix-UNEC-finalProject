@@ -50,18 +50,18 @@ const Home = () => {
           </ul>
         </div>
       </div>
-      <div className="explore-collections-sec container d-flex justify-content-center align-items-center, flex-column">
+      <div data-aos="zoom-in-up" className="explore-collections-sec container d-flex justify-content-center align-items-center, flex-column">
         <p className="fw-bold h1 text-light mb-5">EXPLORE <span style={{ color: "#d7c6af", fontWeight: "bold" }}>COLLECTIONS</span></p>
         <ExploreCollectionsCarousel />
       </div>
-      <div className="best-sellers-sec mt-5">
+      <div data-aos="zoom-in-up" className="best-sellers-sec mt-5">
         <div className="breakdance-px breakdance-px-bestsellers" />
         <div className="row best-sellers-products">
           <p className="fw-bold d-flex align-items-center gap-3 h1 text-dark ms-5"><span style={{ color: "#b49360", fontWeight: "bold" }}>BEST </span> SELLERS</p>
           <BestsellersCarousel />
         </div>
       </div>
-      <div className="explore-categories-sec container-fluid text-light my-5">
+      <div data-aos="zoom-in-right" className="explore-categories-sec container-fluid text-light my-5">
         <p className="h1 fw-bold">EXPLORE <span style={{ fontWeight: "bold", color: "#d7c6af" }}>CATEGORIES</span></p>
         <div className="row my-5">
           {categories.map((item, index) => (
@@ -71,11 +71,11 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <div className="explore-activity-sec container d-flex justify-content-center align-items-center, flex-column">
+      <div data-aos="zoom-in-left" className="explore-activity-sec container d-flex justify-content-center align-items-center, flex-column">
         <p className="fw-bold h1 text-light mb-5">EXPLORE BY <span style={{ color: "#d7c6af", fontWeight: "bold" }}>ACTIVITY</span></p>
         <ExploreActivityCarousel />
       </div>
-      <div className="social-media-sec d-flex flex-column justify-content-center align-items-center">
+      <div data-aos="fade-right" className="social-media-sec d-flex flex-column justify-content-center align-items-center">
         <div className="main-link">
           <IconContext.Provider value={{ color: "white", size: "3em", className: "social-RxCornerTopLeft", style: { marginBottom: "40px" } }} >
             <RxCornerTopLeft />

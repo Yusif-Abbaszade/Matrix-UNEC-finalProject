@@ -40,7 +40,7 @@ const ProductDetails = () => {
     return (
         <div className="d-flex productdetpage justify-content-center align-items-center mt-5 flex-column">
             <div className="container row d-flex justify-content-between w-100">
-                <div className="col-12 col-xl-6">
+                <div className="col-12 col-xl-6" data-aos="fade-right">
                     <Swiper
                         style={{
                             '--swiper-navigation-color': '#000',
@@ -88,7 +88,7 @@ const ProductDetails = () => {
                         </SwiperSlide>
                     </Swiper>
                 </div>
-                <div className="col-12 col-xl-6">
+                <div className="col-12 col-xl-6" data-aos="fade-left">
                     <p className="fs-6 fw-bold"><IconContext.Provider value={{ size: "2em", color: "black", className: "me-3" }}><GiUsaFlag /></IconContext.Provider>MADE IN USA</p>
                     <p className="fs-1 fw-bolder">{data.title}</p>
                     <p>{data.desc}</p>
@@ -130,7 +130,7 @@ const ProductDetails = () => {
                     </ul>
                 </div>
             </div>
-            <div className="best-sellers-sec">
+            <div className="best-sellers-sec" data-aos="zoom-in-right">
                 <div className="breakdance-px breakdance-px-bestsellers" />
                 <div className="row best-sellers-products">
                     <p className="fw-bold d-flex align-items-center gap-3 h1 text-dark ms-5"><span style={{ color: "#b49360", fontWeight: "bold" }}>RELATED </span> PRODUCTS</p>

@@ -260,7 +260,7 @@ const Shop = () => {
                         </div>
                         <div className="products-con row w-100">
                             {filteredData.slice(firscardindex, lastcardindex).map((item, index) => (
-                                <div key={index} className="col-12 col-md-6 col-lg-4 col-xxl-3 d-flex justify-content-center my-2">
+                                <div key={index} className="col-12 col-md-6 col-lg-4 col-xxl-3 d-flex justify-content-center my-2" >
                                     <ShopProductCard itemHovered={itemHovered} title={item.title} img={item.img} imghover={item.imghover} price={item.price} color={item.color} props={item.props} uuid={item.uuid} />
 
 

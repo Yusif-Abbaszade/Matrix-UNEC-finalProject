@@ -68,7 +68,7 @@ const Signup = () => {
         <div className="login-sec d-flex align-items-center">
             <div className="login-bgimg"></div>
             <div className="container">
-                <form action="" className="text-center py-4 rounded-3" style={{ background: "#f0ebe3", width: "30rem", height: "100%" }}>
+                <form action="" className="text-center py-4 rounded-3" data-aos="fade-right" style={{ background: "#f0ebe3", width: "30rem", height: "100%" }}>
                     <p className="fs-1 fw-bolder">CREATE ACCOUNT</p>
                     <p className="" style={{ margin: "0", fontSize: "18px" }}>Fill out the form below to create your account.</p>
                     <p className="" style={{ margin: "0", fontSize: "18px" }}>Already have an account? <Link to={'/login'} className="text-decoration-none fw-bold" style={{ color: "black" }}>Login</Link></p>

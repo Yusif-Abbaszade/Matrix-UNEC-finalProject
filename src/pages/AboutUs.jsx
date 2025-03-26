@@ -26,7 +26,7 @@ const AboutUs = () => {
           <GrBottomCorner />
         </IconContext.Provider>
       </div>
-      <div className="container our-mission-your-mission">
+      <div data-aos="zoom-in-up" className="container our-mission-your-mission">
         <div className="row">
           <div className="col-12 col-lg-5">
             <p className='h1 fw-bold'>OUR <span style={{ color: "#d7c6af", fontWeight: "bold" }}>MISSION</span></p>
@@ -40,16 +40,16 @@ const AboutUs = () => {
       </div>
       <div className="container-fluid features-sec" style={{ background: "#f0ebe3" }}>
         <div className="row">
-          <div className="col-12 col-lg-6 img1-cont">
+          <div className="col-12 col-lg-6 img1-cont" data-aos="fade-right" data-aos-duration="1000">
             <img src="https://princetontec.com/wp-content/uploads/2024/07/about-page-banner-1024x390.png" alt="" width={"100%"} />
           </div>
-          <div className="col-12 col-lg-5 txt1">
+          <div className="col-12 col-lg-5 txt1" data-aos="fade-right" data-aos-duration="1000">
             <p className='h1'>To Create Light where there is darkness</p>
             <p>Founded in 1975, Princeton Tec is a family owned and operated, entirely USA based manufacturer of premier personal lighting products. For almost 50 years, we have been committed to excellence in our innovation of cutting-edge tactical lighting technology and dedicated to our mission of serving the military, law enforcement, and all other everyday heroes. Our unwavering determination to push limits extends to our Industrial and Adventure lines, where our lighting products illuminate pathways for hard workers and outdoor enthusiasts across the globe. </p>
           </div>
           <div className="col-lg-1"></div>
         </div>
-        <div className="row clrvrs">
+        <div className="row clrvrs" data-aos="fade-left" data-aos-duration="1000">
           <div className="col-lg-1"></div>
           <div className="col-12 col-lg-4">
             <p className='txt5' style={{ marginTop: "40px" }}>What sets us apart is our dedication to being an entirely USA-made brand. From concept to completion, Princeton Tec prioritizes superior craftsmanship and attention to detail, ensuring that our personal lighting products reflect our commitment to excellence and uphold the highest standards of performance and reliability. Join us on our mission, as we continue to push limits that empower us to go further.</p>
@@ -62,8 +62,8 @@ const AboutUs = () => {
       </div>
       <div className="know-us-sec pt-5">
         <div className="container">
-          <p className='h1 text-dark text-center py-5'>GET TO KNOW US</p>
-          <div className="accordion my-5" data-bs-theme='dark' id="accordionExample">
+          <p className='h1 text-dark text-center py-5' data-aos="zoom-in-down" >GET TO KNOW US</p>
+          <div className="accordion my-5" data-aos="zoom-in-up" data-bs-theme='dark' id="accordionExample">
             <div className="accordion-item mb-3">
               <h2 className="accordion-header">
                 <button className="accordion-button collapsed fw-bold fs-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -114,7 +114,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <div className="social-media-sec d-flex flex-column justify-content-center align-items-center">
+      <div data-aos='fade-right' className="social-media-sec d-flex flex-column justify-content-center align-items-center">
         <div className="main-link">
           <IconContext.Provider value={{ color: "white", size: "3em", className: "social-RxCornerTopLeft", style: { marginBottom: "40px" } }} >
             <RxCornerTopLeft />

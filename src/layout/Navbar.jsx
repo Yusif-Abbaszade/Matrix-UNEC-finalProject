@@ -68,14 +68,14 @@ const Navbar = () => {
                         <div className="left-side d-flex">
                             <div className="modal fade" id="searchModalProducts" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div className="modal-dialog">
-                                    <div className="modal-content">
+                                    <div className="modal-content" style={{background: navbarTheme === 'light' ? 'white' : '#f0ebe3'}}>
                                         <div className="modal-header">
                                             <h1 className="modal-title fs-5" id="exampleModalLabel">Search Product</h1>
                                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div className="modal-body">
                                             <div className="d-flex flex-row w-100" style={{ height: "50px" }}>
-                                                <input type="text" style={{ width: "100%" }} className="border-1 ps-3" onChange={(e) => { setProductSearchText(e.target.value) }} />
+                                                <input type="text" style={{ width: "100%", background:"#d7c6af", border:"none", outline:"none" }} className="border-1 ps-3 rounded-2" onChange={(e) => { setProductSearchText(e.target.value) }} />
                                             </div>
                                             <div className="row" style={{ maxHeight: "500px", overflowY: "scroll" }}>
                                                 {products.filter(p => p.title.toLowerCase().includes(productSearchText.toLowerCase())).map((item, index) => (

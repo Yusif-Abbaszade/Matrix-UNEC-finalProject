@@ -24,3 +24,24 @@
         }
     }
 }
+
+.editmodaldashboard {
+    .modal-body {
+        input {
+            width: 100%;
+            border: none !important;
+            outline: none !important;
+            height: 50px;
+            padding-left: 1rem;
+            background-color: #d7c6af;
+        }
+        select {
+            width: 100%;
+            border: none !important;
+            outline: none !important;
+            height: 50px;
+            padding-left: 1rem;
+            background-color: #d7c6af;
+        }
+    }
+}
