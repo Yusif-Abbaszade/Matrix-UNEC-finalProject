@@ -26,6 +26,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import NewsDetailds from "./pages/NewsDetailds";
 import ProductDetails from "./pages/ProductDetails";
+import Dashboard from "./pages/Dashboard";
 const App = () => {
   useEffect(() => {
     AOS.init({
@@ -49,6 +50,7 @@ const App = () => {
           {authData && authData.isAuth ? "" : <Route path="/login" element={<Login />} />}
           {authData && authData.isAuth ? "" : <Route path="/signup" element={<Signup />} />}
           {authData && authData.isAuth ? <Route path="/accountdetails" element={<AccountDetails />} /> : ""}
+          {authData && authData.isAuth && authData.role === 'admin' ? <Route path="/dashboard" element={<Dashboard />} /> : ""}
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:productslug" element={<ProductDetails />} />
           <Route path="/news" element={<News />} />

@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react"
 import { AuthContext } from "../context/AuthContext"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { NavbarContext } from "../context/NavbarContext";
 import AuthNavbar from "../layout/AuthNavbar";
 import AccountPageDetailsEditCard from "../components/AccountPageDetailsEditCard";
@@ -20,6 +20,7 @@ const AccountDetails = () => {
         <div className="account-details-page">
             <AuthNavbar />
             <p className="fw-bold text-center mt-5" style={{ fontSize: "55px" }}>YOUR DETAILS</p>
+            {authData && authData.role === 'admin' ? <Link className="btn btn-warning w-100 p-3 fs-2 fw-bolder" to={'/dashboard'}>Go To Dashboard</Link> : ""}
             <div className="container d-flex flex-column gap-5 my-5">
                 <AccountPageDetailsEditCard headertext={'Billing'} ddbuttontext={'EDIT DETAILS'} alert={'No billing address provided.'} />
                 <AccountPageDetailsEditCard headertext={'Shipping'} ddbuttontext={'EDIT DETAILS'} alert={'No shipping address provided.'} />
