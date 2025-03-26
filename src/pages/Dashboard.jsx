@@ -8,6 +8,7 @@ import { FaEdit } from "react-icons/fa";
 import slugify from 'slugify'
 import supabase from '../utils/supabase'
 import Swal from 'sweetalert2'
+import AuthNavbar from '../layout/AuthNavbar'
 const Dashboard = () => {
 
     const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
@@ -139,7 +140,8 @@ const Dashboard = () => {
     }
     return (
         <div>
-            <p className='fs-1 fw-bolder my-2 text-center'>Dashboard</p>
+            <AuthNavbar />
+            <p className='fs-1 fw-bolder my-5 text-center'>Dashboard</p>
             <div className="container-fluid d-flex justify-content-center">
                 <div className="container cart-page d-flex flex-column ">
                     <table>

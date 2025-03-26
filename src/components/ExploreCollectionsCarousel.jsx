@@ -79,11 +79,11 @@ const ExploreCollectionsCarousel = () => {
                 }
             },
             {
-                breakpoint:500,
-                settings:{
+                breakpoint: 500,
+                settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    arrows:false
+                    arrows: false
                 }
             }
         ]
@@ -96,9 +96,9 @@ const ExploreCollectionsCarousel = () => {
     return (
         <div className="slider-container container-fluid" style={{ width: "90%", margin: "0 auto" }}>
             <Slider {...settings}>
-                <CatCard width={"18rem"} height={"27rem"} text={'TACTICAL'} bgimg={collections_1_bgimg} />
-                <CatCard width={"18rem"} height={"27rem"} text={'ADVENTURE'} bgimg={collections_2_bgimg} />
-                <CatCard width={"18rem"} height={"27rem"} text={'INDUSTRIAL'} bgimg={collections_3_bgimg} />
+                <CatCard width={"18rem"} height={"27rem"} text={'TACTICAL'} bgimg={collections_1_bgimg} navigatelink={'/shop'} />
+                <CatCard width={"18rem"} height={"27rem"} text={'ADVENTURE'} bgimg={collections_2_bgimg} navigatelink={'/shop'} />
+                <CatCard width={"18rem"} height={"27rem"} text={'INDUSTRIAL'} bgimg={collections_3_bgimg} navigatelink={'/shop'} />
             </Slider>
             <div className="explore-progress-sc d-flex flex-row">
                 <div className="progress w-75" style={{ height: "5px", marginTop: "19px" }} role="progressbar" aria-label="Basic example" aria-valuenow={75} aria-valuemin={0} aria-valuemax={100}>

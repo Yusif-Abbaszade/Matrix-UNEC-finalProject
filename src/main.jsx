@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import supabase from './utils/supabase.js';
 import { AuthProvider } from './context/AuthContext.jsx';
 import { NavbarProvider } from './context/NavbarContext.jsx';
+import { WishlistProvider } from './context/WishlistContext.jsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { CartProvider } from 'react-use-cart';
 const store = configureStore();
@@ -32,9 +33,11 @@ createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <NavbarProvider>
           <CartProvider>
-            <Provider store={store}>
-              <App />
-            </Provider>
+            <WishlistProvider>
+              <Provider store={store}>
+                <App />
+              </Provider>
+            </WishlistProvider>
           </CartProvider>
         </NavbarProvider>
       </AuthProvider>

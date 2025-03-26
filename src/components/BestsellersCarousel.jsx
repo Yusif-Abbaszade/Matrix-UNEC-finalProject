@@ -1,19 +1,21 @@
 import Slider from "react-slick";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductCardForHome from "./ProductCardForHome";
 import { useSelector } from "react-redux";
 import slugify from "slugify";
 import { IconContext } from "react-icons";
 import { LiaFeatherAltSolid } from "react-icons/lia";
-import { FaWater } from "react-icons/fa";
+import { FaHeart, FaRegHeart, FaWater } from "react-icons/fa";
 import { CiSun, CiTimer } from "react-icons/ci";
 import { useCart } from "react-use-cart";
 import ShopProductCard from "./ShopProductCard";
 import { useNavigate } from "react-router-dom";
+import { WishlistContext } from "../context/WishlistContext";
 
 
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
+
     return (
         <img
             src="https://cdn-icons-png.flaticon.com/512/32/32213.png"
@@ -65,6 +67,7 @@ const BestsellersCarousel = () => {
     const [updateCount, setUpdateCount] = useState(0);
     const [slideCount, setSlideCount] = useState(3);
     const [itemHovered, setItemHovered] = useState('');
+    const { inWishlist, removeWishlistItem, addWishlistItem } = useContext(WishlistContext);
     const data = useSelector(p => p.products);
     const navigate = useNavigate();
     const { addItem } = useCart();
@@ -141,6 +144,9 @@ const BestsellersCarousel = () => {
         })
     }, [])
 
+
+
+
     return (
         <>
             <div className="slider-container container-fluid" style={{ width: "100%", margin: "0", padding: "0" }}>
@@ -178,7 +184,14 @@ const BestsellersCarousel = () => {
                                     </Slider>
                                 </div>
                                 <div className="right-sec ps-4 pe-3">
-                                    <p className='fs-2 fw-bold'>{item.title}</p>
+                                    <div className='d-flex flex-row justify-content-between'>
+                                        <span className='fs-2 fw-bold'>{item.title}</span>
+                                        <button className='btn' onClick={() => { inWishlist(item.uuid) ? removeWishlistItem(item.uuid) : addWishlistItem({ ...item, id: item.uuid }) }}>
+                                            <IconContext.Provider value={{ size: "2em", color: "red", className: "" }}>
+                                                {inWishlist(item.uuid) ? <FaHeart /> : <FaRegHeart />}
+                                            </IconContext.Provider>
+                                        </button>
+                                    </div>
                                     <p className='fs-5'>${item.price}</p>
                                     <p className='fs-6'>{item.desc}</p>
                                     <div className='d-flex flex-row gap-3 align-items-center'>

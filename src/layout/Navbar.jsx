@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { IconContext } from "react-icons";
-import { FaUser } from "react-icons/fa";
+import { FaHeart, FaRegHeart, FaUser } from "react-icons/fa";
 import { IoIosArrowDown, IoIosMenu, IoIosSearch } from "react-icons/io";
 import { IoCartOutline, IoCloseSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
@@ -93,9 +93,10 @@ const Navbar = () => {
                                     </div>
                                 </div>
                             </div>
-                            <button className="btn" data-bs-toggle='modal' data-bs-target='#searchModalProducts'><IconContext.Provider value={{ size: "1.4em", color: navbarTheme === 'light' ? "white" : "black" }}><div><IoIosSearch /></div></IconContext.Provider></button>
+                            <button className="btn" data-bs-toggle='modal' data-bs-target='#searchModalProducts'><IconContext.Provider value={{ size: "1.2em", color: navbarTheme === 'light' ? "white" : "black" }}><div><IoIosSearch /></div></IconContext.Provider></button>
                             <Link className="btn resetAllClass" to={authData && authData.isAuth ? '/accountdetails' : '/login'}><IconContext.Provider value={{ size: "1em", color: navbarTheme === 'light' ? "white" : "black" }}><div><FaUser /></div></IconContext.Provider></Link>
-                            <Link className="btn resetAllClass" to={'/cart'}><IconContext.Provider value={{ size: "1.4em", color: navbarTheme === 'light' ? "white" : "black" }}><div><IoCartOutline /></div></IconContext.Provider></Link>
+                            <Link className="btn resetAllClass" to={'/cart'}><IconContext.Provider value={{ size: "1.1em", color: navbarTheme === 'light' ? "white" : "black" }}><div><IoCartOutline /></div></IconContext.Provider></Link>
+                            <Link className="btn resetAllClass" to={'/wishlist'}><IconContext.Provider value={{ size: "1.1em", color: navbarTheme === 'light' ? "white" : "black" }}><div><FaHeart /></div></IconContext.Provider></Link>
                         </div>
                         <button className="btn navbar-toggler resetAllClass" onClick={navbarToggle}>
                             <IconContext.Provider value={{ size: '1.5em', color: navbarTheme === 'light' ? "white" : "black" }}>

@@ -108,7 +108,7 @@ const ExploreActivityCarousel = () => {
         <div className="slider-container container-fluid" style={{ width: "90%", margin: "0 auto" }}>
             <Slider {...settings}>
                 {activities.map((item, index) => (
-                    <ActivityCard key={index} title={item.title} img={item.img} />
+                    <ActivityCard navigatelink={'/shop'} key={index} title={item.title} img={item.img} />
                 ))}
             </Slider>
             <div className="progress-sc d-flex flex-row justify-content-center mt-2">

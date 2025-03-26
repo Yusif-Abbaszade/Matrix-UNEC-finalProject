@@ -30,6 +30,7 @@
         "react-slick": "^0.30.3",
         "react-toastify": "^11.0.3",
         "react-use-cart": "^1.14.0",
+        "react-use-wishlist": "^1.0.1",
         "redux": "^5.0.1",
         "sass": "^1.83.4",
         "slick-carousel": "^1.8.1",

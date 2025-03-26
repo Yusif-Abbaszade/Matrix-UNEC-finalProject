@@ -3,7 +3,7 @@ import { IconContext } from 'react-icons'
 import { RxCornerBottomLeft, RxCornerTopRight } from 'react-icons/rx'
 import { useSelector } from 'react-redux'
 import ShopProductCard from '../components/ShopProductCard'
-import { FaFilter, FaWater } from 'react-icons/fa'
+import { FaFilter, FaHeart, FaRegHeart, FaWater } from 'react-icons/fa'
 import { NavbarContext } from '../context/NavbarContext'
 import slugify from 'slugify'
 import Slider from "react-slick";
@@ -11,6 +11,8 @@ import { CiSun, CiTimer } from 'react-icons/ci'
 import { LiaFeatherAltSolid } from 'react-icons/lia'
 import { useCart } from 'react-use-cart'
 import { Link, useNavigate } from 'react-router-dom'
+import { motion } from "motion/react"
+import { WishlistContext } from '../context/WishlistContext'
 
 
 function SampleNextArrow(props) {
@@ -43,6 +45,9 @@ const Shop = () => {
     const [itemHovered, setItemHovered] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage, setCardsPerPage] = useState(12);
+
+    const { inWishlist, removeWishlistItem, addWishlistItem } = useContext(WishlistContext);
+
     const navigate = useNavigate();
     const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
     const data = useSelector(p => p.products);
@@ -260,7 +265,7 @@ const Shop = () => {
                         </div>
                         <div className="products-con row w-100">
                             {filteredData.slice(firscardindex, lastcardindex).map((item, index) => (
-                                <div key={index} className="col-12 col-md-6 col-lg-4 col-xxl-3 d-flex justify-content-center my-2" >
+                                <motion.div initial={{ opacity: 0, translateY: "250px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }} key={index} className="col-12 col-md-6 col-lg-4 col-xxl-3 d-flex justify-content-center my-2" >
                                     <ShopProductCard itemHovered={itemHovered} title={item.title} img={item.img} imghover={item.imghover} price={item.price} color={item.color} props={item.props} uuid={item.uuid} />
 
 
@@ -282,7 +287,14 @@ const Shop = () => {
                                                         </Slider>
                                                     </div>
                                                     <div className="right-sec ps-4 pe-3">
-                                                        <p className='fs-2 fw-bold'>{item.title}</p>
+                                                        <div className='d-flex flex-row justify-content-between'>
+                                                            <span className='fs-2 fw-bold'>{item.title}</span>
+                                                            <button className='btn' onClick={() => { inWishlist(item.uuid) ? removeWishlistItem(item.uuid) : addWishlistItem({ ...item, id: item.uuid }) }}>
+                                                                <IconContext.Provider value={{ size: "2em", color: "red", className: "" }}>
+                                                                    {inWishlist(item.uuid) ? <FaHeart /> : <FaRegHeart />}
+                                                                </IconContext.Provider>
+                                                            </button>
+                                                        </div>
                                                         <p className='fs-5'>${item.price}</p>
                                                         <p className='fs-6'>{item.desc}</p>
                                                         <div className='d-flex flex-row gap-3 align-items-center'>
@@ -323,14 +335,14 @@ const Shop = () => {
                                                     </div>
                                                 </div>
                                                 <div className="modal-footer d-flex justify-content-center mb-4" style={{ borderTop: "none" }}>
-                                                    <button className='btn shopcard-modal-moredet-btn fs-5 fw-bold' onClick={()=>{navigate(`/shop/${slugify(item.title, {lower:true})}`)}} data-bs-toggle='modal' data-bs-target={`#shopcardmodal-${slugify(item.uuid, { lower: true })}`}>View Full Details</button>
+                                                    <button className='btn shopcard-modal-moredet-btn fs-5 fw-bold' onClick={() => { navigate(`/shop/${slugify(item.title, { lower: true })}`) }} data-bs-toggle='modal' data-bs-target={`#shopcardmodal-${slugify(item.uuid, { lower: true })}`}>View Full Details</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
 
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
                         <div className="pagination my-4 container justify-content-end">

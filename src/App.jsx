@@ -27,6 +27,7 @@ import Checkout from "./pages/Checkout";
 import NewsDetailds from "./pages/NewsDetailds";
 import ProductDetails from "./pages/ProductDetails";
 import Dashboard from "./pages/Dashboard";
+import Wishlist from "./pages/Wishlist";
 const App = () => {
   useEffect(() => {
     AOS.init({
@@ -56,6 +57,7 @@ const App = () => {
           <Route path="/news" element={<News />} />
           <Route path={`/news/:newslug`} element={<NewsDetailds />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

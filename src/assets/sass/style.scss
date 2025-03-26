@@ -86,3 +86,11 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: black;
 }
+
+@media (max-width:650px) {
+    .wishlist-sec {
+        img {
+            width: 100% !important;
+        }
+    }
+}
