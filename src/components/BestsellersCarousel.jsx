@@ -8,7 +8,6 @@ import { LiaFeatherAltSolid } from "react-icons/lia";
 import { FaHeart, FaRegHeart, FaWater } from "react-icons/fa";
 import { CiSun, CiTimer } from "react-icons/ci";
 import { useCart } from "react-use-cart";
-import ShopProductCard from "./ShopProductCard";
 import { useNavigate } from "react-router-dom";
 import { WishlistContext } from "../context/WishlistContext";
 
