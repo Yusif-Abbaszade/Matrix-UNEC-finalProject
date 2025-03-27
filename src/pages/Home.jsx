@@ -11,6 +11,7 @@ import SocialMediaCarousel from "../components/SocialMediaCarousel"
 import { useContext, useEffect } from "react"
 import { NavbarContext } from "../context/NavbarContext"
 import { motion } from "motion/react"
+import LangUtil from "../utils/LangUtil"
 
 const Home = () => {
   const categories = useSelector(p => p.categories)
@@ -24,9 +25,9 @@ const Home = () => {
       <div className="bg-abs-home"></div>
       <div className="container-fluid home-con">
         <div className="container maincon-home text-light">
-          <h5 className="fs-5">The Unseen Advantage.</h5>
+          <h5 className="fs-5"><LangUtil az={'Görünməyən Üstünlük.'} en={'The Unseen Advantage.'} /></h5>
           <h1 style={{ fontWeight: 'bold' }} className="fs-1">Charge X IR Max</h1>
-          <button className="btn fw-bold fs-5">Check It Out</button>
+          <button className="btn fw-bold fs-5"><LangUtil en={'Check It Out'} az={'Yoxlayın'} /></button>
         </div>
         <div className="properties-sec">
           <ul className="list-unstyled d-flex justify-content-around text-center row">
@@ -39,30 +40,30 @@ const Home = () => {
               <IconContext.Provider value={{ size: "32px" }}>
                 <LiaFlagUsaSolid />
               </IconContext.Provider>
-              <b className="fs-6">USA-made</b>
+              <b className="fs-6"><LangUtil en={'USA-made'} az={'ABŞ istehsalıdır'} /></b>
             </li>
             <li className="col-4 text-light d-flex align-items-center gap-2 flex-column">
               <IconContext.Provider value={{ size: "32px" }}>
                 <FaShieldVirus />
               </IconContext.Provider>
-              <b className="fs-6">Trusted by the Armed Forces</b>
+              <b className="fs-6"><LangUtil en={'Trusted by the Armed Forces'} az={'Silahlı Qüvvələr tərəfindən güvənilir'} /></b>
             </li>
           </ul>
         </div>
       </div>
       <div data-aos="zoom-in-up" className="explore-collections-sec container d-flex justify-content-center align-items-center, flex-column">
-        <p className="fw-bold h1 text-light mb-5">EXPLORE <span style={{ color: "#d7c6af", fontWeight: "bold" }}>COLLECTIONS</span></p>
+        <p className="fw-bold h1 text-light mb-5"><LangUtil en={'EXPLORE'} az={'KƏŞFEDİN'} /> <span style={{ color: "#d7c6af", fontWeight: "bold" }}><LangUtil en={'COLLECTIONS'} az={'KOLLEKSİYALAR'} /></span></p>
         <ExploreCollectionsCarousel />
       </div>
       <motion.div initial={{ opacity: 0, translateY: "400px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }} className="best-sellers-sec mt-5">
         <div className="breakdance-px breakdance-px-bestsellers" />
         <div className="row best-sellers-products">
-          <p className="fw-bold d-flex align-items-center gap-3 h1 text-dark ms-5"><span style={{ color: "#b49360", fontWeight: "bold" }}>BEST </span> SELLERS</p>
+          <p className="fw-bold d-flex align-items-center gap-3 h1 text-dark ms-5"><span style={{ color: "#b49360", fontWeight: "bold" }}><LangUtil en={'BEST'} az={'ƏN ÇOX'} /> </span> <LangUtil en={'SELLERS'} az={'SATILANLAR'} /></p>
           <BestsellersCarousel />
         </div>
       </motion.div>
       <div data-aos="zoom-in-right" className="explore-categories-sec container-fluid text-light my-5">
-        <p className="h1 fw-bold">EXPLORE <span style={{ fontWeight: "bold", color: "#d7c6af" }}>CATEGORIES</span></p>
+        <p className="h1 fw-bold"><LangUtil en={'EXPLORE'} az={'KƏŞFEDİN'} /> <span style={{ fontWeight: "bold", color: "#d7c6af" }}><LangUtil en={'CATEGORIES'} az={'KATEQORİYALAR'} /></span></p>
         <div className="row my-5">
           {categories.map((item, index) => (
             <div key={index} className="col-12 col-sm-6 col-xl-4 col-xxl-2">
@@ -72,7 +73,7 @@ const Home = () => {
         </div>
       </div>
       <div data-aos="zoom-in-left" className="explore-activity-sec container d-flex justify-content-center align-items-center, flex-column">
-        <p className="fw-bold h1 text-light mb-5">EXPLORE BY <span style={{ color: "#d7c6af", fontWeight: "bold" }}>ACTIVITY</span></p>
+        <p className="fw-bold h1 text-light mb-5"><LangUtil en={'EXPLORE BY'} az={'KƏŞFEDİN'} /> <span style={{ color: "#d7c6af", fontWeight: "bold" }}><LangUtil en={'ACTIVITY'} az={'FƏALİYYƏT'} /></span></p>
         <ExploreActivityCarousel />
       </div>
       <div data-aos="fade-right" className="social-media-sec d-flex flex-column justify-content-center align-items-center">
@@ -80,7 +81,7 @@ const Home = () => {
           <IconContext.Provider value={{ color: "white", size: "3em", className: "social-RxCornerTopLeft", style: { marginBottom: "40px" } }} >
             <RxCornerTopLeft />
           </IconContext.Provider>
-          <a href="#" className="text-decoration-none text-light fw-bold followussocialmedialink">FOLLOW US ON SOCIAL MEDIA</a>
+          <a href="#" className="text-decoration-none text-light fw-bold followussocialmedialink"><LangUtil en={'FOLLOW US ON SOCIAL MEDIA'} az={'SOSİAL MEDİADA İZLƏYİN'} /></a>
           <IconContext.Provider value={{ color: "white", size: "3em", className: "social-RxCornerBottomRight", style: { marginTop: "35px" } }}>
             <RxCornerBottomRight />
           </IconContext.Provider>

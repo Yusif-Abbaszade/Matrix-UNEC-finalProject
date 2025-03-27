@@ -11,6 +11,7 @@ import { NavbarProvider } from './context/NavbarContext.jsx';
 import { WishlistProvider } from './context/WishlistContext.jsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { CartProvider } from 'react-use-cart';
+import { LangProvider } from './context/LangContext.jsx';
 const store = configureStore();
 
 
@@ -31,15 +32,17 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GoogleOAuthProvider clientId='999145324035-gflk9mdcl8k2gcbevhl9kqor4nvuei30.apps.googleusercontent.com' >
       <AuthProvider>
-        <NavbarProvider>
-          <CartProvider>
-            <WishlistProvider>
-              <Provider store={store}>
-                <App />
-              </Provider>
-            </WishlistProvider>
-          </CartProvider>
-        </NavbarProvider>
+        <LangProvider>
+          <NavbarProvider>
+            <CartProvider>
+              <WishlistProvider>
+                <Provider store={store}>
+                  <App />
+                </Provider>
+              </WishlistProvider>
+            </CartProvider>
+          </NavbarProvider>
+        </LangProvider>
       </AuthProvider>
     </GoogleOAuthProvider>
   </StrictMode>
