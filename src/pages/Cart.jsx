@@ -72,7 +72,7 @@ const Cart = () => {
             <h4>Total Price: ${items.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</h4>
           </div>
           <div className="d-flex justify-content-between row">
-            <button className="btn btn-danger col-1" onClick={emptyCart}>
+            <button className="btn btn-danger col-2 col-sm-1" onClick={emptyCart}>
               <IconContext.Provider value={{ color: 'white', size: '1em' }}>
                 <FaTrashCan />
               </IconContext.Provider>
