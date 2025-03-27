@@ -8,7 +8,7 @@ import { NavbarContext } from "../context/NavbarContext"
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google"
 import { jwtDecode } from "jwt-decode";
 import { v4 as uuidv4 } from 'uuid';
-import { FaGithub } from "react-icons/fa";
+import { motion } from 'motion/react';
 const Login = () => {
   const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
   useEffect(() => {
@@ -83,8 +83,8 @@ const Login = () => {
   return (
     <div className="login-sec d-flex align-items-center">
       <div className="login-bgimg"></div>
-      <div className="container">
-        <form action="" className="text-center py-4 rounded-3" style={{ background: "#f0ebe3", height: "100%" }} data-aos="fade-right">
+      <motion.div className="container" initial={{ opacity: 0, translateX: "-500px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }}>
+        <form action="" className="text-center py-4 rounded-3" style={{ background: "#f0ebe3", height: "100%" }} >
           <p className="fs-1 fw-bolder">WELCOME BACK</p>
           <p className="" style={{ margin: "0", fontSize: "18px" }}>Login to your account below.</p>
           <p className="" style={{ margin: "0", fontSize: "18px" }}>New around here? <Link to={'/signup'} className="text-decoration-none fw-bold" style={{ color: "black" }}>Create an account</Link></p>
@@ -95,7 +95,7 @@ const Login = () => {
           </div>
           <button type="submit" onClick={handleLoginForm} className="w-75 mt-3 mb-3 btn" style={{ background: "#d7c6af", height: "50px" }}>LOG IN</button>
         </form>
-      </div>
+      </motion.div>
     </div>
   )
 }

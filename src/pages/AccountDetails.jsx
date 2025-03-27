@@ -6,6 +6,7 @@ import AuthNavbar from "../layout/AuthNavbar";
 import AccountPageDetailsEditCard from "../components/AccountPageDetailsEditCard";
 import supabase from "../utils/supabase";
 import AccountPagePaymentDetails from "../components/AccountPagePaymentDetails";
+import { motion } from "motion/react";
 
 const AccountDetails = () => {
     const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
@@ -21,11 +22,11 @@ const AccountDetails = () => {
             <AuthNavbar />
             <p className="fw-bold text-center mt-5" style={{ fontSize: "55px" }}>YOUR DETAILS</p>
             {authData && authData.role === 'admin' ? <Link className="btn btn-warning w-100 p-3 fs-2 fw-bolder" to={'/dashboard'}>Go To Dashboard</Link> : ""}
-            <div className="container d-flex flex-column gap-5 my-5" data-aos="fade-right">
+            <motion.div className="container d-flex flex-column gap-5 my-5" initial={{ opacity: 0, translateX: "-500px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }}>
                 <AccountPageDetailsEditCard headertext={'Billing'} ddbuttontext={'EDIT DETAILS'} alert={'No billing address provided.'} />
                 <AccountPageDetailsEditCard headertext={'Shipping'} ddbuttontext={'EDIT DETAILS'} alert={'No shipping address provided.'} />
                 <AccountPagePaymentDetails/>
-            </div>
+            </motion.div>
         </div>
     )
 }

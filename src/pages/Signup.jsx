@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import supabase from "../utils/supabase"
 import Swal from "sweetalert2"
 import { NavbarContext } from "../context/NavbarContext"
+import { motion } from "motion/react";
 
 const Signup = () => {
     const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
@@ -67,7 +68,7 @@ const Signup = () => {
     return (
         <div className="login-sec d-flex align-items-center">
             <div className="login-bgimg"></div>
-            <div className="container">
+            <motion.div className="container" initial={{ opacity: 0, translateX: "-500px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }}>
                 <form action="" className="text-center py-4 rounded-3" data-aos="fade-right" style={{ background: "#f0ebe3", width: "30rem", height: "100%" }}>
                     <p className="fs-1 fw-bolder">CREATE ACCOUNT</p>
                     <p className="" style={{ margin: "0", fontSize: "18px" }}>Fill out the form below to create your account.</p>
@@ -79,7 +80,7 @@ const Signup = () => {
                     <p className="mt-3 px-5" style={{ fontSize: "14px" }}>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy.</p>
                     <button type="submit" onClick={handleSignupForm} className="w-75 mt-2 btn" style={{ background: "#d7c6af", height: "50px", fontWeight: "bold" }}>REGISTER</button>
                 </form>
-            </div>
+            </motion.div>
         </div>
     )
 }

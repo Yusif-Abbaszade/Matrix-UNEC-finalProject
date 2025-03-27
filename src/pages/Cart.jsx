@@ -77,7 +77,7 @@ const Cart = () => {
                 <FaTrashCan />
               </IconContext.Provider>
             </button>
-            <Link to={authData.isAuth?"/accountdetails":"/login"} className="btn checkoutbtn col-8 rounded-0 px-5 py-2 fw-bolder fs-4">Checkout</Link>
+            <Link to={"/checkout"} className="btn checkoutbtn col-8 rounded-0 px-5 py-2 fw-bolder fs-4">Checkout</Link>
           </div>
         </div>
       </div>
