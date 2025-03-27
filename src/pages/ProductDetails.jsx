@@ -41,9 +41,9 @@ const ProductDetails = () => {
         addItem
     } = useCart();
     return (
-        <div className="d-flex productdetpage justify-content-center align-items-center mt-5 flex-column">
+        <div className="d-flex productdetpage justify-content-center align-items-center mt-5 flex-column" style={{overflow: "hidden"}}>
             <div className="container row d-flex justify-content-between w-100">
-                <div className="col-12 col-xl-6" data-aos="fade-right">
+                <motion.div className="col-12 col-xl-6" initial={{ opacity: 0, translateX: "-350px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }}>
                     <Swiper
                         style={{
                             '--swiper-navigation-color': '#000',
@@ -90,8 +90,8 @@ const ProductDetails = () => {
                             <img src={data.imghover} style={{ background: "#EBE3D6" }} />
                         </SwiperSlide>
                     </Swiper>
-                </div>
-                <div className="col-12 col-xl-6" data-aos="fade-left">
+                </motion.div>
+                <motion.div initial={{ opacity: 0, translateX: "350px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }} className="col-12 col-xl-6">
                     <p className="fs-6 fw-bold"><IconContext.Provider value={{ size: "2em", color: "black", className: "me-3" }}><GiUsaFlag /></IconContext.Provider>MADE IN USA</p>
                     <div className='d-flex flex-row justify-content-between'>
                         <span className='fs-2 fw-bold'>{data.title}</span>
@@ -138,7 +138,7 @@ const ProductDetails = () => {
                             <p>Weight</p>
                         </li>
                     </ul>
-                </div>
+                </motion.div>
             </div>
             <motion.div className="best-sellers-sec" initial={{ opacity: 0, translateY: "400px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }}>
                 <div className="breakdance-px breakdance-px-bestsellers" />
