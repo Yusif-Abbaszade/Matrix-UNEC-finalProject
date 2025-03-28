@@ -83,7 +83,7 @@ const Login = () => {
   return (
     <div className="login-sec d-flex align-items-center">
       <div className="login-bgimg"></div>
-      <motion.div className="container" initial={{ opacity: 0, translateX: "-500px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }}>
+      <motion.div className="container" initial={{ opacity: 0, translateX: "-300px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }}>
         <form action="" className="text-center py-4 rounded-3" style={{ background: "#f0ebe3", height: "100%" }} >
           <p className="fs-1 fw-bolder">WELCOME BACK</p>
           <p className="" style={{ margin: "0", fontSize: "18px" }}>Login to your account below.</p>

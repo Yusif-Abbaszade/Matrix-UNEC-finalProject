@@ -10,6 +10,7 @@ import { CiSun, CiTimer } from "react-icons/ci";
 import { useCart } from "react-use-cart";
 import { useNavigate } from "react-router-dom";
 import { WishlistContext } from "../context/WishlistContext";
+import LangUtil from "../utils/LangUtil";
 
 
 function SampleNextArrow(props) {
@@ -194,7 +195,7 @@ const BestsellersCarousel = () => {
                                     <p className='fs-5'>${item.price}</p>
                                     <p className='fs-6'>{item.desc}</p>
                                     <div className='d-flex flex-row gap-3 align-items-center'>
-                                        <span className='fs-6 fw-bold'>Color : </span>
+                                        <span className='fs-6 fw-bold'><LangUtil en={'Color'} az={'Rəng'} /> : </span>
                                         <div className='rounded-5' style={{ width: "25px", height: "25px", background: item.color, border: "1px solid black" }}></div>
                                     </div>
                                     <ul className="list-unstyled d-flex justify-content-between text-center mt-4">
@@ -203,35 +204,35 @@ const BestsellersCarousel = () => {
                                                 <CiSun />
                                             </IconContext.Provider>
                                             <p className="counts m-0 fw-bold">{item.props.lumen}</p>
-                                            <p className=''>Lumens</p>
+                                            <p className=''><LangUtil en={'Lumens'} az={'Lümen'} /></p>
                                         </li>
                                         <li>
                                             <IconContext.Provider value={{ color: "#88782D", size: "2em" }}>
                                                 <CiTimer />
                                             </IconContext.Provider>
                                             <p className="counts m-0 fw-bold">{item.props.timestamp}</p>
-                                            <p>Run Time</p>
+                                            <p><LangUtil en={'Run Time'} az={'İş vaxtı'} /></p>
                                         </li>
                                         <li>
                                             <IconContext.Provider value={{ color: "#88782D", size: "2em" }}>
                                                 <FaWater />
                                             </IconContext.Provider>
                                             <p className="counts m-0 fw-bold">{item.props.waterproof}</p>
-                                            <p>Water Resistant</p>
+                                            <p><LangUtil en={'Water Resistant'} az={'Suya davamlı'} /></p>
                                         </li>
                                         <li>
                                             <IconContext.Provider value={{ color: "#88782D", size: "2em" }}>
                                                 <LiaFeatherAltSolid />
                                             </IconContext.Provider>
                                             <p className="counts m-0 fw-bold">{item.props.weight}</p>
-                                            <p>Weight</p>
+                                            <p><LangUtil en={'Weight'} az={'Çəki'} /></p>
                                         </li>
                                     </ul>
-                                    <button onClick={() => { addItem({ ...item, id: item.uuid }, 1) }} className='btn shopcard-modal-addtocart-btn fs-5 fw-bold'>Add to cart</button>
+                                    <button onClick={() => { addItem({ ...item, id: item.uuid }, 1) }} className='btn shopcard-modal-addtocart-btn fs-5 fw-bold'><LangUtil en={'Add to cart'} az={'Səbətə əlavə et'}/></button>
                                 </div>
                             </div>
                             <div className="modal-footer d-flex justify-content-center mb-4" style={{ borderTop: "none" }}>
-                                <button className='btn shopcard-modal-moredet-btn fs-5 fw-bold' onClick={() => { navigate(`/shop/${slugify(item.title, { lower: true })}`) }} data-bs-toggle='modal' data-bs-target={`#shopcardmodal-${slugify(item.uuid, { lower: true })}`}>View Full Details</button>
+                                <button className='btn shopcard-modal-moredet-btn fs-5 fw-bold' onClick={() => { navigate(`/shop/${slugify(item.title, { lower: true })}`) }} data-bs-toggle='modal' data-bs-target={`#shopcardmodal-${slugify(item.uuid, { lower: true })}`}><LangUtil en={'View Full Details'} az={'Tam Təfərrüatlara Baxın'} /></button>
                             </div>
                         </div>
                     </div>

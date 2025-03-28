@@ -34,7 +34,7 @@ const Footer = () => {
                             <div className="col-12 col-xl-2 mb-3">
                                 <h5 style={{ fontWeight: "bold" }}>Orders</h5>
                                 <ul className="nav flex-column">
-                                    <li className="nav-item mb-2"><Link to={'/support/warranty'} className="nav-link p-0 text-body-secondary">Warranty</Link></li>
+                                    <li className="nav-item mb-2"><Link to={'/support/warranty'} className="nav-link p-0 text-body-secondary">Contact&Warranty</Link></li>
                                 </ul>
                             </div>
                             <div className="col-xl-4 mb-3">

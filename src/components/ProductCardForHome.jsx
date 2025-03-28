@@ -4,6 +4,7 @@ import { FaWater } from "react-icons/fa";
 import { LiaFeatherAltSolid } from "react-icons/lia";
 import { useSelector } from "react-redux";
 import slugify from "slugify";
+import LangUtil from "../utils/LangUtil";
 
 
 const ProductCardForHome = ({ title, price, img, imghover, itemHovered, props, uuid }) => {
@@ -21,32 +22,32 @@ const ProductCardForHome = ({ title, price, img, imghover, itemHovered, props, u
                             <CiSun />
                         </IconContext.Provider>
                         <p className="counts">{props.lumen}</p>
-                        <p>Lumens</p>
+                        <p><LangUtil en={'Lumens'} az={'Lümen'} /></p>
                     </li>
                     <li>
                         <IconContext.Provider value={{ color: "#d7c6af", size: "2em" }}>
                             <CiTimer />
                         </IconContext.Provider>
                         <p className="counts">{props.timestamp}</p>
-                        <p>Run Time</p>
+                        <p><LangUtil en={'Run Time'} az={'İş vaxtı'} /></p>
                     </li>
                     <li>
                         <IconContext.Provider value={{ color: "#d7c6af", size: "2em" }}>
                             <FaWater />
                         </IconContext.Provider>
                         <p className="counts">{props.waterproof}</p>
-                        <p>Water Resistant</p>
+                        <p><LangUtil en={'Water Resistant'} az={'Suya davamlı'} /></p>
                     </li>
                     <li>
                         <IconContext.Provider value={{ color: "#d7c6af", size: "2em" }}>
                             <LiaFeatherAltSolid />
                         </IconContext.Provider>
                         <p className="counts">{props.weight}</p>
-                        <p>Weight</p>
+                        <p><LangUtil en={'Weight'} az={'Çəki'} /></p>
                     </li>
                 </ul>
                 <div className="quick-view-sec"  data-bs-toggle="modal" data-bs-target={`#shopcardmodal-${slugify(uuid, { lower: true })}`} style={{cursor:"pointer",overflowX:"hidden"}} >
-                    Quick View
+                    <LangUtil  en={'Quick View'} az={'Sürətli Baxış'}/>
                 </div>
             </div>
         </div>

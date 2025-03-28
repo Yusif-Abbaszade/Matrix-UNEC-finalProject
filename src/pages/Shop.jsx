@@ -13,6 +13,7 @@ import { useCart } from 'react-use-cart'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from "motion/react"
 import { WishlistContext } from '../context/WishlistContext'
+import LangUtil from '../utils/LangUtil'; // Import LangUtil
 
 
 function SampleNextArrow(props) {
@@ -177,7 +178,7 @@ const Shop = () => {
                         <IconContext.Provider value={{ size: "2.5em", className: "shop-RxCornerBottomLeft" }}>
                             <RxCornerBottomLeft />
                         </IconContext.Provider>
-                        <p className='fs-1'>ALL PRODUCTS</p>
+                        <p className='fs-1'><LangUtil en={'ALL PRODUCTS'} az={'BÜTÜN MƏHSULLAR'} /></p>
                         <IconContext.Provider value={{ size: "2.5em", className: "shop-RxCornerTopRight" }}>
                             <RxCornerTopRight />
                         </IconContext.Provider>
@@ -188,7 +189,7 @@ const Shop = () => {
                     <div className='d-flex flex-column align-items-center' style={{ width: "80%" }}>
                         <div className="filter-sec my-4 d-none d-lg-flex row g-4 w-100">
                             <div className="col-4 col-xl-2 d-flex flex-column">
-                                <span className='fw-bold fs-5'>COLLECTION</span>
+                                <span className='fw-bold fs-5'><LangUtil en={'COLLECTION'} az={'KOLLEKSİYA'} /></span>
                                 <select className="for-collection" onChange={handleFilterSecForBig}>
                                     <option value="all" defaultChecked>ALL</option>
                                     <option value="tactical">TACTICAL</option>
@@ -197,7 +198,7 @@ const Shop = () => {
                                 </select>
                             </div>
                             <div className="col-4 col-xl-2 d-flex flex-column">
-                                <span className='fw-bold fs-5'>ACTIVITY</span>
+                                <span className='fw-bold fs-5'><LangUtil en={'ACTIVITY'} az={'FƏALİYYƏT'} /></span>
                                 <select className="for-activity" onChange={handleFilterSecForBig}>
                                     <option value="all" defaultChecked>ALL</option>
                                     <option value="running">RUNNING</option>
@@ -208,7 +209,7 @@ const Shop = () => {
                                 </select>
                             </div>
                             <div className="col-4 col-xl-2 d-flex flex-column">
-                                <span className='fw-bold fs-5'>CATEGORIES</span>
+                                <span className='fw-bold fs-5'><LangUtil en={'CATEGORIES'} az={'KATEQORİYALAR'} /></span>
                                 <select className="for-categories" onChange={handleFilterSecForBig}>
                                     <option value="all" defaultChecked>ALL</option>
                                     <option value="headlamps">HEADLAMPS</option>
@@ -220,7 +221,7 @@ const Shop = () => {
                                 </select>
                             </div>
                             <div className="col-4 col-xl-2 d-flex flex-column">
-                                <span className='fw-bold fs-5'>WATERPROOF</span>
+                                <span className='fw-bold fs-5'><LangUtil en={'WATERPROOF'} az={'SUYA DAVAMLI'} /></span>
                                 <select className="for-waterproof" onChange={handleFilterSecForBig}>
                                     <option value="all" defaultChecked>ALL</option>
                                     <option value="IPX8">IPX8</option>
@@ -231,7 +232,7 @@ const Shop = () => {
                                 </select>
                             </div>
                             <div className="col-4 col-xl-2 d-flex flex-column">
-                                <span className='fw-bold fs-5'>COLOR</span>
+                                <span className='fw-bold fs-5'><LangUtil en={'COLOR'} az={'RƏNG'} /></span>
                                 <select className="for-color" onChange={handleFilterSecForBig}>
                                     <option value="all" defaultChecked>ALL</option>
                                     <option value="black">BLACK</option>
@@ -241,7 +242,7 @@ const Shop = () => {
                                 </select>
                             </div>
                             <div className="col-4 col-xl-2 d-flex flex-column">
-                                <span className='fw-bold fs-5'>SORT BY</span>
+                                <span className='fw-bold fs-5'><LangUtil en={'SORT BY'} az={'SIRALA'} /></span>
                                 <select className="for-sortby" onChange={handleFilterSecForBig}>
                                     <option value="default">DEFAULT</option>
                                     <option value="AtoZ">A-Z</option>
@@ -252,7 +253,7 @@ const Shop = () => {
                             </div>
                         </div>
                         <div className="filter-sec-for-sml d-lg-none w-100 d-flex justify-content-between btn" data-bs-toggle="modal" data-bs-target="#FilterModal" style={{ border: "2px solid #d7c6af", padding: "12px" }}>
-                            <span className='fs-3 fw-bold'>FILTER PRODUCTS</span>
+                            <span className='fs-3 fw-bold'><LangUtil en={'FILTER PRODUCTS'} az={'MƏHSULLARI FİLTRLƏ'} /></span>
                             <div className="position-relative">
                                 <IconContext.Provider value={{ size: "2em" }}>
                                     <FaFilter />
@@ -314,28 +315,32 @@ const Shop = () => {
                                                                     <CiTimer />
                                                                 </IconContext.Provider>
                                                                 <p className="counts m-0 fw-bold">{item.props.timestamp}</p>
-                                                                <p>Run Time</p>
+                                                                <p><LangUtil en={'Run Time'} az={'İşləmə Vaxtı'} /></p>
                                                             </li>
                                                             <li>
                                                                 <IconContext.Provider value={{ color: "#88782D", size: "2em" }}>
                                                                     <FaWater />
                                                                 </IconContext.Provider>
                                                                 <p className="counts m-0 fw-bold">{item.props.waterproof}</p>
-                                                                <p>Water Resistant</p>
+                                                                <p><LangUtil en={'Water Resistant'} az={'Suya Davamlılıq'} /></p>
                                                             </li>
                                                             <li>
                                                                 <IconContext.Provider value={{ color: "#88782D", size: "2em" }}>
                                                                     <LiaFeatherAltSolid />
                                                                 </IconContext.Provider>
                                                                 <p className="counts m-0 fw-bold">{item.props.weight}</p>
-                                                                <p>Weight</p>
+                                                                <p><LangUtil en={'Weight'} az={'Çəki'} /></p>
                                                             </li>
                                                         </ul>
-                                                        <button onClick={() => { addItem({ ...item, id: item.uuid }, 1) }} className='btn shopcard-modal-addtocart-btn fs-5 fw-bold'>Add to cart</button>
+                                                        <button onClick={() => { addItem({ ...item, id: item.uuid }, 1) }} className='btn shopcard-modal-addtocart-btn fs-5 fw-bold'>
+                                                            <LangUtil en={'Add to cart'} az={'Səbətə əlavə et'} />
+                                                        </button>
                                                     </div>
                                                 </div>
                                                 <div className="modal-footer d-flex justify-content-center mb-4" style={{ borderTop: "none" }}>
-                                                    <button className='btn shopcard-modal-moredet-btn fs-5 fw-bold' onClick={() => { navigate(`/shop/${slugify(item.title, { lower: true })}`) }} data-bs-toggle='modal' data-bs-target={`#shopcardmodal-${slugify(item.uuid, { lower: true })}`}>View Full Details</button>
+                                                    <button className='btn shopcard-modal-moredet-btn fs-5 fw-bold' onClick={() => { navigate(`/shop/${slugify(item.title, { lower: true })}`) }} data-bs-toggle='modal' data-bs-target={`#shopcardmodal-${slugify(item.uuid, { lower: true })}`}>
+                                                        <LangUtil en={'View Full Details'} az={'Tam Məlumatlara Bax'} />
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -365,7 +370,7 @@ const Shop = () => {
                         <div className="modal-body fsfsmodal d-flex justify-content-center align-items-center">
                             <div className='row justify-content-center align-items-center w-75 g-2'>
                                 <div className="col-12 col-md-6 d-flex flex-column selectionss">
-                                    <span className='fw-bold fs-5'>COLLECTION</span>
+                                    <span className='fw-bold fs-5'><LangUtil en={'COLLECTION'} az={'KOLLEKSİYA'} /></span>
                                     <select className="for-collection" onChange={handleFilterSecForSml}>
                                         <option value="all" defaultChecked>ALL</option>
                                         <option value="tactical">TACTICAL</option>
@@ -374,18 +379,17 @@ const Shop = () => {
                                     </select>
                                 </div>
                                 <div className="col-12 col-md-6 d-flex flex-column selectionss ">
-                                    <span className='fw-bold fs-5'>ACTIVITY</span>
+                                    <span className='fw-bold fs-5'><LangUtil en={'ACTIVITY'} az={'FƏALİYYƏT'} /></span>
                                     <select className="for-activity" onChange={handleFilterSecForSml}>
                                         <option value="all" defaultChecked>ALL</option>
                                         <option value="running">RUNNING</option>
-                                        <option value="hiking">HIKING</option>
-                                        <option value="fishing">FISHING</option>
+                                        <option value="hiking">HIKING</option>                                       <option value="fishing">FISHING</option>
                                         <option value="diving">DIVING</option>
                                         <option value="camping">CAMPING</option>
                                     </select>
                                 </div>
                                 <div className="col-12 col-md-6 d-flex flex-column selectionss">
-                                    <span className='fw-bold fs-5'>CATEGORIES</span>
+                                    <span className='fw-bold fs-5'><LangUtil en={'CATEGORIES'} az={'KATEQORİYALAR'} /></span>
                                     <select className="for-categories" onChange={handleFilterSecForSml}>
                                         <option value="all" defaultChecked>ALL</option>
                                         <option value="headlamps">HEADLAMPS</option>
@@ -397,7 +401,7 @@ const Shop = () => {
                                     </select>
                                 </div>
                                 <div className="col-12 col-md-6 d-flex flex-column selectionss">
-                                    <span className='fw-bold fs-5'>WATERPROOF</span>
+                                    <span className='fw-bold fs-5'><LangUtil en={'WATERPROOF'} az={'SUYA DAVAMLI'} /></span>
                                     <select className="for-waterproof" onChange={handleFilterSecForSml}>
                                         <option value="all" defaultChecked>ALL</option>
                                         <option value="IPX8">IPX8</option>
@@ -408,7 +412,7 @@ const Shop = () => {
                                     </select>
                                 </div>
                                 <div className="col-12 col-md-6 d-flex flex-column selectionss">
-                                    <span className='fw-bold fs-5'>COLOR</span>
+                                    <span className='fw-bold fs-5'><LangUtil en={'COLOR'} az={'RƏNG'} /></span>
                                     <select className="for-color" onChange={handleFilterSecForSml}>
                                         <option value="all">ALL</option>
                                         <option value="black">BLACK</option>
@@ -418,7 +422,7 @@ const Shop = () => {
                                     </select>
                                 </div>
                                 <div className="col-12 col-md-6 d-flex flex-column selectionss">
-                                    <span className='fw-bold fs-5'>SORT BY</span>
+                                    <span className='fw-bold fs-5'><LangUtil en={'SORT BY'} az={'SIRALA'} /></span>
                                     <select className="for-sortby" onChange={handleFilterSecForSml}>
                                         <option value="default">DEFAULT</option>
                                         <option value="AtoZ">A-Z</option>

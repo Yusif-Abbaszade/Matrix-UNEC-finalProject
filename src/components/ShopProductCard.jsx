@@ -5,6 +5,7 @@ import { LiaFeatherAltSolid } from "react-icons/lia";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import slugify from "slugify";
+import LangUtil from "../utils/LangUtil";
 
 
 const ShopProductCard = ({ title, price, img, imghover, itemHovered, props, uuid }) => {
@@ -30,25 +31,25 @@ const ShopProductCard = ({ title, price, img, imghover, itemHovered, props, uuid
                             <CiTimer />
                         </IconContext.Provider>
                         <p className="counts">{props.timestamp}</p>
-                        <p>Run Time</p>
+                        <p><LangUtil en={'Run Time'} az={'İşləmə Vaxtı'} /></p>
                     </li>
                     <li>
                         <IconContext.Provider value={{ color: "#d7c6af", size: "2em" }}>
                             <FaWater />
                         </IconContext.Provider>
                         <p className="counts">{props.waterproof}</p>
-                        <p>Water Resistant</p>
+                        <p><LangUtil en={'Water Resistant'} az={'Suya Davamlılıq'} /></p>
                     </li>
                     <li>
                         <IconContext.Provider value={{ color: "#d7c6af", size: "2em" }}>
                             <LiaFeatherAltSolid />
                         </IconContext.Provider>
                         <p className="counts">{props.weight}</p>
-                        <p>Weight</p>
+                        <p><LangUtil en={'Weight'} az={'Çəki'} /></p>
                     </li>
                 </ul>
                 <div className="quick-view-sec"  data-bs-toggle="modal" data-bs-target={`#shopcardmodal-${slugify(uuid, { lower: true })}`} style={{cursor:"pointer",overflowX:"hidden"}} >
-                    Quick View
+                    <LangUtil en={'Quick View'} az={'Sürətli Baxış'} />
                 </div>
             </div>
         </div>

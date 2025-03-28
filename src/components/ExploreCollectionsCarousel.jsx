@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Slider from "react-slick";
 import CatCard from "./CatCard";
+import { LangContext } from "../context/LangContext";
 
 
 const collections_1_bgimg = 'https://princetontec.com/wp-content/uploads/2024/06/JJB_9303-ps-edit-size-scaled.jpg';
@@ -41,6 +42,7 @@ const ExploreCollectionsCarousel = () => {
     const [slideIndex, setSlideIndex] = useState(0);
     const [updateCount, setUpdateCount] = useState(0);
     const [slideCount, setSlideCount] = useState(3);
+    const {lang} = useContext(LangContext);
 
     const settings = {
         dots: false,
@@ -96,9 +98,9 @@ const ExploreCollectionsCarousel = () => {
     return (
         <div className="slider-container container-fluid" style={{ width: "90%", margin: "0 auto" }}>
             <Slider {...settings}>
-                <CatCard width={"18rem"} height={"27rem"} text={'TACTICAL'} bgimg={collections_1_bgimg} navigatelink={'/shop'} />
-                <CatCard width={"18rem"} height={"27rem"} text={'ADVENTURE'} bgimg={collections_2_bgimg} navigatelink={'/shop'} />
-                <CatCard width={"18rem"} height={"27rem"} text={'INDUSTRIAL'} bgimg={collections_3_bgimg} navigatelink={'/shop'} />
+                <CatCard width={"18rem"} height={"27rem"} text={lang==='en'?'TACTICAL':"TAKTİK"} bgimg={collections_1_bgimg} navigatelink={'/shop'} />
+                <CatCard width={"18rem"} height={"27rem"} text={lang==='en'?'ADVENTURE':"MACARA"} bgimg={collections_2_bgimg} navigatelink={'/shop'} />
+                <CatCard width={"18rem"} height={"27rem"} text={lang==='en'?'INDUSTRIAL':"SƏNAYE"} bgimg={collections_3_bgimg} navigatelink={'/shop'} />
             </Slider>
             <div className="explore-progress-sc d-flex flex-row">
                 <div className="progress w-75" style={{ height: "5px", marginTop: "19px" }} role="progressbar" aria-label="Basic example" aria-valuenow={75} aria-valuemin={0} aria-valuemax={100}>
