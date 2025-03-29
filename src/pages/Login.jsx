@@ -9,6 +9,7 @@ import { GoogleLogin, useGoogleLogin } from "@react-oauth/google"
 import { jwtDecode } from "jwt-decode";
 import { v4 as uuidv4 } from 'uuid';
 import { motion } from 'motion/react';
+import LangUtil from "../utils/LangUtil"
 const Login = () => {
   const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
   useEffect(() => {
@@ -85,15 +86,15 @@ const Login = () => {
       <div className="login-bgimg"></div>
       <motion.div className="container" initial={{ opacity: 0, translateX: "-300px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }}>
         <form action="" className="text-center py-4 rounded-3" style={{ background: "#f0ebe3", height: "100%" }} >
-          <p className="fs-1 fw-bolder">WELCOME BACK</p>
-          <p className="" style={{ margin: "0", fontSize: "18px" }}>Login to your account below.</p>
-          <p className="" style={{ margin: "0", fontSize: "18px" }}>New around here? <Link to={'/signup'} className="text-decoration-none fw-bold" style={{ color: "black" }}>Create an account</Link></p>
+          <p className="fs-1 fw-bolder"><LangUtil en={'WELCOME BACK'} az={'XOŞ GƏLDİNİZ'} /></p>
+          <p className="" style={{ margin: "0", fontSize: "18px" }}><LangUtil en={'Login to your account below.'} az={'Aşağıdan hesabınıza daxil olun.'}/></p>
+          <p className="" style={{ margin: "0", fontSize: "18px" }}><LangUtil en={'New around here?'} az={'Buralarda yenisiz?'} /> <Link to={'/signup'} className="text-decoration-none fw-bold" style={{ color: "black" }}><LangUtil en={'Create an account'} az={'Hesab yaradın'} /></Link></p>
           <input ref={emailRef} className="w-75 mt-4 px-2" style={{ height: "40px", border: "none", fontSize: "14px", backgroundColor: "#ebe3d6" }} placeholder="EMAIL" type="email" />
           <input ref={passwordRef} className="w-75 mt-4 px-2" style={{ height: "40px", border: "none", fontSize: "14px", backgroundColor: "#ebe3d6" }} placeholder="PASSWORD" type="password" />
           <div className="d-flex justify-content-center align-items-center mt-2">
             <GoogleLogin width={3} text="signin" size="large" logo_alignment="center" type="icon" onSuccess={(credentialData) => { handleGoogleLogin(credentialData) }} onError={() => { alert('err') }} />
           </div>
-          <button type="submit" onClick={handleLoginForm} className="w-75 mt-3 mb-3 btn" style={{ background: "#d7c6af", height: "50px" }}>LOG IN</button>
+          <button type="submit" onClick={handleLoginForm} className="w-75 mt-3 mb-3 btn" style={{ background: "#d7c6af", height: "50px" }}><LangUtil en={'LOG IN'} az={'DAXİL OL'} /></button>
         </form>
       </motion.div>
     </div>

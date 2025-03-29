@@ -4,6 +4,7 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { NavbarContext } from "../context/NavbarContext";
 import { WishlistContext } from "../context/WishlistContext";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import LangUtil from "../utils/LangUtil";
 
 const Wishlist = () => {
     const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
@@ -39,8 +40,12 @@ const Wishlist = () => {
                                 <td className="ps-4 card-item-body" >
                                     <p className="fs-3 fw-bolder">{item.title}</p>
                                     <div style={{ width: "100%", height: "1px", background: "#B49360" }} />
-                                    <p className="m-0">Color: <span className="fw-bolder ms-2">{item.color}</span></p>
-                                    <p className="m-0">Category: <span className="fw-bolder ms-2">{item.category}</span></p>
+                                    <p className="m-0">
+                                        <LangUtil en="Color:" az="Rəng:" /> <span className="fw-bolder ms-2">{item.color}</span>
+                                    </p>
+                                    <p className="m-0">
+                                        <LangUtil en="Category:" az="Kateqoriya:" /> <span className="fw-bolder ms-2">{item.category}</span>
+                                    </p>
                                 </td>
                             </tr>
                         ))}
