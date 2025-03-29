@@ -20,6 +20,7 @@ import { FaHeart, FaRegHeart, FaWater } from "react-icons/fa";
 import { CiSun, CiTimer } from "react-icons/ci";
 import BestsellersCarousel from "../components/BestsellersCarousel";
 import { WishlistContext } from "../context/WishlistContext";
+import LangUtil from "../utils/LangUtil";
 
 const ProductDetails = () => {
     const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
@@ -121,21 +122,21 @@ const ProductDetails = () => {
                                 <CiTimer />
                             </IconContext.Provider>
                             <p className="counts">{data.props.timestamp}</p>
-                            <p>Run Time</p>
+                            <p><LangUtil en={'Run Time'} az={'İşləmə Vaxtı'} /></p>
                         </li>
                         <li>
                             <IconContext.Provider value={{ color: "#B49360", size: "3em" }}>
                                 <FaWater />
                             </IconContext.Provider>
                             <p className="counts">{data.props.waterproof}</p>
-                            <p>Water Resistant</p>
+                            <p><LangUtil en={'Water Resistant'} az={'Suya Davamlılıq'} /></p>
                         </li>
                         <li>
                             <IconContext.Provider value={{ color: "#B49360", size: "3em" }}>
                                 <LiaFeatherAltSolid />
                             </IconContext.Provider>
                             <p className="counts">{data.props.weight}</p>
-                            <p>Weight</p>
+                            <p><LangUtil en={'Weight'} az={'Çəki'} /></p>
                         </li>
                     </ul>
                 </motion.div>
@@ -143,7 +144,7 @@ const ProductDetails = () => {
             <motion.div className="best-sellers-sec" initial={{ opacity: 0, translateY: "400px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }}>
                 <div className="breakdance-px breakdance-px-bestsellers" />
                 <div className="row best-sellers-products">
-                    <p className="fw-bold d-flex align-items-center gap-3 h1 text-dark ms-5"><span style={{ color: "#b49360", fontWeight: "bold" }}>RELATED </span> PRODUCTS</p>
+                    <p className="fw-bold d-flex align-items-center gap-3 h1 text-dark ms-5"><span style={{ color: "#b49360", fontWeight: "bold" }}><LangUtil en={'RELATED'} az={'ƏLAQƏLİ'} /> </span> <LangUtil en={'PRODUCTS'} az={'MƏHSULLAR'} /></p>
                     <BestsellersCarousel />
                 </div>
             </motion.div>
