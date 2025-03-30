@@ -12,6 +12,7 @@ import { WishlistProvider } from './context/WishlistContext.jsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { CartProvider } from 'react-use-cart';
 import { LangProvider } from './context/LangContext.jsx';
+import { ThemeProvider } from './context/ThemeContext.jsx';
 const store = configureStore();
 
 
@@ -33,6 +34,7 @@ createRoot(document.getElementById('root')).render(
     <GoogleOAuthProvider clientId='999145324035-gflk9mdcl8k2gcbevhl9kqor4nvuei30.apps.googleusercontent.com' >
       <AuthProvider>
         <LangProvider>
+          <ThemeProvider>
           <NavbarProvider>
             <CartProvider>
               <WishlistProvider>
@@ -42,6 +44,7 @@ createRoot(document.getElementById('root')).render(
               </WishlistProvider>
             </CartProvider>
           </NavbarProvider>
+          </ThemeProvider>
         </LangProvider>
       </AuthProvider>
     </GoogleOAuthProvider>
