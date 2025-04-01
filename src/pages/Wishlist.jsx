@@ -1,18 +1,24 @@
 import { useContext, useEffect } from "react";
 import { IconContext } from "react-icons";
-import { LiaTimesSolid } from "react-icons/lia";
 import { NavbarContext } from "../context/NavbarContext";
 import { WishlistContext } from "../context/WishlistContext";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import LangUtil from "../utils/LangUtil";
+import { ThemeContext } from "../context/ThemeContext";
 
 const Wishlist = () => {
     const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
+    const { theme } = useContext(ThemeContext);
     const { wishlistdata, removeWishlistItem, isEmpty } = useContext(WishlistContext);
     useEffect(() => {
-        document.getElementsByTagName('body')[0].style.backgroundColor = '#F0EBE3'
-        setNavbarTheme('black');
-    }, [])
+        if (theme === 'black') {
+            document.getElementsByTagName('body')[0].style.backgroundColor = '#F0EBE3'
+            setNavbarTheme('black');
+        } else {
+            document.getElementsByTagName('body')[0].style.backgroundColor = '#000'
+            setNavbarTheme('light');
+        }
+    }, [theme])
     if (isEmpty()) return (
         <div className="container-fluid d-flex justify-content-center wishlist-sec">
             <div className="container cart-page d-flex flex-column justify-content-center align-items-center">

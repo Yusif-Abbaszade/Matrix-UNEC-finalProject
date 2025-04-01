@@ -3,6 +3,7 @@ import { BsTwitterX } from "react-icons/bs";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
+import LangUtil from "../utils/LangUtil";
 
 const logo = 'https://princetontec.com/wp-content/uploads/2023/12/Princeton-Tec-Primary-Logo-Black-RGB.png';
 
@@ -26,13 +27,13 @@ const Footer = () => {
                                 <a href="#" className="text-decoration-none">support@princetontec.com</a>
                             </div>
                             <div className="col-12 col-xl-2 mb-3">
-                                <h5 style={{ fontWeight: "bold" }}>Useful Links</h5>
+                                <h5 style={{ fontWeight: "bold" }}><LangUtil en={'Useful Links'} az={'Faydalı Linklər'} /></h5>
                                 <ul className="nav flex-column">
                                     <li className="nav-item mb-2"><Link to={'/support/faq'} className="nav-link p-0 text-body-secondary">FAQ</Link></li>
                                 </ul>
                             </div>
                             <div className="col-12 col-xl-2 mb-3">
-                                <h5 style={{ fontWeight: "bold" }}>Orders</h5>
+                                <h5 style={{ fontWeight: "bold" }}><LangUtil en={'Orders'} az={'ƏLAQƏ'} /></h5>
                                 <ul className="nav flex-column">
                                     <li className="nav-item mb-2"><Link to={'/support/warranty'} className="nav-link p-0 text-body-secondary">Contact&Warranty</Link></li>
                                 </ul>
@@ -41,7 +42,7 @@ const Footer = () => {
                                 <h5>Join Out Mailing List:</h5>
                                 <div className="d-flex joinusemailform flex-row w-100">
                                     <input id="newsletter1" type="text" className="form-control rounded-0" style={{ minWidth: "150px" }} placeholder="Email address" />
-                                    <button className="btn btn-dark rounded-0" type="button">Subscribe</button>
+                                    <button className="btn btn-dark rounded-0" type="button"><LangUtil en={'Subscribe'} az={'Abunə Ol'} /></button>
                                 </div>
                             </div>
                         </div>

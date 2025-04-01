@@ -8,6 +8,7 @@ import { AuthContext } from "../context/AuthContext";
 import { NavbarContext } from "../context/NavbarContext";
 import { useSelector } from "react-redux";
 import slugify from "slugify";
+import LangUtil from "../utils/LangUtil";
 
 const logo_white = 'https://princetontec.com/wp-content/uploads/2023/12/Princeton-Tec-Logo-Mark-White-RGB.svg';
 const logo_black = 'https://princetontec.com/wp-content/uploads/2024/01/Princeton-Tec-Logo-Mark-Black-RGB-1.svg';
@@ -54,13 +55,13 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-5">
                             <li>
-                                <Link className={`resetAllClass ${navbarTheme === 'light' ? '' : 'text-dark'}`} to={'/shop'}>Shop <div className="underline"></div></Link>
+                                <Link className={`resetAllClass ${navbarTheme === 'light' ? '' : 'text-dark'}`} to={'/shop'}><LangUtil  en={'Shop'} az={'MAĞAZA'}/> <div className="underline"></div></Link>
                             </li>
                             <li>
-                                <Link className={`resetAllClass ${navbarTheme === 'light' ? '' : 'text-dark'}`} to={'/about-us'}>About<div className="underline"></div></Link>
+                                <Link className={`resetAllClass ${navbarTheme === 'light' ? '' : 'text-dark'}`} to={'/about-us'}><LangUtil en={'About'} az={'HAQQIMIZDA'} /><div className="underline"></div></Link>
                             </li>
                             <li>
-                                <Link className={`resetAllClass ${navbarTheme === 'light' ? '' : 'text-dark'}`} to={'/news'}>News<div className="underline"></div></Link>
+                                <Link className={`resetAllClass ${navbarTheme === 'light' ? '' : 'text-dark'}`} to={'/news'}><LangUtil en={'News'} az={'XƏBƏRLƏR'} /><div className="underline"></div></Link>
                             </li>
                         </ul>
                     </div>
@@ -70,7 +71,7 @@ const Navbar = () => {
                                 <div className="modal-dialog">
                                     <div className="modal-content" style={{background: navbarTheme === 'light' ? 'white' : '#f0ebe3'}}>
                                         <div className="modal-header">
-                                            <h1 className="modal-title fs-5" id="exampleModalLabel">Search Product</h1>
+                                            <h1 className="modal-title fs-5" id="exampleModalLabel"><LangUtil en={'Search Product'} az={'Məhsul Axtar'} /></h1>
                                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div className="modal-body">
@@ -109,15 +110,15 @@ const Navbar = () => {
             <div className={`left-dd-navbar container-fluid ${leftMenuOpen ? 'navbar-dd-fade-anm-open' : 'd-none'}`} style={{ background: "white", position: "absolute", top: "10%", zIndex: "999" }} >
                 <ul className="list-unstyled">
                     <li className="resetAllClass">
-                        <Link onClick={resetAll} to={'/shop'} className="resetAllClass"><b>Shop</b></Link>
+                        <Link onClick={resetAll} to={'/shop'} className="resetAllClass"><b><LangUtil  en={'Shop'} az={'MAĞAZA'}/></b></Link>
                     </li>
                     <hr />
                     <li className="resetAllClass">
-                        <Link onClick={resetAll} to={'/about-us'} className="resetAllClass"><b>About</b></Link>
+                        <Link onClick={resetAll} to={'/about-us'} className="resetAllClass"><b><LangUtil en={'About'} az={'HAQQIMIZDA'} /></b></Link>
                     </li>
                     <hr />
                     <li className="resetAllClass">
-                        <Link onClick={resetAll} to={'/news'} className="resetAllClass"><b>News</b></Link>
+                        <Link onClick={resetAll} to={'/news'} className="resetAllClass"><b><LangUtil en={'News'} az={'XƏBƏRLƏR'} /></b></Link>
                     </li>
                 </ul>
             </div>

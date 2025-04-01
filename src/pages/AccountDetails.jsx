@@ -7,25 +7,36 @@ import AccountPageDetailsEditCard from "../components/AccountPageDetailsEditCard
 import supabase from "../utils/supabase";
 import AccountPagePaymentDetails from "../components/AccountPagePaymentDetails";
 import { motion } from "motion/react";
+import { ThemeContext } from "../context/ThemeContext";
 
 const AccountDetails = () => {
     const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
+    const { theme } = useContext(ThemeContext);
     const [authData, setAuthData] = useContext(AuthContext)
 
     useEffect(() => {
-        document.getElementsByTagName('body')[0].style.backgroundColor = '#ebe3d6'
-        setNavbarTheme('dark');
-    }, [])
+        if (theme === 'black') {
+            document.getElementsByTagName('body')[0].style.backgroundColor = '#ebe3d6'
+            document.querySelector('.account-details-page').style.background = '#ebe3d6'
+            document.querySelector('.account-details-page .headtext').style.color = 'black'
+            setNavbarTheme('black');
+        } else {
+            document.getElementsByTagName('body')[0].style.backgroundColor = '#000'
+            document.querySelector('.account-details-page').style.background = '#000'
+            document.querySelector('.account-details-page .headtext').style.color = 'white'
+            setNavbarTheme('light');
+        }
+    }, [theme])
     const navigate = useNavigate();
     return (
         <div className="account-details-page">
             <AuthNavbar />
-            <p className="fw-bold text-center mt-5" style={{ fontSize: "55px" }}>YOUR DETAILS</p>
+            <p className="fw-bold text-center headtext mt-5" style={{ fontSize: "55px" }}>YOUR DETAILS</p>
             {authData && authData.role === 'admin' ? <Link className="btn btn-warning w-100 p-3 fs-2 fw-bolder" to={'/dashboard'}>Go To Dashboard</Link> : ""}
             <motion.div className="container d-flex flex-column gap-5 my-5" initial={{ opacity: 0, translateX: "-300px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }}>
                 <AccountPageDetailsEditCard headertext={'Billing'} ddbuttontext={'EDIT DETAILS'} alert={'No billing address provided.'} />
                 <AccountPageDetailsEditCard headertext={'Shipping'} ddbuttontext={'EDIT DETAILS'} alert={'No shipping address provided.'} />
-                <AccountPagePaymentDetails/>
+                <AccountPagePaymentDetails />
             </motion.div>
         </div>
     )

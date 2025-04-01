@@ -15,9 +15,9 @@ const Accessibility = () => {
     return (
         <div className="position-fixed bottom-0 end-0 p-3 d-flex flex-column gap-3 justify-content-center align-items-center">
             <div className={`${isAccessibilityOpen ? 'd-flex' : 'd-none'} accessibility-menu bg-primary text-white p-1 rounded-5 flex-column`}>
-                <button className="btn" onClick={()=>{ setTheme(theme === "light" ? "black" : "light") }}>
+                <button className="btn" onClick={() => { setTheme(theme === "light" ? "black" : "light") }}>
                     <IconContext.Provider value={{ size: "1.5em", color: "#fff" }}>
-                        {theme==='light' ? <FaSun /> : <FaMoon />}
+                        {theme === 'light' ? <FaMoon /> : <FaSun />}
                     </IconContext.Provider>
                 </button>
                 <button className="btn text-light fs-5 fw-bolder" onClick={() => { lang === 'en' ? setLang('az') : setLang('en') }}>{lang.toUpperCase()}</button>

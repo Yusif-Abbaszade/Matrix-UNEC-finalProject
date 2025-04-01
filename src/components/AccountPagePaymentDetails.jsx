@@ -7,7 +7,7 @@ import supabase from "../utils/supabase";
 
 const AccountPagePaymentDetails = () => {
     const [authData, setAuthData] = useContext(AuthContext);
-    let cartdetails = authData.cartdetails;
+    let cartdetails = authData.cartdetails || { cart: [] };
     const cartNumberRef = useRef();
     const expirationDateRef = useRef();
     const securityCodeRef = useRef();
@@ -43,8 +43,8 @@ const AccountPagePaymentDetails = () => {
                         <span className="ms-2 fs-5">No saved methods found.</span>
                     </div>
                     : <div>
-                        <p className="fs-2 fw-bolder mb-0">{cartdetails.cart.cartName}</p>
-                        <p className="mb-0 fs-5 ms-3">{cartdetails.cart.cartNumber.substring(0, 4)} {cartdetails.cart.cartNumber.substring(4,8)} **** ****</p>
+                        <p className="fs-2 fw-bolder mb-0">{cartdetails?.cart?.cartName}</p>
+                        <p className="mb-0 fs-5 ms-3">{cartdetails?.cart.cartNumber.substring(0, 4)} {cartdetails?.cart.cartNumber.substring(4,8)} **** ****</p>
                         <p className="mb-0 fs-5 ms-3"></p>
                         <p className="mb-0 fs-5 ms-3"></p>
                     </div>
@@ -56,22 +56,22 @@ const AccountPagePaymentDetails = () => {
                             <form action="" onSubmit={handleSubmit} className="row g-3 accountdetails-form">
                                 <div className="col-12 col-md-6">
                                     <label>Cart Number</label>
-                                    <input type="text" className="w-100" ref={cartNumberRef} placeholder="1234 1234 1234 1234" maxLength={16} defaultValue={cartdetails.cart.cartNumber} />
+                                    <input type="text" className="w-100" ref={cartNumberRef} placeholder="1234 1234 1234 1234" maxLength={16} defaultValue={cartdetails?.cart?.cartNumber} />
                                 </div>
                                 <div className="col-12 col-md-3">
                                     <label>Expiration Date</label>
-                                    <input type="text" className="w-100" ref={expirationDateRef} placeholder="MM/YY" maxLength={5} defaultValue={cartdetails.cart.expirationDate} />
+                                    <input type="text" className="w-100" ref={expirationDateRef} placeholder="MM/YY" maxLength={5} defaultValue={cartdetails?.cart?.expirationDate} />
                                 </div>
                                 <div className="col-12 col-md-3">
                                     <label>Security code</label>
-                                    <input type="text" className="w-100" ref={securityCodeRef} placeholder="CVC" maxLength={3} defaultValue={cartdetails.cart.securityCode} />
+                                    <input type="text" className="w-100" ref={securityCodeRef} placeholder="CVC" maxLength={3} defaultValue={cartdetails?.cart?.securityCode} />
                                 </div>
                                 <div className="col-12">
                                     <label>Cart Name</label>
-                                    <input type="text" className="w-100" ref={cartNameRef} placeholder="Cart Name" defaultValue={cartdetails.cart.cartName} />
+                                    <input type="text" className="w-100" ref={cartNameRef} placeholder="Cart Name" defaultValue={cartdetails?.cart?.cartName} />
                                 </div>
                                 <div className="col-8 col-sm-6 col-md-4">
-                                    <button className="btn" style={{ width: "100%" }}>{cartdetails.cart.length === 0?"ADD PAYMENT NOW":"EDIT PAYMENT NOW"}</button>
+                                    <button className="btn" style={{ width: "100%" }}>{cartdetails?.cart?.length === 0?"ADD PAYMENT NOW":"EDIT PAYMENT NOW"}</button>
                                 </div>
                             </form>
                         </div>

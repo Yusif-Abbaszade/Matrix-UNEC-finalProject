@@ -14,6 +14,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion } from "motion/react"
 import { WishlistContext } from '../context/WishlistContext'
 import LangUtil from '../utils/LangUtil'; // Import LangUtil
+import { ThemeContext } from '../context/ThemeContext'
 
 
 function SampleNextArrow(props) {
@@ -51,6 +52,7 @@ const Shop = () => {
 
     const navigate = useNavigate();
     const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
+    const { theme } = useContext(ThemeContext);
     const data = useSelector(p => p.products);
     let filtData = data;
     const [filteredData, setFilteredData] = useState(data);
@@ -89,9 +91,36 @@ const Shop = () => {
         })
     }, [])
     useEffect(() => {
-        document.getElementsByTagName('body')[0].style.backgroundColor = '#ebe3d6';
-        setNavbarTheme('black')
-    }, [])
+        if (theme === 'black') {
+            setNavbarTheme('black')
+            document.getElementsByTagName('body')[0].style.backgroundColor = '#ebe3d6';
+            
+            document.querySelector('.shop-sec .shop-header').style.backgroundColor = '#EBE3D6';
+            document.querySelector('.shop-sec .shop-header .breakdance-px').style.display = 'block';
+            document.querySelector('.shop-sec .shop-foot').style.display = 'block';
+            document.querySelector('.shop-sec .shop-header').style.color = '#000';
+            document.querySelector('.shop-sec .filter-sec').style.color = '#000';
+            [...document.querySelectorAll('.shop-sec .pagination button')].map(item => item.style.color = '#000');
+            document.querySelector('.shop-sec .filter-sec-for-sml').style.color = '#000';
+            [...document.querySelectorAll('.shop-sec .filter-sec select')].map(item => { item.style.color = '#000'; });
+            [...document.querySelectorAll('.shop-sec .filter-sec select option')].map(item => { item.style.background = '#F0EBE3'; });
+
+            document.querySelector('.shopmainalla').style.background = '#f0ebe3';
+        } else {
+            setNavbarTheme('light')
+            document.getElementsByTagName('body')[0].style.backgroundColor = '#0F0F0F';
+            document.querySelector('.shop-sec .shop-header').style.backgroundColor = '#0F0F0F';
+            document.querySelector('.shop-sec .shop-header .breakdance-px').style.display = 'none';
+            document.querySelector('.shop-sec .shop-foot').style.display = 'none';
+            document.querySelector('.shop-sec .shop-header').style.color = '#fff';
+            document.querySelector('.shop-sec .filter-sec').style.color = '#fff';
+            [...document.querySelectorAll('.shop-sec .pagination button')].map(item => item.style.color = '#fff');
+            document.querySelector('.shop-sec .filter-sec-for-sml').style.color = '#fff';
+            [...document.querySelectorAll('.shop-sec .filter-sec select')].map(item => { item.style.color = '#fff'; });
+            [...document.querySelectorAll('.shop-sec .filter-sec select option')].map(item => { item.style.background = '#000'; });
+            document.querySelector('.shopmainalla').style.background = '#0F0F0F';
+        }
+    }, [theme])
 
     const handleFilterSecForSml = () => {
         console.log('It Works for sml');
@@ -185,7 +214,7 @@ const Shop = () => {
                     </div>
                     <div className="breakdance-px"></div>
                 </div>
-                <div className="d-flex justify-content-center" style={{ background: "#f0ebe3" }}>
+                <div className="d-flex justify-content-center shopmainalla">
                     <div className='d-flex flex-column align-items-center' style={{ width: "80%" }}>
                         <div className="filter-sec my-4 d-none d-lg-flex row g-4 w-100">
                             <div className="col-4 col-xl-2 d-flex flex-column">
@@ -352,7 +381,7 @@ const Shop = () => {
                         </div>
                         <div className="pagination my-4 container justify-content-end">
                             {pages.map(item => (
-                                <button key={item} onClick={() => { setCurrentPage(item) }} className='btn fs-5' style={{ color: currentPage === item ? '#b49360' : 'black' }}>{item}</button>
+                                <button key={item} onClick={() => { setCurrentPage(item) }} className='btn fs-5' style={{ color: currentPage === item ? '#b49360' : navbarTheme==='black' ? 'black' : "white" }}>{item}</button>
                             ))}
                         </div>
                     </div>

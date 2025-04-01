@@ -8,9 +8,11 @@ import { useCart } from "react-use-cart";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import LangUtil from "../utils/LangUtil";
+import { ThemeContext } from "../context/ThemeContext";
 
 const Cart = () => {
   const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
+  const { theme } = useContext(ThemeContext);
   const [authData, setAuthData] = useContext(AuthContext);
   const {
     isEmpty,
@@ -22,9 +24,14 @@ const Cart = () => {
   } = useCart();
 
   useEffect(() => {
-    document.getElementsByTagName('body')[0].style.backgroundColor = '#F0EBE3'
-    setNavbarTheme('black');
-  }, [])
+    if (theme === 'black') {
+      document.getElementsByTagName('body')[0].style.backgroundColor = '#F0EBE3'
+      setNavbarTheme('black');
+    } else {
+      document.getElementsByTagName('body')[0].style.backgroundColor = '#000';
+      setNavbarTheme('light');
+    }
+  }, [theme])
 
   if (isEmpty) return (
     <div className="container-fluid d-flex justify-content-center">
