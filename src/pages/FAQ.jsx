@@ -17,14 +17,14 @@ const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
                 </p>
             </div>
             <div className="container main-faq">
-                <p className="fw-bold" style={{ fontSize: "40px" }}>
+                <div className="fw-bold" style={{ fontSize: "40px" }}>
                     <div className="fw-bold">
                         <LangUtil en={"FREQUENTLY ASKED"} az={"TEZ-TEZ VERİLƏN"} />
                     </div>
                     <div className="fw-bold" style={{ color: "#b49360" }}>
                         <LangUtil en={"QUESTIONS"} az={"SUALLAR"} />
                     </div>
-                </p>
+                </div>
                 <div className="accordion my-5" data-bs-theme='dark' id="accordionExample">
                     <div className="accordion-item mb-3">
                         <h2 className="accordion-header">

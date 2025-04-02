@@ -21,18 +21,29 @@ import { CiSun, CiTimer } from "react-icons/ci";
 import BestsellersCarousel from "../components/BestsellersCarousel";
 import { WishlistContext } from "../context/WishlistContext";
 import LangUtil from "../utils/LangUtil";
+import { ThemeContext } from "../context/ThemeContext";
 
 const ProductDetails = () => {
     const [navbarTheme, setNavbarTheme] = useContext(NavbarContext);
+    const { theme } = useContext(ThemeContext);
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const product = useSelector(p => p.products)
     const { inWishlist, removeWishlistItem, addWishlistItem } = useContext(WishlistContext);
     const { productslug } = useParams();
     const data = product.find(i => slugify(i.title, { lower: true }) === productslug);
     useEffect(() => {
-        document.getElementsByTagName('body')[0].style.background = '#F0EBE3'
-        setNavbarTheme('dark')
-    }, [])
+        if (theme === 'black') {
+            document.getElementsByTagName('body')[0].style.background = '#F0EBE3';
+            document.querySelector('.productdetpage').style.color = '#000'
+            document.querySelector('.productdetpage .best-sellers-sec').style.color = '#000'
+            setNavbarTheme('black');
+        } else {
+            document.getElementsByTagName('body')[0].style.background = '#000'
+            document.querySelector('.productdetpage').style.color = '#fff'
+            document.querySelector('.productdetpage .best-sellers-sec').style.color = '#000'
+            setNavbarTheme('light')
+        }
+    }, [theme])
     const {
         isEmpty,
         totalUniqueItems,
@@ -42,9 +53,9 @@ const ProductDetails = () => {
         addItem
     } = useCart();
     return (
-        <div className="d-flex productdetpage justify-content-center align-items-center mt-5 flex-column" style={{overflow: "hidden"}}>
+        <div className="d-flex productdetpage justify-content-center align-items-center mt-5 flex-column" style={{ overflow: "hidden" }}>
             <div className="container row d-flex justify-content-between w-100">
-                <motion.div className="col-12 col-xl-6" initial={{ opacity: 0, translateX: "-350px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }}>
+                <motion.div className="col-12 col-xl-6" initial={{ opacity: 0, translateX: "-300px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }}>
                     <Swiper
                         style={{
                             '--swiper-navigation-color': '#000',
@@ -92,7 +103,7 @@ const ProductDetails = () => {
                         </SwiperSlide>
                     </Swiper>
                 </motion.div>
-                <motion.div initial={{ opacity: 0, translateX: "350px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }} className="col-12 col-xl-6">
+                <motion.div initial={{ opacity: 0, translateX: "300px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }} className="col-12 col-xl-6">
                     <p className="fs-6 fw-bold"><IconContext.Provider value={{ size: "2em", color: "black", className: "me-3" }}><GiUsaFlag /></IconContext.Provider>MADE IN USA</p>
                     <div className='d-flex flex-row justify-content-between'>
                         <span className='fs-2 fw-bold'>{data.title}</span>

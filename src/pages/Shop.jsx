@@ -47,6 +47,7 @@ const Shop = () => {
     const [itemHovered, setItemHovered] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [cardsPerPage, setCardsPerPage] = useState(12);
+    const [filterUstCount, setFilterUstCount] = useState(0);
 
     const { inWishlist, removeWishlistItem, addWishlistItem } = useContext(WishlistContext);
 
@@ -94,7 +95,7 @@ const Shop = () => {
         if (theme === 'black') {
             setNavbarTheme('black')
             document.getElementsByTagName('body')[0].style.backgroundColor = '#ebe3d6';
-            
+
             document.querySelector('.shop-sec .shop-header').style.backgroundColor = '#EBE3D6';
             document.querySelector('.shop-sec .shop-header .breakdance-px').style.display = 'block';
             document.querySelector('.shop-sec .shop-foot').style.display = 'block';
@@ -123,20 +124,23 @@ const Shop = () => {
     }, [theme])
 
     const handleFilterSecForSml = () => {
-        console.log('It Works for sml');
         setCurrentPage(1);
+        setFilterUstCount(0);
         const collection = document.querySelector('.fsfsmodal .for-collection').value;
         const activity = document.querySelector('.fsfsmodal .for-activity').value;
         const categories = document.querySelector('.fsfsmodal .for-categories').value;
         const waterproof = document.querySelector('.fsfsmodal .for-waterproof').value;
         const color = document.querySelector('.fsfsmodal .for-color').value;
         const sortby = document.querySelector('.fsfsmodal .for-sortby').value;
-        // console.log(collection, activity, categories, waterproof, color, sortby);
 
-        // filtData = (data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.category === categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.color === color || color === 'all'))))
-        // filtData.sort((a, b) => a.title.localeCompare(b.title));
-        // setFilteredData(filtData);
-        filtData = (data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.category === categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.color === color || color === 'all'))))
+        collection !== 'all' ? setFilterUstCount(filterUstCount+1) : "";
+        activity !== 'all' ? setFilterUstCount(filterUstCount+1) : "";
+        categories !== 'all' ? setFilterUstCount(filterUstCount+1) : "";
+        waterproof !== 'all' ? setFilterUstCount(filterUstCount+1) : "";
+        color !== 'all' ? setFilterUstCount(filterUstCount+1) : "";
+        sortby !== 'default' ? setFilterUstCount(filterUstCount+1): "";
+
+            filtData = (data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.category === categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.color === color || color === 'all'))))
         if (sortby === 'AtoZ') {
             filtData.sort((a, b) => a.title.localeCompare(b.title));
         } else if (sortby === 'ZtoA') {
@@ -150,7 +154,6 @@ const Shop = () => {
         setFilteredData(filtData);
     };
     const handleFilterSecForBig = () => {
-        console.log('It Works for big');
         setCurrentPage(1);
         const collection = document.querySelector('.filter-sec .for-collection').value;
         const activity = document.querySelector('.filter-sec .for-activity').value;
@@ -158,8 +161,6 @@ const Shop = () => {
         const waterproof = document.querySelector('.filter-sec .for-waterproof').value;
         const color = document.querySelector('.filter-sec .for-color').value;
         const sortby = document.querySelector('.filter-sec .for-sortby').value;
-        // console.log(collection, activity, categories, waterproof, color, sortby);
-        // setFilteredData(data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.category == categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.color === color || color === 'all'))))
         filtData = (data.filter(item => ((item.collection === collection || collection === 'all') && (item.activity === activity || activity === 'all') && (item.category === categories || categories === 'all') && (item.props.waterproof === waterproof || waterproof === 'all') && (item.color === color || color === 'all'))))
         if (sortby === 'AtoZ') {
             filtData.sort((a, b) => a.title.localeCompare(b.title));
@@ -288,7 +289,7 @@ const Shop = () => {
                                     <FaFilter />
                                 </IconContext.Provider>
                                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill text-dark" style={{ background: "#d7c6af" }}>
-                                    0
+                                    {filterUstCount}
                                 </span>
                             </div>
 
@@ -381,7 +382,7 @@ const Shop = () => {
                         </div>
                         <div className="pagination my-4 container justify-content-end">
                             {pages.map(item => (
-                                <button key={item} onClick={() => { setCurrentPage(item) }} className='btn fs-5' style={{ color: currentPage === item ? '#b49360' : navbarTheme==='black' ? 'black' : "white" }}>{item}</button>
+                                <button key={item} onClick={() => { setCurrentPage(item) }} className='btn fs-5' style={{ color: currentPage === item ? '#b49360' : navbarTheme === 'black' ? 'black' : "white" }}>{item}</button>
                             ))}
                         </div>
                     </div>

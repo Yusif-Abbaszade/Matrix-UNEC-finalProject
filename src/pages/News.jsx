@@ -39,10 +39,10 @@ const News = () => {
                         </p>
                     </motion.div>
                     <motion.div initial={{ opacity: 0, translateX: "300px", translateY: "200px" }} whileInView={{ opacity: 1, translateX: 0, translateY: 0 }} transition={{ duration: 1 }} className="col-12 col-xl-6 searchsec">
-                        <button className="d-flex flex-row w-100" style={{ height: "50px" }} data-bs-toggle="modal" data-bs-target="#newsSearchModal">
+                        <div className="d-flex flex-row w-100" style={{ height: "50px" }} data-bs-toggle="modal" data-bs-target="#newsSearchModal">
                             <input type="text" style={{ width: "90%" }} className="border-0 ps-3" placeholder={"Search..."} />
-                            <button style={{ width: "10%" }} className="btn rounded-0 border-0"><IoIosSearch /></button>
-                        </button>
+                            <button style={{ width: "10%" }} className="btn ps-1 rounded-0 border-0"><IoIosSearch /></button>
+                        </div>
                     </motion.div>
                 </div>
             </div>
