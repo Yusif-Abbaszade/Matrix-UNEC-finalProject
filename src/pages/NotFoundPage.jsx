@@ -16,6 +16,7 @@ const NotFoundPage = () => {
                     <span key={index}>{char}</span>
                 ))}
             </div>
+            <img className="notfoundimg" src="https://cdn4.iconfinder.com/data/icons/zwo-data-internet-vol-1/25/page_error_404_not_found-512.png" alt="" />
             <p className="text-center fs-5 mb-4">It seems like whatever you were looking for does not exist. Maybe try a search?</p>
             <Link to={'/'} className="btn backtohomebtn mb-5">Back To Homepage</Link>
         </div>
